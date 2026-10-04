@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import "@fontsource/bodoni-moda/400.css";
-import "@fontsource/bodoni-moda/400-italic.css";
 import "@fontsource/bodoni-moda/500.css";
 import "@fontsource/jost/300.css";
 import "@fontsource/jost/400.css";
