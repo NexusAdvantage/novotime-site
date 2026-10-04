@@ -137,6 +137,9 @@ button { font: inherit; }
 .iconslot { width: 92px; height: 92px; display: grid; place-items: center; margin-bottom: 30px; position: relative; }
 .iconslot::before { content: ""; position: absolute; inset: 0; border-radius: 50%; background: var(--color-gold-wash); opacity: .7; }
 .iconslot svg, .iconslot img { width: 58px; height: 58px; position: relative; }
+.iconslot-img { width: auto; height: 112px; margin-bottom: 28px; justify-content: start; }
+.iconslot-img::before { display: none; }
+.iconslot-img img { width: auto; height: 112px; max-width: 200px; object-fit: contain; object-position: left bottom; }
 .sb-title { display: flex; justify-content: space-between; align-items: center; gap: 20px; padding-bottom: 18px; border-bottom: 1px solid var(--color-rule); }
 .sb h3 { font-family: var(--font-display); font-weight: 400; font-size: 26px; line-height: 1.2; }
 .sb .ar { flex: 0 0 26px; color: var(--color-gold); transition: transform .3s; }
