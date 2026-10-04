@@ -15,7 +15,7 @@ export const SITE = {
 export const NAV_LEFT = [
   { label: "Approach", href: "/#how-it-works" },
   { label: "Services", href: "/#services" },
-  { label: "About", href: "/#founder" },
+  { label: "About", href: "/#values" },
 ];
 export const NAV_RIGHT = [{ label: "Contact", href: "/#book" }];
 export const CTA = { label: "Book a Discovery Meeting", href: "/#book" };

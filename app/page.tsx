@@ -3,8 +3,6 @@ import { Services } from "@/components/Services";
 import { Guide } from "@/components/Guide";
 import { HowItWorks } from "@/components/HowItWorks";
 import { Values } from "@/components/Values";
-import { Founder } from "@/components/Founder";
-import { Faq } from "@/components/Faq";
 import { BookForm } from "@/components/BookForm";
 import { Footer } from "@/components/Footer";
 import { SITE } from "@/content/site";
@@ -36,8 +34,6 @@ export default function Home() {
         <Guide />
         <HowItWorks />
         <Values />
-        <Founder />
-        <Faq />
         <BookForm />
       </main>
       <Footer />
