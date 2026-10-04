@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { NAV_LEFT, NAV_RIGHT, CTA } from "@/content/site";
+import { NAV_LEFT, CTA } from "@/content/site";
 
 export function Header() {
   return (
@@ -14,9 +14,6 @@ export function Header() {
           Novo<i>Time</i>
         </Link>
         <nav className="nav r" aria-label="Secondary">
-          {NAV_RIGHT.map((n) => (
-            <Link key={n.href} href={n.href}>{n.label}</Link>
-          ))}
           <Link className="btn-outline" href={CTA.href}>{CTA.label}</Link>
         </nav>
       </div>
