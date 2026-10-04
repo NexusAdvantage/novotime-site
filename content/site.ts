@@ -13,7 +13,7 @@ export const SITE = {
 };
 
 export const NAV_LEFT = [
-  { label: "Approach", href: "/#how-it-works" },
+  { label: "What We Do", href: "/#what-we-do" },
   { label: "Services", href: "/#services" },
   { label: "About", href: "/#values" },
 ];
