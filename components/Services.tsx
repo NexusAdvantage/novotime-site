@@ -21,8 +21,8 @@ export function Services() {
         <div className="svc-grid">
           {SERVICES.map((s) => (
             <a className="sb" key={s.slug} href={`#${s.slug}`} id={s.slug}>
-              <span className="iconslot">
-                {s.iconImage ? <img src={s.iconImage} alt="" /> : <Icon name={s.icon} />}
+              <span className={s.iconImage ? "iconslot iconslot-img" : "iconslot"}>
+                {s.iconImage ? <img src={s.iconImage} alt="" loading="lazy" /> : <Icon name={s.icon} />}
               </span>
               <div className="sb-title">
                 <h3>{s.title}</h3>
