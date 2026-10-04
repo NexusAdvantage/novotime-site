@@ -195,17 +195,16 @@ button { font: inherit; }
 .svc-tabs { gap: 34px; }
 
 /* ---------- values ---------- */
-.vals-wrap { display: grid; grid-template-columns: .8fr 1.6fr; gap: 80px; align-items: start; }
-.vals-head { position: sticky; top: 60px; }
-.vals-head .sub { max-width: 340px; }
-.vals { border-top: 1px solid var(--color-ink); }
-.val { display: grid; grid-template-columns: 84px 1fr; gap: 36px; padding: 48px 0; border-bottom: 1px solid var(--color-rule); }
+.vals-head .sub { max-width: 560px; }
+.vals { margin-top: 64px; border-top: 1px solid var(--color-ink); }
+.val { display: grid; grid-template-columns: 84px 1fr; gap: 40px; align-items: center; padding: 52px 0; border-bottom: 1px solid var(--color-rule); }
+.val-body { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
 .val-icon { width: 84px; height: 84px; border-radius: 50%; background: var(--color-gold-wash); display: grid; place-items: center; }
 .val .vi { width: 46px; height: 46px; }
-.val h3 { font-family: var(--font-display); font-weight: 400; font-size: clamp(30px, 2.8vw, 42px); line-height: 1.1; margin-bottom: 22px; }
+.val h3 { font-family: var(--font-display); font-weight: 400; font-size: clamp(30px, 3vw, 44px); line-height: 1.1; }
 .val h3 em { color: var(--color-gold); }
-.val-lines { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
-.val-lines p { font-size: 17.5px; line-height: 1.6; color: var(--color-ink-soft); padding-left: 18px; border-left: 1px solid var(--color-gold-mid); }
+.val-lines { display: grid; gap: 14px; }
+.val-lines p { font-size: 18px; line-height: 1.6; color: var(--color-ink-soft); padding-left: 18px; border-left: 1px solid var(--color-gold-mid); }
 
 /* ---------- founder ---------- */
 .fq { font-family: var(--font-display); font-size: clamp(38px, 4.4vw, 66px); line-height: 1.12; max-width: 1060px; margin: 0 auto; color: var(--color-on-navy); }
@@ -288,11 +287,10 @@ button { font: inherit; }
   .tab { white-space: nowrap; }
   .pane { grid-template-columns: 1fr; gap: 36px; }
   .art { aspect-ratio: auto; }
-  .vals-wrap { grid-template-columns: 1fr; gap: 44px; }
-  .vals-head { position: static; }
+  .vals { margin-top: 44px; }
   .val { grid-template-columns: 1fr; gap: 20px; padding: 36px 0; }
+  .val-body { grid-template-columns: 1fr; gap: 18px; }
   .val-icon { width: 68px; height: 68px; }
-  .val-lines { grid-template-columns: 1fr; gap: 14px; }
   .qi button { font-size: 20px; }
   .qa p { padding-right: 0; }
   .book-grid { gap: 50px; }

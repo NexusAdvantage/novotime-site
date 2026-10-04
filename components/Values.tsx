@@ -4,7 +4,7 @@ import { Icon } from "./Icon";
 export function Values() {
   return (
     <section className="sec ivory" id="values">
-      <div className="w vals-wrap">
+      <div className="w">
         <div className="vals-head">
           <h2 className="h2">What We <em>Stand For</em></h2>
           <div className="rule2" />
