@@ -14,8 +14,9 @@ export const SITE = {
 
 export const NAV_LEFT = [
   { label: "What We Do", href: "/#what-we-do" },
-  { label: "Services", href: "/#services" },
-  { label: "About", href: "/#values" },
+  { label: "Services", href: "/services" },
+  { label: "About", href: "/about" },
 ];
-export const NAV_RIGHT = [{ label: "Contact", href: "/#book" }];
-export const CTA = { label: "Book a Discovery Meeting", href: "/#book" };
+export const NAV_RIGHT = [{ label: "Contact", href: "/contact" }];
+// Every content page ends with the booking form (#book), so the CTA scrolls in place.
+export const CTA = { label: "Book a Discovery Meeting", href: "#book" };

@@ -1,0 +1,97 @@
+/* Inner page styles (services, about, contact, legal). Colors come only from tokens in globals.css. */
+
+/* ---------- inner page hero ---------- */
+.page-hero { min-height: 0; }
+.ph-inner { position: relative; z-index: 2; padding-top: clamp(72px, 9vw, 150px); padding-bottom: clamp(84px, 10vw, 160px); }
+.ph-split { display: grid; grid-template-columns: 1.2fr .8fr; gap: clamp(48px, 6vw, 120px); align-items: center; }
+.page-hero h1 { font-family: var(--font-display); font-weight: 400; font-size: clamp(46px, 5.4vw, 108px); line-height: 1.04; letter-spacing: -.01em; color: var(--color-on-navy); margin-top: 18px; max-width: 1300px; }
+.page-hero h1 em { color: var(--color-gold-light); }
+.ph-rule { margin: 34px 0 0; }
+.ph-lead { font-size: clamp(19px, 1.3vw, 23px); font-weight: 300; line-height: 1.65; color: var(--color-on-navy-soft); max-width: 760px; margin-top: 30px; }
+.crumbs { display: flex; flex-wrap: wrap; gap: 4px; font: 500 12px var(--font-body); letter-spacing: .18em; text-transform: uppercase; color: var(--color-on-navy-faint); margin-bottom: 30px; }
+.crumbs a { color: var(--color-gold-light); text-decoration: none; }
+.crumbs i { margin: 0 12px; opacity: .5; }
+.medal { aspect-ratio: 1; max-width: 480px; margin-left: auto; padding: 14px; border: 1px solid var(--color-gold-mid); background: var(--color-navy-deep); box-shadow: 0 50px 90px -40px var(--color-navy-footer); }
+.medal-in { height: 100%; display: grid; place-items: center; background: var(--color-ivory); border: 1px solid var(--color-gold-soft); }
+.medal-in img { width: 66%; height: 66%; object-fit: contain; }
+
+/* ---------- shared blocks ---------- */
+.sec-head { margin-bottom: clamp(48px, 5vw, 76px); }
+.statements { border-top: 1px solid var(--color-ink); }
+.statement { display: grid; grid-template-columns: 48px 1fr; gap: 28px; align-items: baseline; padding: clamp(26px, 2.4vw, 38px) 0; border-bottom: 1px solid var(--color-rule); }
+.statement i { width: 12px; height: 12px; transform: rotate(45deg) translateY(-4px); background: var(--foil-diamond); }
+.statement p { font-family: var(--font-display); font-size: clamp(22px, 1.8vw, 32px); line-height: 1.3; color: var(--color-ink); max-width: 1200px; }
+
+.split2 { display: grid; grid-template-columns: 1fr 1fr; border-top: 1px solid var(--color-ink); }
+.split2 > div { padding: 48px 56px 12px 0; }
+.split2 > div + div { padding: 48px 0 12px 56px; border-left: 1px solid var(--color-rule); }
+.split2 h3 { font-family: var(--font-display); font-weight: 400; font-size: clamp(28px, 2.3vw, 40px); line-height: 1.1; margin: 14px 0 26px; }
+.ticks { list-style: none; }
+.ticks li { display: flex; gap: 16px; align-items: center; padding: 16px 0; border-bottom: 1px solid var(--color-rule); font-size: 18px; color: var(--color-ink); }
+.ticks li::before { content: ""; flex: 0 0 8px; height: 8px; transform: rotate(45deg); background: var(--foil-diamond); }
+.ticks-note { font-size: 18px; color: var(--color-ink-soft); padding: 16px 0; }
+
+.disclose { margin-top: 56px; padding: 26px 30px; border-left: 2px solid var(--color-gold-mid); background: var(--color-card); font-size: 14.5px; line-height: 1.7; color: var(--color-muted); max-width: 1100px; }
+.disclose b { display: block; font: 500 11px var(--font-body); letter-spacing: .24em; text-transform: uppercase; color: var(--color-gold); margin-bottom: 8px; }
+
+/* ---------- services index ---------- */
+.svc-rows { border-top: 1px solid var(--color-ink); }
+.svc-row { display: grid; grid-template-columns: 210px 1.1fr 1fr 40px; gap: clamp(28px, 3vw, 56px); align-items: center; padding: clamp(32px, 3vw, 48px) clamp(0px, 1vw, 20px); border-bottom: 1px solid var(--color-rule); text-decoration: none; color: var(--color-ink); transition: background .35s; }
+.svc-row:hover { background: var(--color-card); }
+.svc-row img { height: 104px; width: auto; max-width: 190px; object-fit: contain; object-position: left center; }
+.svc-row h2 { font-family: var(--font-display); font-weight: 400; font-size: clamp(30px, 2.6vw, 46px); line-height: 1.08; }
+.svc-row p { font-size: 18px; line-height: 1.65; color: var(--color-ink-soft); }
+.svc-row .ar { color: var(--color-gold); transition: transform .3s; }
+.svc-row:hover .ar { transform: translateX(6px); }
+
+/* ---------- about ---------- */
+.mission-line { font-family: var(--font-display); font-size: clamp(34px, 3.6vw, 68px); line-height: 1.12; max-width: 1400px; text-wrap: balance; }
+.mission-line em { color: var(--color-gold); }
+.mission-body { font-size: clamp(19px, 1.2vw, 22px); font-weight: 300; line-height: 1.7; color: var(--color-ink-soft); max-width: 900px; margin-top: 30px; }
+.times { display: grid; grid-template-columns: repeat(3, 1fr); margin-top: clamp(56px, 5vw, 80px); border-top: 1px solid var(--color-ink); }
+.time { padding: 40px 40px 40px 0; }
+.time + .time { padding-left: 40px; border-left: 1px solid var(--color-rule); }
+.time .val-icon { margin-bottom: 26px; }
+.time h3 { font-family: var(--font-display); font-weight: 400; font-size: clamp(26px, 2vw, 34px); line-height: 1.15; }
+.mission-close { margin-top: 48px; padding-top: 34px; border-top: 1px solid var(--color-rule); font-family: var(--font-display); font-size: clamp(24px, 2vw, 34px); line-height: 1.3; color: var(--color-gold); max-width: 1100px; }
+
+.name-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(48px, 6vw, 120px); margin-top: clamp(48px, 5vw, 72px); }
+.big-word { display: block; font-family: var(--font-display); font-size: clamp(110px, 13vw, 250px); line-height: .9; letter-spacing: -.02em; }
+.name-grid h3 { font-family: var(--font-display); font-weight: 400; font-size: clamp(28px, 2.2vw, 38px); color: var(--color-on-navy); margin-top: 30px; padding-top: 26px; border-top: 1px solid var(--color-navy-line); }
+.name-grid p { font-size: clamp(18px, 1.2vw, 21px); font-weight: 300; line-height: 1.7; color: var(--color-on-navy-soft); margin-top: 16px; max-width: 640px; }
+
+.founder-grid { display: grid; grid-template-columns: 1.15fr .85fr; gap: clamp(48px, 6vw, 120px); align-items: center; }
+.founder-bio p { font-size: clamp(18px, 1.15vw, 21px); line-height: 1.75; color: var(--color-ink-soft); }
+.founder-bio p + p { margin-top: 22px; }
+.quote-card { background: var(--color-navy); color: var(--color-on-navy); padding: clamp(40px, 4vw, 72px); border: 1px solid var(--color-gold-mid); box-shadow: 0 50px 90px -40px var(--color-navy-footer); }
+.quote-card blockquote { font-family: var(--font-display); font-size: clamp(32px, 2.8vw, 52px); line-height: 1.14; }
+.quote-card blockquote em { color: var(--color-gold-light); }
+.quote-card .fwho { font-size: 22px; }
+
+/* ---------- contact ---------- */
+.office-grid { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--color-ink); }
+.office-grid > div { padding: 44px 40px 20px 0; }
+.office-grid > div + div { padding-left: 40px; border-left: 1px solid var(--color-rule); }
+.office-grid .val-icon { margin-bottom: 26px; }
+.office-grid p, .office-grid a { display: block; font-size: clamp(20px, 1.4vw, 24px); font-weight: 300; line-height: 1.5; color: var(--color-ink); text-decoration: none; margin-top: 12px; }
+.office-grid a:hover { color: var(--color-gold); }
+
+/* ---------- legal ---------- */
+.legal-page h2 { font-size: 32px; margin-top: 44px; }
+.legal-page .sub { max-width: 900px; }
+
+@media (max-width: 900px) {
+  .ph-split, .split2, .times, .name-grid, .founder-grid, .office-grid { grid-template-columns: 1fr; }
+  .medal { max-width: 240px; margin: 0; }
+  .split2 > div, .split2 > div + div { padding: 36px 0 8px; border-left: 0; }
+  .split2 > div + div { border-top: 1px solid var(--color-rule); }
+  .statement { grid-template-columns: 28px 1fr; gap: 16px; }
+  .svc-row { grid-template-columns: 1fr; gap: 16px; padding: 34px 0; }
+  .svc-row .ar { display: none; }
+  .time, .time + .time, .office-grid > div, .office-grid > div + div { padding: 34px 0; border-left: 0; }
+  .time + .time, .office-grid > div + div { border-top: 1px solid var(--color-rule); }
+}
+
+/* icon medallion reused outside the values rows */
+.val-icon .vi { width: 46px; height: 46px; }
+.time .val-icon, .office-grid .val-icon { display: grid; width: 84px; height: 84px; }

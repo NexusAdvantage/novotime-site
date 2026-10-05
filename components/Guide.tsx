@@ -46,7 +46,7 @@ export function Guide() {
               <h4>Where to Start</h4>
               <div className="glinks">
                 {g.services.map((slug) => (
-                  <a key={slug} href={`#${slug}`}>
+                  <a key={slug} href={`/services/${slug}`}>
                     {titleFor(slug)}<span>&rarr;</span>
                   </a>
                 ))}

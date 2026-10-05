@@ -5,6 +5,7 @@ import "@fontsource/jost/300.css";
 import "@fontsource/jost/400.css";
 import "@fontsource/jost/500.css";
 import "./globals.css";
+import "./pages.css";
 import { SvgSprite } from "@/components/SvgSprite";
 import { SITE } from "@/content/site";
 

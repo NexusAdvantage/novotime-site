@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { NAV_LEFT, CTA } from "@/content/site";
 
-export function Header() {
+export function Header({ ctaHref = CTA.href }: { ctaHref?: string }) {
   return (
     <header className="site-header">
       <div className="w masthead">
@@ -14,7 +14,7 @@ export function Header() {
           Novo<i>Time</i>
         </Link>
         <nav className="nav r" aria-label="Secondary">
-          <Link className="btn-outline" href={CTA.href}>{CTA.label}</Link>
+          <Link className="btn-outline" href={ctaHref}>{CTA.label}</Link>
         </nav>
       </div>
       <div className="w"><div className="total" /></div>
