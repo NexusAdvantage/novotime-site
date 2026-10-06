@@ -12,10 +12,24 @@ export const SITE = {
     "NovoTime LLC is not an investment firm, broker-dealer, or registered investment adviser. NovoTime LLC and its employees, associates, contractors, and representatives do not provide investment advice, financial advice, or recommendations regarding the purchase, sale, or holding of any securities, digital assets, or other financial instruments.",
 };
 
-export const NAV_LEFT = [
+export type NavItem = { label: string; href: string; children?: { label: string; href: string }[] };
+
+// Services children are filled from content/services.ts in the Header.
+export const NAV_LEFT: NavItem[] = [
   { label: "What We Do", href: "/#what-we-do" },
   { label: "Services", href: "/services" },
-  { label: "About", href: "/about" },
+  {
+    label: "About",
+    href: "/about",
+    children: [
+      { label: "Our Mission", href: "/about#mission" },
+      { label: "The Meaning Behind the Name", href: "/about#name" },
+      { label: "Our Founder", href: "/about#founder" },
+      { label: "How We Work", href: "/about#approach" },
+      { label: "Common Questions", href: "/about#faq" },
+      { label: "Contact", href: "/contact" },
+    ],
+  },
 ];
 export const NAV_RIGHT = [{ label: "Contact", href: "/contact" }];
 // Every content page ends with the booking form (#book), so the CTA scrolls in place.
