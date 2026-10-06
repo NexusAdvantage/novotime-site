@@ -1,33 +1,29 @@
 import type { Metadata } from "next";
 import { PageHero } from "@/components/PageHero";
-import { Faq } from "@/components/Faq";
 import { BookForm } from "@/components/BookForm";
 import { Footer } from "@/components/Footer";
 import { Icon } from "@/components/Icon";
-import { MISSION, NAME, FOUNDER, PRINCIPLES, INDEPENDENCE } from "@/content/about";
+import { MISSION, NAME, FOUNDER } from "@/content/about";
 
 export const metadata: Metadata = {
-  title: "About",
+  title: "Our Story",
   description:
-    "NovoTime is an independent multi family office in Omaha, founded by Diana V. Novoselska to give families back their time and peace of mind.",
+    "Why Diana V. Novoselska founded NovoTime, an independent multi family office in Omaha built to give families back their time and peace of mind.",
 };
 
 export default function AboutPage() {
   return (
     <>
       <PageHero
-        kicker="About NovoTime"
-        title={<>A New Way to Protect What Is <em>Truly Irreplaceable</em></>}
-        lead="NovoTime is an independent multi family office in Omaha. We bring your advisors, your planning, and the work behind your wealth together, with precision and discretion."
+        title={<>Built to Protect What Is <em>Truly Irreplaceable</em></>}
+        lead="An independent multi family office in Omaha, founded on one belief: clients should always come first."
       />
       <main>
         <section className="sec ivory" id="mission">
           <div className="w">
-            <span className="kicker">Our Mission</span>
-            <p className="mission-line" style={{ marginTop: 22 }}>
+            <p className="mission-line">
               To give people back their most valuable resources: <em>time and peace of mind.</em>
             </p>
-            <p className="mission-body">{MISSION.body}</p>
             <div className="times">
               {MISSION.times.map((t) => (
                 <div className="time" key={t.title}>
@@ -58,14 +54,17 @@ export default function AboutPage() {
 
         <section className="sec ivory-2" id="founder">
           <div className="w">
-            <div className="sec-head">
-              <span className="kicker">Our Founder</span>
-              <h2 className="h2" style={{ marginTop: 18 }}>{FOUNDER.headline}</h2>
-              <div className="rule2" />
-            </div>
-            <div className="founder-grid">
-              <div className="founder-bio">
-                {FOUNDER.paragraphs.map((p) => <p key={p.slice(0, 24)}>{p}</p>)}
+            <h2 className="h2">Meet Our <em>Founder</em></h2>
+            <div className="rule2" />
+            <div className="founder-wrap">
+              <div className="chapters">
+                {FOUNDER.chapters.map((c) => (
+                  <article className="chapter" key={c.title}>
+                    <i className="dia" />
+                    <h3>{c.title}</h3>
+                    <p>{c.body}</p>
+                  </article>
+                ))}
               </div>
               <figure className="quote-card">
                 <blockquote>&ldquo;Investment performance may fluctuate, but <em>fees are constant.</em>&rdquo;</blockquote>
@@ -74,37 +73,6 @@ export default function AboutPage() {
             </div>
           </div>
         </section>
-
-        <section className="sec ivory" id="approach">
-          <div className="w">
-            <div className="vals-head">
-              <h2 className="h2">How We <em>Work</em></h2>
-              <div className="rule2" />
-              <p className="sub">Four principles shape every engagement, from the first conversation to the next generation.</p>
-            </div>
-            <div className="vals">
-              {PRINCIPLES.map((p) => (
-                <article className="val" key={p.title}>
-                  <span className="val-icon"><Icon name={p.icon} className="vi" /></span>
-                  <div className="val-body">
-                    <h3>{p.title}</h3>
-                    <div className="val-lines"><p>{p.body}</p></div>
-                  </div>
-                </article>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <section className="sec navy" id="independence">
-          <div className="w c">
-            <h2 className="h2">Conductors, <em className="foil">Not Soloists</em></h2>
-            <div className="rule2" />
-            <p className="sub" style={{ maxWidth: 860 }}>{INDEPENDENCE.body}</p>
-          </div>
-        </section>
-
-        <Faq />
         <BookForm />
       </main>
       <Footer />

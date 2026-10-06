@@ -15,7 +15,6 @@ export default function ContactPage() {
   return (
     <>
       <PageHero
-        kicker="Contact"
         title={<>Let&rsquo;s Start with <em>a Conversation</em></>}
         lead="Tell us a little about your family and what prompted you to reach out. A member of our team, not an autoresponder, will be in touch within one business day."
       />
@@ -25,7 +24,6 @@ export default function ContactPage() {
             <div className="sec-head">
               <h2 className="h2">Visit, Call, <em>or Write</em></h2>
               <div className="rule2" />
-              <p className="sub">We prefer to meet in person whenever possible, at our Omaha office or wherever is most comfortable for your family.</p>
             </div>
             <div className="office-grid">
               <div>

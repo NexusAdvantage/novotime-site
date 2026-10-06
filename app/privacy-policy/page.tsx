@@ -9,7 +9,7 @@ export const metadata: Metadata = { title: "Privacy Policy", robots: { index: fa
 export default function PrivacyPolicy() {
   return (
     <>
-      <PageHero kicker="Legal" title="Privacy Policy" ctaHref="/contact#book" />
+      <PageHero title="Privacy Policy" ctaHref="/contact#book" />
       <main className="sec ivory">
         <div className="w legal-page">
           <p className="kicker">Draft pending legal review</p>

@@ -26,13 +26,13 @@ export default async function ServicePage({ params }: { params: Promise<Params> 
   const d = detailFor(slug);
   if (!s || !d) notFound();
   const related = d.related.map((r) => SERVICES.find((x) => x.slug === r)!).filter(Boolean);
+  const cols = d.items.length % 3 === 0 ? "c3" : "c2";
 
   return (
     <>
       <PageHero
         title={s.title}
-        lead={d.lead}
-        crumbs={[{ label: "Home", href: "/" }, { label: "Services", href: "/services" }, { label: s.title }]}
+        lead={s.summary}
         aside={
           s.iconImage && (
             <div className="medal">
@@ -44,13 +44,15 @@ export default async function ServicePage({ params }: { params: Promise<Params> 
       <main>
         <section className="sec ivory">
           <div className="w">
-            <div className="sec-head">
-              <h2 className="h2">What We <em>Handle</em></h2>
-              <div className="rule2" />
-            </div>
-            <div className="statements">
-              {d.items.map((item) => (
-                <div className="statement" key={item}><i /><p>{item}</p></div>
+            <h2 className="h2">What We <em>Handle</em></h2>
+            <div className="rule2" />
+            <div className={`icards ${cols}`}>
+              {d.items.map((it) => (
+                <article className="icard" key={it.t}>
+                  <i className="dia" />
+                  <h3>{it.t}</h3>
+                  <p>{it.d}</p>
+                </article>
               ))}
             </div>
             {d.disclosure && (
@@ -59,21 +61,23 @@ export default async function ServicePage({ params }: { params: Promise<Params> 
           </div>
         </section>
 
+        <section className="sec navy outcome">
+          <div className="w c">
+            <p className="outcome-line">{d.outcome}</p>
+            <div className="goldrule" />
+          </div>
+        </section>
+
         <section className="sec ivory-2">
           <div className="w">
-            <div className="sec-head">
-              <h2 className="h2">Who Does <em>the Work</em></h2>
-              <div className="rule2" />
-              <p className="sub">A lot of the work we do ourselves. Where a specialist belongs, we bring them in and keep everyone working from the same plan.</p>
-            </div>
-            <div className="split2">
-              <div>
-                <span className="kicker">In House</span>
+            <h2 className="h2">Who Does <em>the Work</em></h2>
+            <div className="rule2" />
+            <div className="who">
+              <div className="who-card">
                 <h3>Handled by Our Team</h3>
                 <ul className="ticks">{d.inHouse.map((x) => <li key={x}>{x}</li>)}</ul>
               </div>
-              <div>
-                <span className="kicker">Alongside Your Advisors</span>
+              <div className="who-card">
                 <h3>Coordinated with Your Professionals</h3>
                 {d.partners.length ? (
                   <ul className="ticks">{d.partners.map((x) => <li key={x}>{x}</li>)}</ul>
@@ -87,10 +91,8 @@ export default async function ServicePage({ params }: { params: Promise<Params> 
 
         <section className="sec ivory">
           <div className="w">
-            <div className="sec-head">
-              <h2 className="h2">Often Paired <em>With</em></h2>
-              <div className="rule2" />
-            </div>
+            <h2 className="h2">Often Paired <em>With</em></h2>
+            <div className="rule2" />
             <div className="svc-grid">
               {related.map((r) => (
                 <Link className="sb" key={r.slug} href={`/services/${r.slug}`}>

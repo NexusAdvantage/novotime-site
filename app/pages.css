@@ -134,3 +134,53 @@
   .nav.r { gap: 8px; }
   .nav .btn-outline { white-space: nowrap; padding: 11px 10px; font-size: 10px; letter-spacing: .04em; }
 }
+
+/* ---------- organized content blocks (service, approach, story) ---------- */
+.dia { display: block; width: 12px; height: 12px; transform: rotate(45deg); background: var(--foil-diamond); margin-bottom: 26px; }
+
+.icards { display: grid; margin-top: clamp(48px, 5vw, 72px); border-top: 1px solid var(--color-ink); }
+.icards.c3 { grid-template-columns: repeat(3, 1fr); }
+.icards.c2 { grid-template-columns: repeat(2, 1fr); }
+.icard { padding: clamp(32px, 3vw, 48px) clamp(24px, 2.6vw, 48px) clamp(32px, 3vw, 48px) 0; border-bottom: 1px solid var(--color-rule); }
+.icards.c3 .icard:not(:nth-child(3n + 1)), .icards.c2 .icard:nth-child(2n) { padding-left: clamp(24px, 2.6vw, 48px); border-left: 1px solid var(--color-rule); }
+.icard h3, .chapter h3, .pcard h3, .fee h3 { font-family: var(--font-display); font-weight: 400; font-size: clamp(26px, 2vw, 34px); line-height: 1.15; }
+.icard p, .chapter p, .pcard p, .fee p { margin-top: 14px; font-size: 18px; line-height: 1.6; color: var(--color-ink-soft); max-width: 520px; }
+
+.outcome { padding: clamp(90px, 9vw, 150px) 0; }
+.outcome-line { font-family: var(--font-display); font-size: clamp(32px, 3.3vw, 62px); line-height: 1.18; color: var(--color-on-navy); max-width: 1320px; margin: 0 auto; text-wrap: balance; }
+.outcome .goldrule { margin-top: 44px; }
+
+.who { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(20px, 2vw, 32px); margin-top: clamp(48px, 5vw, 72px); }
+.who-card { background: var(--color-card); border: 1px solid var(--color-gold-soft); padding: clamp(32px, 3vw, 56px); }
+.who-card h3 { font-family: var(--font-display); font-weight: 400; font-size: clamp(26px, 2vw, 36px); margin-bottom: 14px; }
+
+.founder-wrap { display: grid; grid-template-columns: 1.3fr .7fr; gap: clamp(40px, 5vw, 96px); align-items: center; margin-top: clamp(48px, 5vw, 72px); }
+.chapters { display: grid; grid-template-columns: 1fr 1fr; border-top: 1px solid var(--color-ink); }
+.chapter { padding: 36px 36px 36px 0; border-bottom: 1px solid var(--color-rule); }
+.chapter:nth-child(2n) { padding-left: 36px; border-left: 1px solid var(--color-rule); }
+
+.pcards, .fees { display: grid; grid-template-columns: repeat(4, 1fr); margin-top: clamp(48px, 5vw, 72px); border-top: 1px solid var(--color-ink); }
+.pcard, .fee { padding: 44px 32px 44px 0; }
+.pcard + .pcard, .fee + .fee { padding-left: 32px; border-left: 1px solid var(--color-rule); }
+.pcard .val-icon { display: grid; width: 84px; height: 84px; margin-bottom: 28px; }
+
+.compare { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(20px, 2vw, 32px); margin-top: clamp(48px, 5vw, 72px); }
+.cmp { padding: clamp(36px, 3.5vw, 64px); border: 1px solid var(--color-navy-line); }
+.cmp-are { background: var(--color-navy-deep); border-color: var(--color-gold-mid); }
+.cmp h3 { font-family: var(--font-display); font-weight: 400; font-size: clamp(30px, 2.4vw, 44px); color: var(--color-on-navy); margin-bottom: 20px; }
+.cmp ul { list-style: none; }
+.cmp li { display: flex; gap: 16px; align-items: center; padding: 17px 0; border-bottom: 1px solid var(--color-navy-line); font-size: clamp(18px, 1.2vw, 21px); color: var(--color-on-navy-2); }
+.cmp-not li { color: var(--color-on-navy-faint); text-decoration: line-through; text-decoration-color: var(--color-gold-mid); }
+.cmp-are li::before { content: ""; flex: 0 0 9px; height: 9px; transform: rotate(45deg); background: var(--foil-diamond); }
+
+@media (max-width: 1100px) {
+  .pcards, .fees { grid-template-columns: 1fr 1fr; }
+  .pcard + .pcard, .fee + .fee { padding-left: 0; border-left: 0; }
+  .pcard:nth-child(2n), .fee:nth-child(2n) { padding-left: 32px; border-left: 1px solid var(--color-rule); }
+  .pcard, .fee { border-bottom: 1px solid var(--color-rule); }
+}
+@media (max-width: 900px) {
+  .icards.c3, .icards.c2, .who, .founder-wrap, .chapters, .pcards, .fees, .compare { grid-template-columns: 1fr; }
+  .icard, .chapter, .pcard, .fee,
+  .icards.c3 .icard:not(:nth-child(3n + 1)), .icards.c2 .icard:nth-child(2n), .chapter:nth-child(2n), .pcard:nth-child(2n), .fee:nth-child(2n) { padding: 30px 0; border-left: 0; }
+}

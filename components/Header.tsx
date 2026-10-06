@@ -52,12 +52,12 @@ export function Header({ ctaHref = CTA.href }: { ctaHref?: string }) {
             <summary aria-label="Menu"><span /><span /><span /></summary>
             <div className="mnav-panel">
               <Link href="/">Home</Link>
-              <Link href="/#what-we-do">What We Do</Link>
               <Link href="/services">Services</Link>
               <div className="mnav-sub">
                 {SERVICES.map((s) => <Link key={s.slug} href={`/services/${s.slug}`}>{s.title}</Link>)}
               </div>
-              <Link href="/about">About</Link>
+              <Link href="/approach">Our Approach</Link>
+              <Link href="/about">Our Story</Link>
               {NAV_RIGHT.map((n) => <Link key={n.href} href={n.href}>{n.label}</Link>)}
             </div>
           </details>
