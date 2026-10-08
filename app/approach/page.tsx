@@ -74,8 +74,8 @@ export default function ApproachPage() {
           </div>
         </section>
 
-        <Faq />
         <BookForm />
+        <Faq />
       </main>
       <Footer />
     </>

@@ -71,6 +71,8 @@ export default async function ServicePage({ params }: { params: Promise<Params> 
           </div>
         </section>
 
+        <Ledger rows={d.ledger} closing={d.outcome} cta />
+
         <section className="sec ivory-2">
           <div className="w">
             <h2 className="h2">What We <em>Handle</em></h2>
@@ -91,15 +93,6 @@ export default async function ServicePage({ params }: { params: Promise<Params> 
             )}
           </div>
         </section>
-
-        <Ledger rows={d.ledger} closing={d.outcome} cta />
-
-        <Faq
-          items={d.faqs}
-          tone="ivory-2"
-          title={<>Questions About <em>{s.title}</em></>}
-          aside={<CtaCard title={<>Still Have <em>Questions?</em></>} body="Talk to our team directly. A real person answers, not an autoresponder." />}
-        />
 
         <section className="sec navy begin-sec">
           <div className="w">
@@ -136,6 +129,12 @@ export default async function ServicePage({ params }: { params: Promise<Params> 
           </div>
         </section>
         <BookForm />
+        <Faq
+          items={d.faqs}
+          tone="ivory-2"
+          title={<>Questions About <em>{s.title}</em></>}
+          aside={<CtaCard title={<>Still Have <em>Questions?</em></>} body="Talk to our team directly. A real person answers, not an autoresponder." />}
+        />
       </main>
       <Footer />
     </>
