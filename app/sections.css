@@ -98,3 +98,29 @@ body { font-variant-numeric: lining-nums; }
 .sg-box { flex: 0 0 26px; height: 26px; border: 1px solid var(--color-gold-mid); position: relative; background: var(--color-card); }
 .sg-box::after { content: ""; position: absolute; left: 8px; top: 3px; width: 7px; height: 13px; border: solid var(--color-gold); border-width: 0 1.6px 1.6px 0; transform: rotate(45deg); }
 @media (max-width: 900px) { .signs { grid-template-columns: 1fr; } }
+
+/* ---------- calls to action ---------- */
+.cta-row { display: flex; flex-wrap: wrap; align-items: center; gap: 18px 28px; margin-top: 40px; }
+.cta-row.c { justify-content: center; }
+.cta-call { font-size: 15px; letter-spacing: .04em; color: var(--color-ink-soft); text-decoration: none; }
+.cta-call span { font-family: var(--font-body); color: var(--color-ink); border-bottom: 1px solid var(--color-gold-mid); padding-bottom: 2px; }
+.cta-call:hover span { color: var(--color-gold); }
+.on-navy .cta-call, .cta-card .cta-call { color: var(--color-on-navy-soft); }
+.on-navy .cta-call span, .cta-card .cta-call span { color: var(--color-on-navy); }
+.ledger-sec .cta-row { margin-top: 44px; }
+.cta-card { margin-top: 44px; }
+.cta-card > .fi { padding: clamp(30px, 2.8vw, 48px); }
+.cta-card h3 { font-family: var(--font-display); font-weight: 400; font-size: clamp(28px, 2.2vw, 40px); line-height: 1.1; color: var(--color-on-navy); }
+.cta-card h3 em { color: var(--color-gold-light); }
+.cta-card p { margin: 14px 0 26px; font-size: 17px; line-height: 1.6; color: var(--color-on-navy-soft); }
+.cta-card .btn-foil { display: block; text-align: center; }
+.cta-card .cta-call { display: block; margin-top: 16px; text-align: center; }
+
+/* intro now: hook paragraph plus one supporting paragraph */
+.intro-text p { max-width: 720px; }
+
+/* faq with a call to action beside it */
+.faq-split { display: grid; grid-template-columns: .8fr 1.2fr; gap: clamp(40px, 6vw, 120px); align-items: start; }
+.faq-split .faq { margin: 0; max-width: none; }
+.faq-split .cta-card { max-width: 480px; }
+@media (max-width: 900px) { .faq-split { grid-template-columns: 1fr; } }
