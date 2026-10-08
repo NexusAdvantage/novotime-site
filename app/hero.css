@@ -1,0 +1,17 @@
+/* Inner page heroes: full height like the home hero, with the page's icon as a darker navy watermark on the right. */
+.page-hero { min-height: 100vh; }
+.page-hero .ph-inner { min-height: calc(100vh - 99px); }
+.ph-mark {
+  position: absolute; z-index: 1; pointer-events: none;
+  width: min(50vw, 800px); aspect-ratio: 1; right: -1vw; top: 50%; transform: translateY(-44%);
+  background: #0A2240;
+  -webkit-mask: var(--mark) center / contain no-repeat; mask: var(--mark) center / contain no-repeat;
+  opacity: 0; animation: markin 1.6s ease .2s forwards;
+}
+@keyframes markin { to { opacity: 1; } }
+@media (max-width: 900px) {
+  .page-hero, .page-hero .ph-inner { min-height: 0; }
+  .ph-mark { width: 110vw; right: -30vw; top: 52%; }
+  .nav .btn-outline { padding: 10px 12px; font-size: 10px; letter-spacing: .04em; }
+}
+@media (prefers-reduced-motion: reduce) { .ph-mark { opacity: 1; animation: none; } }

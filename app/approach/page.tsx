@@ -16,6 +16,7 @@ export default function ApproachPage() {
   return (
     <>
       <PageHero
+        mark="/icons/Our Approach/Coordination.png"
         title={<>How We Work with <em>Your Family</em></>}
         lead="Independent, coordinated with the advisors you already trust, and paid only by you."
       />

@@ -15,6 +15,7 @@ export default function ContactPage() {
   return (
     <>
       <PageHero
+        mark="/icons/Contact/Office.png"
         title={<>Let&rsquo;s Start with <em>a Conversation</em></>}
         lead="A member of our team, not an autoresponder, will be in touch within one business day."
       />

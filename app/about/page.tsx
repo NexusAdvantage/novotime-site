@@ -15,6 +15,7 @@ export default function AboutPage() {
   return (
     <>
       <PageHero
+        mark="/icons/Our Story/Present with Family.png"
         title={<>Built to Protect What Is <em>Truly Irreplaceable</em></>}
         lead="An independent multi family office in Omaha, founded on one belief: clients should always come first."
       />

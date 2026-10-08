@@ -17,6 +17,7 @@ export default function ServicesPage() {
   return (
     <>
       <PageHero
+        mark="/icons/Our Approach/Customization.png"
         title={<>Everything Your Wealth <em>Touches</em></>}
         lead="A menu, not a mandate. Some families begin with the handful of services that matter most and add the rest as their needs grow. Either way, we work alongside the advisors you already trust."
       />

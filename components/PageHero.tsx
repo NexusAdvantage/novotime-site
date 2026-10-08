@@ -3,11 +3,15 @@ import type { ReactNode } from "react";
 import { Header } from "./Header";
 import { CTA } from "@/content/site";
 
-/** Inner page hero. Same composition and size as the home hero, with the same entrance. */
-export function PageHero({ title, lead, ctaHref }: { title: ReactNode; lead?: string; ctaHref?: string }) {
+/**
+ * Inner page hero. Same composition, height and entrance as the home hero.
+ * `mark` is the page's icon, drawn large in a darker navy behind the text, so each page has its own shape.
+ */
+export function PageHero({ title, lead, ctaHref, mark }: { title: ReactNode; lead?: string; ctaHref?: string; mark?: string }) {
   const href = ctaHref ?? CTA.href;
   return (
-    <section className="hero page-hero">
+    <section className="hero page-hero" style={mark ? { ["--mark" as string]: `url("${encodeURI(mark)}")` } : undefined}>
+      {mark && <span className="ph-mark" aria-hidden="true" />}
       <Header ctaHref={ctaHref} />
       <div className="w hero-inner ph-inner">
         <h1 className="enter" style={{ ["--d" as string]: ".15s" }}>{title}</h1>
