@@ -35,7 +35,7 @@ export default function ServicesPage() {
             </div>
           </div>
         </section>
-        <Guide />
+        <Guide tone="ivory-2" />
         <BookForm />
       </main>
       <Footer />

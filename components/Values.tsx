@@ -3,7 +3,7 @@ import { Icon } from "./Icon";
 
 export function Values() {
   return (
-    <section className="sec ivory" id="values">
+    <section className="sec ivory-2" id="values">
       <div className="w">
         <h2 className="h2">What We <em>Stand For</em></h2>
         <div className="rule2" />

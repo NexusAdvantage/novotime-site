@@ -3,7 +3,11 @@
 import { useState } from "react";
 import { FAQ } from "@/content/faq";
 
-export function Faq() {
+import type { ReactNode } from "react";
+
+type Item = { q: string; a: string };
+
+export function Faq({ items = FAQ, title, tone = "ivory" }: { items?: Item[]; title?: ReactNode; tone?: "ivory" | "ivory-2" }) {
   const [open, setOpen] = useState<Set<number>>(new Set([0]));
   const toggle = (k: number) =>
     setOpen((prev) => {
@@ -12,12 +16,12 @@ export function Faq() {
       return next;
     });
   return (
-    <section className="sec ivory" id="faq">
+    <section className={`sec ${tone}`} id="faq">
       <div className="w c">
-        <h2 className="h2">The Questions Other Family Offices <em>Hope You Won&rsquo;t Ask</em></h2>
+        <h2 className="h2">{title ?? <>The Questions Other Family Offices <em>Hope You Won&rsquo;t Ask</em></>}</h2>
         <div className="rule2" />
         <div className="faq">
-          {FAQ.map((f, k) => (
+          {items.map((f, k) => (
             <div className={`qi${open.has(k) ? " on" : ""}`} key={f.q}>
               <button aria-expanded={open.has(k)} onClick={() => toggle(k)}>
                 {f.q}

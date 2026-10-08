@@ -9,11 +9,11 @@ import { Icon } from "./Icon";
 
 const titleFor = (slug: string) => SERVICES.find((s) => s.slug === slug)?.title ?? slug;
 
-export function Guide() {
+export function Guide({ tone = "ivory" }: { tone?: "ivory" | "ivory-2" }) {
   const [active, setActive] = useState(0);
   const g = GUIDE[active];
   return (
-    <section className="sec ivory-2" id="start">
+    <section className={`sec ${tone}`} id="start">
       <div className="w">
         <h2 className="h2">Where Should You <em>Start?</em></h2>
         <div className="rule2" />
