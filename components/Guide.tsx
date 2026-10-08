@@ -17,7 +17,6 @@ export function Guide({ tone = "ivory" }: { tone?: "ivory" | "ivory-2" }) {
       <div className="w">
         <h2 className="h2">Where Should You <em>Start?</em></h2>
         <div className="rule2" />
-        <p className="sub">Every family arrives at NovoTime for a different reason. Choose the one that sounds most like you.</p>
         <div className="guide">
           <div className="guide-list" role="tablist" aria-label="Choose your situation">
             {GUIDE.map((item, k) => (
@@ -40,7 +39,6 @@ export function Guide({ tone = "ivory" }: { tone?: "ivory" | "ivory-2" }) {
           </div>
           <div className="guide-panel" id="guide-panel" role="tabpanel">
             <div className="gans" key={active}>
-              <div className="kicker">{g.kicker}</div>
               <h3>{g.label}</h3>
               <p>{g.body}</p>
               <h4>Where to Start</h4>

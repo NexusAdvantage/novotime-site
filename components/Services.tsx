@@ -15,9 +15,6 @@ export function Services() {
       <div className="w">
         <h2 className="h2">Everything Your Wealth <em>Touches</em></h2>
         <div className="rule2" />
-        <p className="sub">
-          Every engagement starts with the core of a family office. You add the rest as your life calls for it.
-        </p>
         <div className="svc-grid">
           {SERVICES.map((s) => (
             <a className="sb" key={s.slug} href={`/services/${s.slug}`} id={s.slug}>

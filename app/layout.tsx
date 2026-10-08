@@ -7,6 +7,7 @@ import "@fontsource/jost/500.css";
 import "./globals.css";
 import "./pages.css";
 import "./sections.css";
+import "./body.css";
 import { SvgSprite } from "@/components/SvgSprite";
 import { ScrollFlag } from "@/components/ScrollFlag";
 import { SITE } from "@/content/site";

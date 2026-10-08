@@ -27,7 +27,6 @@ export function ServiceTabs() {
               </div>
             </div>
             <div>
-              <span className="kicker kicker-light">{t.serviceTitle}</span>
               <h3>{t.title}</h3>
               <p>{t.body}</p>
               <ul>{t.bullets.map((b) => <li key={b}>{b}</li>)}</ul>

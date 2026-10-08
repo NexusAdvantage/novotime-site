@@ -21,9 +21,8 @@ export default function AboutPage() {
       <main>
         <section className="sec ivory" id="mission">
           <div className="w">
-            <p className="mission-line">
-              To give people back their most valuable resources: <em>time and peace of mind.</em>
-            </p>
+            <h2 className="h2">Our Mission: <em>Time and Peace of Mind</em></h2>
+            <div className="rule2" />
             <div className="cards c3">
               {MISSION.times.map((t) => (
                 <div className="frame card card-ic" key={t.title}>
@@ -34,7 +33,7 @@ export default function AboutPage() {
                 </div>
               ))}
             </div>
-            <p className="mission-close">{MISSION.close}</p>
+            <p className="body-close">{MISSION.close}</p>
           </div>
         </section>
 

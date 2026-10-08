@@ -27,7 +27,6 @@ export function Ledger({ rows, closing, title, cta = false }: { rows: Row[]; clo
             ))}
           </div>
         </div>
-        {closing && <p className="lg-close">{closing}</p>}
         {cta && <CtaRow center light />}
       </div>
     </section>

@@ -1,0 +1,15 @@
+/* One body text size site wide. The display font is for headings only. */
+.intro-text p, .intro-text p:first-of-type, .card p, .cond-card p, .cond-lead, .glance dd, .cta-card p,
+.qa p, .vrow p, .lg-without, .lg-with, .steps p, .tline p, .sb p, .gans p, .pane p, .name-grid p,
+.body-close, .signs-list li, .icard p, .fee p, .feecard .fee p, .legal-page .sub, .cmp li, .ticks li {
+  font-family: var(--font-body); font-size: 18px; line-height: 1.65; font-weight: 400;
+}
+.intro-text p:first-of-type { color: var(--color-ink-soft); margin-top: 30px; }
+.body-close { margin-top: 40px; color: var(--color-ink-soft); max-width: 760px; }
+.signs-list li { color: var(--color-ink); }
+@media (max-width: 900px) {
+  .intro-text p, .card p, .cond-card p, .cond-lead, .glance dd, .cta-card p, .qa p, .vrow p, .lg-without, .lg-with,
+  .steps p, .tline p, .sb p, .gans p, .pane p, .name-grid p, .body-close, .signs-list li, .cmp li, .ticks li { font-size: 17px; }
+}
+.glance-art { aspect-ratio: 2.2 / 1; }
+.glance dl > div { padding-top: 18px; padding-bottom: 18px; }
