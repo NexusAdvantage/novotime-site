@@ -49,7 +49,7 @@ export default async function ServicePage({ params }: { params: Promise<Params> 
             <div className="intro-text">
               <h2 className="h2">{accent(d.headline)}</h2>
               <div className="rule2" />
-              {d.intro.slice(0, 2).map((p) => <p key={p.slice(0, 24)}>{p}</p>)}
+              <p>{d.intro[1]}</p>
               <CtaRow />
             </div>
             <aside className="frame dark glance">
