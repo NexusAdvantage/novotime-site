@@ -102,7 +102,6 @@ export default async function ServicePage({ params }: { params: Promise<Params> 
               {BEGIN.map((b, i) => (
                 <li key={b.t}>
                   <span className="medal-ic"><Image src={encodeURI(BEGIN_IC[i])} alt="" width={104} height={104} sizes="104px" /></span>
-                  <span className="step-n foil">{["I", "II", "III", "IV"][i]}</span>
                   <h3>{b.t}</h3>
                   <p>{b.d}</p>
                 </li>
