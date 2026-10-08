@@ -9,11 +9,12 @@ import { IconImg, icon } from "./IconImg";
 
 const FILES = ["Sold My Business", "Planning for the Next Generation", "Advisors Don't Talk to Each Other", "Buried in Paperwork", "Advice Not Objective", "Not Sure a Family Office Fits"];
 
-const titleFor = (slug: string) => SERVICES.find((s) => s.slug === slug)?.title ?? slug;
+const serviceFor = (slug: string) => SERVICES.find((s) => s.slug === slug)!;
 
 export function Guide({ tone = "ivory" }: { tone?: "ivory" | "ivory-2" }) {
   const [active, setActive] = useState(0);
   const g = GUIDE[active];
+  const rec = serviceFor(g.services[0]);
   return (
     <section className={`sec ${tone}`} id="start">
       <div className="w">
@@ -43,14 +44,11 @@ export function Guide({ tone = "ivory" }: { tone?: "ivory" | "ivory-2" }) {
             <div className="gans" key={active}>
               <h3>{g.label}</h3>
               <p>{g.body}</p>
-              <h4>Where to Start</h4>
-              <div className="glinks">
-                {g.services.map((slug) => (
-                  <a key={slug} href={`/services/${slug}`}>
-                    {titleFor(slug)}<span>&rarr;</span>
-                  </a>
-                ))}
-              </div>
+              <a className="grec" href={`/services/${rec.slug}`}>
+                {rec.iconImage && <img src={rec.iconImage} alt="" />}
+                <span>We would start with <b>{rec.title}</b></span>
+                <i aria-hidden="true">&rarr;</i>
+              </a>
               <Link className="btn-foil" href={CTA.href}>{CTA.label}</Link>
             </div>
           </div>

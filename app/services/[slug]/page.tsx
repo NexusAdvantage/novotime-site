@@ -55,20 +55,13 @@ export default async function ServicePage({ params }: { params: Promise<Params> 
             <aside className="frame dark glance">
               <div className="fi">
                 {s.iconImage && <div className="glance-art"><img src={s.iconImage} alt="" /></div>}
-                <dl>
-                  <div>
-                    <dt>Handled In House</dt>
-                    <dd><ul>{d.inHouse.map((x) => <li key={x}>{x}</li>)}</ul></dd>
-                  </div>
-                  <div>
-                    <dt>Coordinated With</dt>
-                    <dd>{d.partners.length ? d.partners.join(", ") : "Delivered directly by our team"}</dd>
-                  </div>
-                  <div>
-                    <dt>How It Is Billed</dt>
-                    <dd>Part of one flat monthly fee. Never a percentage of assets.</dd>
-                  </div>
-                </dl>
+                <ul className="glance-list">
+                  {d.inHouse.map((x) => <li key={x}>{x}</li>)}
+                </ul>
+                <p className="glance-note">
+                  {d.partners.length ? <>Handled by our team and coordinated with {d.partners.join(", ").replace(/, ([^,]*)$/, " and $1").toLowerCase().replace(/\bcpa\b/g, "CPA")}.</> : <>Delivered directly by our team.</>}{" "}
+                  Part of one flat monthly fee, never a percentage of assets.
+                </p>
               </div>
             </aside>
           </div>
@@ -99,26 +92,6 @@ export default async function ServicePage({ params }: { params: Promise<Params> 
 
         <section className="sec ivory">
           <div className="w">
-            <h2 className="h2">Signs Your Family <em>Is Ready</em></h2>
-            <div className="rule2" />
-            <div className="sign-grid">
-              {d.signs.map((x) => (
-                <div className="frame sign" key={x}>
-                  <div className="fi"><span className="sg-box" aria-hidden="true" /><p>{x}</p></div>
-                </div>
-              ))}
-              <div className="frame dark sign sign-cta">
-                <div className="fi">
-                  <h3>Recognize Two <em>or More?</em></h3>
-                  <Link className="btn-foil" href="#book">Book a Discovery Meeting</Link>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section className="sec ivory-2">
-          <div className="w">
             <h2 className="h2">How We <em>Begin</em></h2>
             <div className="rule2" />
             <ol className="steps">
@@ -135,12 +108,12 @@ export default async function ServicePage({ params }: { params: Promise<Params> 
 
         <Faq
           items={d.faqs}
-          tone="ivory"
+          tone="ivory-2"
           title={<>Questions About <em>{s.title}</em></>}
           aside={<CtaCard title={<>Still Have <em>Questions?</em></>} body="Talk to our team directly. A real person answers, not an autoresponder." />}
         />
 
-        <section className="sec ivory-2">
+        <section className="sec ivory">
           <div className="w">
             <h2 className="h2">How It <em>Connects</em></h2>
             <div className="rule2" />

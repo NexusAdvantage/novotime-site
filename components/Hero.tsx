@@ -10,7 +10,7 @@ export function Hero() {
       <div className="w hero-inner">
         <h1 className="h1-words">
           <Words text="Partnering with Families from the" />
-          <em><Words text="Same Side of the Table" start={6} accent /></em>
+          <Words text="Same Side of the Table" start={6} />
         </h1>
         <div className="goldrule enter" style={{ ["--d" as string]: "1.2s" }} />
         <p className="hero-lead enter" style={{ ["--d" as string]: "1.4s" }}>
