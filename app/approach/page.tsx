@@ -24,12 +24,14 @@ export default function ApproachPage() {
           <div className="w">
             <h2 className="h2">Four Principles Behind <em>Every Engagement</em></h2>
             <div className="rule2" />
-            <div className="pcards">
+            <div className="cards c4">
               {PRINCIPLES.map((p) => (
-                <article className="pcard" key={p.title}>
-                  <span className="val-icon"><Icon name={p.icon} className="vi" /></span>
-                  <h3>{p.title}</h3>
-                  <p>{p.body}</p>
+                <article className="frame card card-ic" key={p.title}>
+                  <div className="fi">
+                    <span className="val-icon"><Icon name={p.icon} className="vi" /></span>
+                    <h3>{p.title}</h3>
+                    <p>{p.body}</p>
+                  </div>
                 </article>
               ))}
             </div>
@@ -57,14 +59,16 @@ export default function ApproachPage() {
           <div className="w">
             <h2 className="h2">One Flat <em>Monthly Fee</em></h2>
             <div className="rule2" />
-            <div className="fees">
-              {FEE_TERMS.map((f) => (
-                <article className="fee" key={f.title}>
-                  <i className="dia" />
-                  <h3>{f.title}</h3>
-                  <p>{f.body}</p>
-                </article>
-              ))}
+            <div className="frame dark feecard">
+              <div className="fi">
+                {FEE_TERMS.map((f) => (
+                  <article className="fee" key={f.title}>
+                    <i className="dia" />
+                    <h3>{f.title}</h3>
+                    <p>{f.body}</p>
+                  </article>
+                ))}
+              </div>
             </div>
           </div>
         </section>

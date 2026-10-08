@@ -24,11 +24,13 @@ export default function AboutPage() {
             <p className="mission-line">
               To give people back their most valuable resources: <em>time and peace of mind.</em>
             </p>
-            <div className="times">
+            <div className="cards c3">
               {MISSION.times.map((t) => (
-                <div className="time" key={t.title}>
-                  <span className="val-icon"><Icon name={t.icon} className="vi" /></span>
-                  <h3>{t.title}</h3>
+                <div className="frame card card-ic" key={t.title}>
+                  <div className="fi">
+                    <span className="val-icon"><Icon name={t.icon} className="vi" /></span>
+                    <h3>{t.title}</h3>
+                  </div>
                 </div>
               ))}
             </div>
@@ -56,21 +58,21 @@ export default function AboutPage() {
           <div className="w">
             <h2 className="h2">Meet Our <em>Founder</em></h2>
             <div className="rule2" />
-            <div className="founder-wrap">
-              <div className="chapters">
-                {FOUNDER.chapters.map((c) => (
-                  <article className="chapter" key={c.title}>
-                    <i className="dia" />
-                    <h3>{c.title}</h3>
-                    <p>{c.body}</p>
-                  </article>
-                ))}
-              </div>
-              <figure className="quote-card">
+            <ol className="tline">
+              {FOUNDER.chapters.map((c) => (
+                <li key={c.title}>
+                  <i className="tnode" />
+                  <h3>{c.title}</h3>
+                  <p>{c.body}</p>
+                </li>
+              ))}
+            </ol>
+            <figure className="frame dark fquote">
+              <div className="fi">
                 <blockquote>&ldquo;Investment performance may fluctuate, but <em>fees are constant.</em>&rdquo;</blockquote>
                 <figcaption className="fwho">{FOUNDER.name}<span>{FOUNDER.role}</span></figcaption>
-              </figure>
-            </div>
+              </div>
+            </figure>
           </div>
         </section>
         <BookForm />

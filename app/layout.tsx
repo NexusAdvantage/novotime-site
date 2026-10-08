@@ -7,6 +7,7 @@ import "@fontsource/jost/500.css";
 import "./globals.css";
 import "./pages.css";
 import { SvgSprite } from "@/components/SvgSprite";
+import { ScrollFlag } from "@/components/ScrollFlag";
 import { SITE } from "@/content/site";
 
 export const metadata: Metadata = {
@@ -23,6 +24,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en">
       <body>
         <SvgSprite />
+        <ScrollFlag />
         {children}
       </body>
     </html>

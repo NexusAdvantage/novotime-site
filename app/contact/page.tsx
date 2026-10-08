@@ -16,31 +16,35 @@ export default function ContactPage() {
     <>
       <PageHero
         title={<>Let&rsquo;s Start with <em>a Conversation</em></>}
-        lead="Tell us a little about your family and what prompted you to reach out. A member of our team, not an autoresponder, will be in touch within one business day."
+        lead="A member of our team, not an autoresponder, will be in touch within one business day."
       />
       <main>
         <section className="sec ivory">
           <div className="w">
-            <div className="sec-head">
-              <h2 className="h2">Visit, Call, <em>or Write</em></h2>
-              <div className="rule2" />
-            </div>
-            <div className="office-grid">
-              <div>
-                <span className="val-icon"><Icon name="i-house" className="vi" /></span>
-                <span className="kicker">Our Office</span>
-                <p>{a.street}<br />{a.city}, {a.regionLong} {a.zip}</p>
+            <h2 className="h2">Visit, Call, <em>or Write</em></h2>
+            <div className="rule2" />
+            <div className="cards c3">
+              <div className="frame card card-ic">
+                <div className="fi">
+                  <span className="val-icon"><Icon name="i-house" className="vi" /></span>
+                  <h3>Our Office</h3>
+                  <p>{a.street}<br />{a.city}, {a.regionLong} {a.zip}</p>
+                </div>
               </div>
-              <div>
-                <span className="val-icon"><Icon name="i-talk" className="vi" /></span>
-                <span className="kicker">Call</span>
-                <a href={SITE.phoneHref}>{SITE.phoneDisplay}</a>
-              </div>
-              <div>
-                <span className="val-icon"><Icon name="i-ledger" className="vi" /></span>
-                <span className="kicker">Email</span>
-                <a href={`mailto:${SITE.email}`}>{SITE.email}</a>
-              </div>
+              <a className="frame card card-ic" href={SITE.phoneHref}>
+                <div className="fi">
+                  <span className="val-icon"><Icon name="i-talk" className="vi" /></span>
+                  <h3>Call</h3>
+                  <p className="num">{SITE.phoneDisplay}</p>
+                </div>
+              </a>
+              <a className="frame card card-ic" href={`mailto:${SITE.email}`}>
+                <div className="fi">
+                  <span className="val-icon"><Icon name="i-ledger" className="vi" /></span>
+                  <h3>Email</h3>
+                  <p>{SITE.email}</p>
+                </div>
+              </a>
             </div>
           </div>
         </section>
