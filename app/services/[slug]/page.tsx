@@ -1,3 +1,4 @@
+import Image from "next/image";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -31,6 +32,9 @@ function accent(text: string) {
   return <>{w.slice(0, cut).join(" ")} <em>{w.slice(cut).join(" ")}</em></>;
 }
 
+/* How We Begin icons: stand ins until the four dedicated process icons are made */
+const BEGIN_IC = ["/icons/Contact/Office.png", "/icons/Our Approach/Customization.png", "/icons/What We Stand For/One Interest.png", "/icons/Our Approach/Continuity.png"];
+
 export default async function ServicePage({ params }: { params: Promise<Params> }) {
   const { slug } = await params;
   const s = SERVICES.find((x) => x.slug === slug);
@@ -42,7 +46,7 @@ export default async function ServicePage({ params }: { params: Promise<Params> 
 
   return (
     <>
-      <PageHero title={s.title} lead={s.summary} mark={s.iconImage} />
+      <PageHero title={s.title} lead={s.summary} mark={`/icons/marks/${s.slug}.svg`} />
       <main>
         <section className="sec ivory">
           <div className="w intro">
@@ -90,13 +94,21 @@ export default async function ServicePage({ params }: { params: Promise<Params> 
 
         <Ledger rows={d.ledger} closing={d.outcome} cta />
 
-        <section className="sec ivory">
+        <Faq
+          items={d.faqs}
+          tone="ivory-2"
+          title={<>Questions About <em>{s.title}</em></>}
+          aside={<CtaCard title={<>Still Have <em>Questions?</em></>} body="Talk to our team directly. A real person answers, not an autoresponder." />}
+        />
+
+        <section className="sec navy begin-sec">
           <div className="w">
             <h2 className="h2">How We <em>Begin</em></h2>
             <div className="rule2" />
-            <ol className="steps">
+            <ol className="steps medal">
               {BEGIN.map((b, i) => (
                 <li key={b.t}>
+                  <span className="medal-ic"><Image src={encodeURI(BEGIN_IC[i])} alt="" width={104} height={104} sizes="104px" /></span>
                   <span className="step-n foil">{["I", "II", "III", "IV"][i]}</span>
                   <h3>{b.t}</h3>
                   <p>{b.d}</p>
@@ -105,13 +117,6 @@ export default async function ServicePage({ params }: { params: Promise<Params> 
             </ol>
           </div>
         </section>
-
-        <Faq
-          items={d.faqs}
-          tone="ivory-2"
-          title={<>Questions About <em>{s.title}</em></>}
-          aside={<CtaCard title={<>Still Have <em>Questions?</em></>} body="Talk to our team directly. A real person answers, not an autoresponder." />}
-        />
 
         <section className="sec ivory">
           <div className="w">
