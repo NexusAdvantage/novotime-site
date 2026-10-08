@@ -42,7 +42,7 @@ export default async function ServicePage({ params }: { params: Promise<Params> 
 
   return (
     <>
-      <PageHero title={s.title} lead={s.summary} />
+      <PageHero title={s.title} lead={s.summary} mark={s.iconImage} />
       <main>
         <section className="sec ivory">
           <div className="w intro">
