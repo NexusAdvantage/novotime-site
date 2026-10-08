@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { PageHero } from "@/components/PageHero";
 import { BookForm } from "@/components/BookForm";
 import { Footer } from "@/components/Footer";
-import { Icon } from "@/components/Icon";
+import { IconImg, icon } from "@/components/IconImg";
 import { MISSION, NAME, FOUNDER } from "@/content/about";
 
 export const metadata: Metadata = {
@@ -27,7 +27,7 @@ export default function AboutPage() {
               {MISSION.times.map((t) => (
                 <div className="frame card card-ic" key={t.title}>
                   <div className="fi">
-                    <span className="val-icon"><Icon name={t.icon} className="vi" /></span>
+                    <IconImg src={icon("Our Story", t.title.replace("Time to Be ", "").replace("Time to ", ""))} size={76} />
                     <h3>{t.title}</h3>
                   </div>
                 </div>

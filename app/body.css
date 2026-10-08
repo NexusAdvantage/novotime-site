@@ -43,3 +43,12 @@
 .vcard li::before { content: ""; flex: 0 0 8px; height: 8px; transform: translateY(-2px) rotate(45deg); background: var(--foil-diamond); }
 @media (max-width: 1100px) { .vbento { grid-template-columns: 1fr 1fr; } .vcard, .vcard:nth-child(-n + 2) { grid-column: span 1; } .vcard:last-child { grid-column: 1 / -1; } }
 @media (max-width: 900px) { .vbento { grid-template-columns: 1fr; } .vcard:last-child { grid-column: auto; } .vcard li { font-size: 17px; } }
+
+/* custom illustrated icons: framed ivory tile, same on light and navy cards */
+.ic-tile { flex: 0 0 auto; width: 104px; height: 104px; display: grid; place-items: center; background: var(--color-ivory); border: 1px solid var(--color-gold-soft); outline: 1px solid var(--color-rule); outline-offset: -8px; margin-bottom: 28px; }
+.ic-img { display: block; object-fit: contain; }
+.cond-card .ic-tile { width: 80px; height: 80px; margin: 0; }
+.cond-card > .fi { grid-template-columns: 80px 1fr; }
+.gopt .ic-img { flex: 0 0 40px; width: 40px; height: 40px; }
+.gopt.on .ic-img { background: var(--color-ivory); border-radius: 50%; padding: 4px; }
+@media (max-width: 900px) { .ic-tile { width: 76px; height: 76px; } .cond-card > .fi { grid-template-columns: 64px 1fr; } .cond-card .ic-tile { width: 64px; height: 64px; } }

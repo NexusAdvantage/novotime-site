@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { PageHero } from "@/components/PageHero";
 import { BookForm } from "@/components/BookForm";
 import { Footer } from "@/components/Footer";
-import { Icon } from "@/components/Icon";
+import { IconImg, icon } from "@/components/IconImg";
 import { SITE } from "@/content/site";
 
 export const metadata: Metadata = {
@@ -26,21 +26,21 @@ export default function ContactPage() {
             <div className="cards c3">
               <div className="frame card card-ic">
                 <div className="fi">
-                  <span className="val-icon"><Icon name="i-house" className="vi" /></span>
+                  <IconImg src={icon("Contact", "Office")} size={76} />
                   <h3>Our Office</h3>
                   <p>{a.street}<br />{a.city}, {a.regionLong} {a.zip}</p>
                 </div>
               </div>
               <a className="frame card card-ic" href={SITE.phoneHref}>
                 <div className="fi">
-                  <span className="val-icon"><Icon name="i-talk" className="vi" /></span>
+                  <IconImg src={icon("Contact", "Call")} size={76} />
                   <h3>Call</h3>
                   <p className="num">{SITE.phoneDisplay}</p>
                 </div>
               </a>
               <a className="frame card card-ic" href={`mailto:${SITE.email}`}>
                 <div className="fi">
-                  <span className="val-icon"><Icon name="i-ledger" className="vi" /></span>
+                  <IconImg src={icon("Contact", "Email")} size={76} />
                   <h3>Email</h3>
                   <p>{SITE.email}</p>
                 </div>

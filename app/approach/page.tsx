@@ -3,7 +3,7 @@ import { PageHero } from "@/components/PageHero";
 import { Faq } from "@/components/Faq";
 import { BookForm } from "@/components/BookForm";
 import { Footer } from "@/components/Footer";
-import { Icon } from "@/components/Icon";
+import { IconImg, icon } from "@/components/IconImg";
 import { PRINCIPLES, NOT_LIST, ARE_LIST, FEE_TERMS } from "@/content/approach";
 
 export const metadata: Metadata = {
@@ -28,7 +28,7 @@ export default function ApproachPage() {
               {PRINCIPLES.map((p) => (
                 <article className="frame card card-ic" key={p.title}>
                   <div className="fi">
-                    <span className="val-icon"><Icon name={p.icon} className="vi" /></span>
+                    <IconImg src={icon("Our Approach", p.title)} size={76} />
                     <h3>{p.title}</h3>
                     <p>{p.body}</p>
                   </div>
