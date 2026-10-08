@@ -26,32 +26,27 @@ export default async function ServicePage({ params }: { params: Promise<Params> 
   const d = detailFor(slug);
   if (!s || !d) notFound();
   const related = d.related.map((r) => SERVICES.find((x) => x.slug === r)!).filter(Boolean);
-  const cols = d.items.length % 3 === 0 ? "c3" : "c2";
+  const cols = d.items.length % 3 === 0 ? "c3" : d.items.length === 4 ? "c4" : "c2";
 
   return (
     <>
       <PageHero
         title={s.title}
         lead={s.summary}
-        aside={
-          s.iconImage && (
-            <div className="medal">
-              <div className="medal-in"><img src={s.iconImage} alt="" /></div>
-            </div>
-          )
-        }
       />
       <main>
         <section className="sec ivory">
           <div className="w">
             <h2 className="h2">What We <em>Handle</em></h2>
             <div className="rule2" />
-            <div className={`icards ${cols}`}>
+            <div className={`cards ${cols}`}>
               {d.items.map((it) => (
-                <article className="icard" key={it.t}>
-                  <i className="dia" />
-                  <h3>{it.t}</h3>
-                  <p>{it.d}</p>
+                <article className="frame card" key={it.t}>
+                  <div className="fi">
+                    <i className="dia" />
+                    <h3>{it.t}</h3>
+                    <p>{it.d}</p>
+                  </div>
                 </article>
               ))}
             </div>
@@ -73,17 +68,23 @@ export default async function ServicePage({ params }: { params: Promise<Params> 
             <h2 className="h2">Who Does <em>the Work</em></h2>
             <div className="rule2" />
             <div className="who">
-              <div className="who-card">
-                <h3>Handled by Our Team</h3>
-                <ul className="ticks">{d.inHouse.map((x) => <li key={x}>{x}</li>)}</ul>
+              <div className="frame dark who-card">
+                <div className="fi">
+                  <span className="who-tag">In House</span>
+                  <h3>Handled by Our Team</h3>
+                  <ul className="ticks">{d.inHouse.map((x) => <li key={x}>{x}</li>)}</ul>
+                </div>
               </div>
-              <div className="who-card">
-                <h3>Coordinated with Your Professionals</h3>
-                {d.partners.length ? (
-                  <ul className="ticks">{d.partners.map((x) => <li key={x}>{x}</li>)}</ul>
-                ) : (
-                  <p className="ticks-note">Delivered directly by our team, at a pace and depth that suits each family member.</p>
-                )}
+              <div className="frame who-card">
+                <div className="fi">
+                  <span className="who-tag">Coordinated</span>
+                  <h3>Working with Your Professionals</h3>
+                  {d.partners.length ? (
+                    <ul className="ticks">{d.partners.map((x) => <li key={x}>{x}</li>)}</ul>
+                  ) : (
+                    <p className="ticks-note">Delivered directly by our team, at a pace and depth that suits each family member.</p>
+                  )}
+                </div>
               </div>
             </div>
           </div>

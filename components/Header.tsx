@@ -12,6 +12,7 @@ function Caret() {
 
 export function Header({ ctaHref = CTA.href }: { ctaHref?: string }) {
   return (
+    <div className="hdr-slot">
     <header className="site-header">
       <div className="w masthead">
         <nav className="nav l" aria-label="Primary">
@@ -65,5 +66,6 @@ export function Header({ ctaHref = CTA.href }: { ctaHref?: string }) {
       </div>
       <div className="w"><div className="total" /></div>
     </header>
+    </div>
   );
 }

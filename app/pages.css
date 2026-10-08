@@ -1,19 +1,14 @@
 /* Inner page styles (services, about, contact, legal). Colors come only from tokens in globals.css. */
 
-/* ---------- inner page hero ---------- */
+/* ---------- inner page hero: same composition as home, shorter ---------- */
 .page-hero { min-height: 0; }
-.ph-inner { position: relative; z-index: 2; padding-top: clamp(72px, 9vw, 150px); padding-bottom: clamp(84px, 10vw, 160px); }
-.ph-split { display: grid; grid-template-columns: 1.2fr .8fr; gap: clamp(48px, 6vw, 120px); align-items: center; }
-.page-hero h1 { font-family: var(--font-display); font-weight: 400; font-size: clamp(46px, 5.4vw, 108px); line-height: 1.04; letter-spacing: -.01em; color: var(--color-on-navy); margin-top: 18px; max-width: 1300px; }
-.page-hero h1 em { color: var(--color-gold-light); }
-.ph-rule { margin: 34px 0 0; }
-.ph-lead { font-size: clamp(19px, 1.3vw, 23px); font-weight: 300; line-height: 1.65; color: var(--color-on-navy-soft); max-width: 760px; margin-top: 30px; }
-.crumbs { display: flex; flex-wrap: wrap; gap: 4px; font: 500 12px var(--font-body); letter-spacing: .18em; text-transform: uppercase; color: var(--color-on-navy-faint); margin-bottom: 30px; }
-.crumbs a { color: var(--color-gold-light); text-decoration: none; }
-.crumbs i { margin: 0 12px; opacity: .5; }
-.medal { aspect-ratio: 1; max-width: 480px; margin-left: auto; padding: 14px; border: 1px solid var(--color-gold-mid); background: var(--color-navy-deep); box-shadow: 0 50px 90px -40px var(--color-navy-footer); }
-.medal-in { height: 100%; display: grid; place-items: center; background: var(--color-ivory); border: 1px solid var(--color-gold-soft); }
-.medal-in img { width: 66%; height: 66%; object-fit: contain; }
+.page-hero .ph-inner { min-height: clamp(520px, 72vh, 860px); padding: clamp(40px, 5vw, 80px) var(--gutter) clamp(80px, 8vw, 130px); }
+.page-hero h1 { font-size: clamp(48px, 5.4vw, 108px); max-width: 1400px; }
+.hero h1 em {
+  background: var(--foil-text); background-size: 250% 100%;
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+  animation: sheen 9s ease-in-out infinite;
+}
 
 /* ---------- shared blocks ---------- */
 .sec-head { margin-bottom: clamp(48px, 5vw, 76px); }
@@ -184,3 +179,112 @@
   .icard, .chapter, .pcard, .fee,
   .icards.c3 .icard:not(:nth-child(3n + 1)), .icards.c2 .icard:nth-child(2n), .chapter:nth-child(2n), .pcard:nth-child(2n), .fee:nth-child(2n) { padding: 30px 0; border-left: 0; }
 }
+
+/* ---------- sticky header bar ---------- */
+.hdr-slot { height: 99px; position: relative; z-index: 40; }
+html[data-scrolled] .site-header {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 60;
+  background: var(--color-navy); border-bottom: 1px solid rgba(212, 194, 124, .35);
+  box-shadow: 0 18px 40px -24px var(--color-navy-footer);
+  animation: hdrin .4s ease;
+}
+html[data-scrolled] .site-header .masthead { height: 72px; }
+html[data-scrolled] .site-header .total { display: none; }
+html[data-scrolled] .site-header .mark { font-size: 28px; }
+html[data-scrolled] .dd-panel { top: calc(100% + 18px); }
+@keyframes hdrin { from { transform: translateY(-100%); } to { transform: none; } }
+html { scroll-padding-top: 90px; }
+
+/* ---------- framed cards (signature double frame, same as the booking card) ---------- */
+.frame { display: block; background: var(--color-card); border: 1px solid var(--color-gold-soft); padding: 10px; color: var(--color-ink); text-decoration: none; transition: transform .35s, box-shadow .35s, border-color .35s; }
+.frame > .fi { height: 100%; border: 1px solid var(--color-rule); padding: clamp(28px, 2.6vw, 48px); }
+.frame.dark { background: var(--color-navy); border-color: var(--color-gold-mid); color: var(--color-on-navy); }
+.frame.dark > .fi { border-color: rgba(212, 194, 124, .22); }
+.cards { display: grid; gap: clamp(16px, 1.4vw, 26px); margin-top: clamp(48px, 5vw, 72px); }
+.cards.c2 { grid-template-columns: repeat(2, 1fr); }
+.cards.c3 { grid-template-columns: repeat(3, 1fr); }
+.cards.c4 { grid-template-columns: repeat(4, 1fr); }
+.card:hover { transform: translateY(-4px); border-color: var(--color-gold-mid); box-shadow: 0 34px 60px -40px var(--color-navy-footer); }
+.card h3 { font-family: var(--font-display); font-weight: 400; font-size: clamp(26px, 1.9vw, 34px); line-height: 1.15; }
+.card p { margin-top: 14px; font-size: 18px; line-height: 1.6; color: var(--color-ink-soft); }
+.card .dia { margin-bottom: 28px; }
+.card-ic .val-icon { display: grid; width: 76px; height: 76px; margin-bottom: 28px; }
+.card-ic .vi { width: 42px; height: 42px; }
+.card .num { font-family: var(--font-body); }
+
+/* who does the work */
+.who { gap: clamp(16px, 1.4vw, 26px); }
+.who-card { background: var(--color-card); border: 1px solid var(--color-gold-soft); padding: 10px; }
+.who-card.dark { background: var(--color-navy); border-color: var(--color-gold-mid); }
+.who-tag { display: inline-block; font: 500 11px var(--font-body); letter-spacing: .24em; text-transform: uppercase; color: var(--color-gold); padding-bottom: 10px; border-bottom: 1px solid var(--color-gold-mid); margin-bottom: 22px; }
+.dark .who-tag { color: var(--color-gold-light); }
+.who-card h3 { font-size: clamp(28px, 2.2vw, 40px); margin-bottom: 18px; }
+.dark h3 { color: var(--color-on-navy); }
+.dark .ticks li { color: var(--color-on-navy-2); border-bottom-color: rgba(212, 194, 124, .18); }
+
+/* fee card */
+.feecard { margin-top: clamp(48px, 5vw, 72px); }
+.feecard > .fi { display: grid; grid-template-columns: repeat(4, 1fr); padding: 0; }
+.feecard .fee { padding: clamp(36px, 3.2vw, 60px) clamp(24px, 2.4vw, 44px); }
+.feecard .fee + .fee { border-left: 1px solid rgba(212, 194, 124, .22); }
+.feecard .fee h3 { color: var(--color-on-navy); }
+.feecard .fee p { color: var(--color-on-navy-soft); }
+
+/* founder timeline */
+.tline { list-style: none; display: grid; grid-template-columns: repeat(4, 1fr); gap: clamp(24px, 2.6vw, 48px); margin-top: clamp(56px, 5vw, 80px); position: relative; }
+.tline::before { content: ""; position: absolute; left: 0; right: 0; top: 7px; height: 1px; background: var(--color-gold-mid); }
+.tnode { display: block; width: 15px; height: 15px; transform: rotate(45deg); background: var(--foil-diamond); position: relative; margin-bottom: 34px; box-shadow: 0 0 0 6px var(--color-ivory-2); }
+.tline h3 { font-family: var(--font-display); font-weight: 400; font-size: clamp(26px, 1.9vw, 34px); line-height: 1.15; }
+.tline p { margin-top: 14px; font-size: 18px; line-height: 1.6; color: var(--color-ink-soft); }
+.fquote { margin-top: clamp(64px, 6vw, 100px); text-align: center; }
+.fquote > .fi { padding: clamp(48px, 5vw, 96px) clamp(28px, 6vw, 140px); }
+.fquote blockquote { font-family: var(--font-display); font-size: clamp(34px, 3.4vw, 64px); line-height: 1.14; max-width: 1200px; margin: 0 auto; color: var(--color-on-navy); }
+.fquote blockquote em { color: var(--color-gold-light); }
+
+/* home values */
+.vrows { margin-top: clamp(48px, 5vw, 72px); border-top: 1px solid var(--color-ink); }
+.vrow { display: grid; grid-template-columns: 1.15fr 1fr 1fr; gap: clamp(28px, 3.4vw, 72px); align-items: center; padding: clamp(30px, 2.8vw, 46px) clamp(0px, 1.4vw, 28px); border-bottom: 1px solid var(--color-rule); transition: background .35s; }
+.vrow:hover { background: var(--color-card); }
+.vrow-head { display: flex; align-items: center; gap: clamp(20px, 2vw, 34px); }
+.vrow-ic { flex: 0 0 74px; height: 74px; display: grid; place-items: center; border: 1px solid var(--color-gold-soft); outline: 1px solid var(--color-rule); outline-offset: -8px; background: var(--color-card); }
+.vrow-ic svg { width: 40px; height: 40px; }
+.vrow h3 { font-family: var(--font-display); font-weight: 400; font-size: clamp(28px, 2.3vw, 42px); line-height: 1.1; }
+.vrow h3 em { color: var(--color-gold); }
+.vrow p { font-size: clamp(18px, 1.15vw, 21px); line-height: 1.55; color: var(--color-ink); padding-left: 22px; border-left: 1px solid var(--color-gold-mid); }
+
+/* footer sitemap */
+.fmap { display: grid; grid-template-columns: 1.3fr 1.6fr .8fr 1fr; gap: clamp(40px, 4vw, 80px); }
+.fbrand p { margin-top: 14px; max-width: 320px; line-height: 1.6; }
+.site-footer .fcta { display: inline-block; margin-top: 28px; padding: 13px 22px; font-size: 12px; letter-spacing: .1em; text-transform: uppercase; color: var(--color-gold-pale); border: 1px solid rgba(212, 194, 124, .7); transition: background .3s, color .3s; }
+.site-footer .fcta:hover { background: var(--color-gold-light); color: var(--color-navy); }
+.fcol h3 { font: 500 12px var(--font-body); letter-spacing: .22em; text-transform: uppercase; color: var(--color-gold-light); padding-bottom: 14px; margin-bottom: 14px; border-bottom: 1px solid rgba(212, 194, 124, .25); }
+.site-footer .fcol h3 a { display: inline; padding: 0; color: inherit; }
+.fsvc { display: grid; grid-template-columns: 1fr 1fr; column-gap: 32px; }
+.site-footer .fcol a { padding: 6px 0; transition: color .25s; }
+.site-footer .fcol a:hover { color: var(--color-gold-pale); }
+.fcol p { line-height: 1.7; margin-bottom: 10px; }
+.fbase { margin-top: 64px; padding-top: 26px; border-top: 1px solid rgba(255, 255, 255, .12); display: grid; grid-template-columns: 1fr auto; gap: 40px; align-items: end; }
+.fbase .legal { margin: 0; padding: 0; border: 0; max-width: 1000px; }
+.fcopy { font-size: 13px; color: var(--color-on-navy-faint); white-space: nowrap; }
+
+@media (max-width: 1200px) {
+  .cards.c4, .feecard > .fi, .tline { grid-template-columns: 1fr 1fr; }
+  .feecard .fee:nth-child(3) { border-left: 0; }
+  .feecard .fee:nth-child(n + 3) { border-top: 1px solid rgba(212, 194, 124, .22); }
+  .tline::before { display: none; }
+  .vrow { grid-template-columns: 1fr 1fr; }
+  .vrow-head { grid-column: 1 / -1; }
+  .fmap { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 900px) {
+  .hdr-slot { height: 81px; }
+  html[data-scrolled] .site-header .masthead { height: 64px; }
+  html[data-scrolled] .site-header .mark { font-size: 24px; }
+  .cards.c2, .cards.c3, .cards.c4, .feecard > .fi, .tline, .vrow, .fmap, .fsvc, .fbase { grid-template-columns: 1fr; }
+  .feecard .fee + .fee { border-left: 0; border-top: 1px solid rgba(212, 194, 124, .22); }
+  .vrow { gap: 16px; padding: 30px 0; }
+  .vrow-ic { flex-basis: 60px; height: 60px; }
+  .tline { gap: 36px; }
+  .page-hero .ph-inner { min-height: 0; padding: 60px 22px 90px; }
+}
+.feecard .fee { border-bottom: 0; }
