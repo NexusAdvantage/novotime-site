@@ -19,7 +19,7 @@ export function Conductor() {
   return (
     <section className="sec ivory-2" id="coordination">
       <div className="w">
-        <h2 className="h2">Conductors, <em>Not Soloists</em></h2>
+        <h2 className="h2">Your Advisors, Finally <em>on the Same Page</em></h2>
         <div className="rule2" />
         <div className="cond">
           <div className="cond-col">{left.map(card)}</div>

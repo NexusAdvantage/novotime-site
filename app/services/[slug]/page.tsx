@@ -98,15 +98,22 @@ export default async function ServicePage({ params }: { params: Promise<Params> 
         <Ledger rows={d.ledger} closing={d.outcome} cta />
 
         <section className="sec ivory">
-          <div className="w signs">
-            <div>
-              <h2 className="h2">Signs It May <em>Be Time</em></h2>
-              <div className="rule2" />
-              <CtaCard title={<>Recognize Your <em>Family Here?</em></>} body="Tell us what is on your desk. We will tell you plainly whether we can help, and what it would look like." />
+          <div className="w">
+            <h2 className="h2">Signs Your Family <em>Is Ready</em></h2>
+            <div className="rule2" />
+            <div className="sign-grid">
+              {d.signs.map((x) => (
+                <div className="frame sign" key={x}>
+                  <div className="fi"><span className="sg-box" aria-hidden="true" /><p>{x}</p></div>
+                </div>
+              ))}
+              <div className="frame dark sign sign-cta">
+                <div className="fi">
+                  <h3>Recognize Two <em>or More?</em></h3>
+                  <Link className="btn-foil" href="#book">Book a Discovery Meeting</Link>
+                </div>
+              </div>
             </div>
-            <ul className="signs-list">
-              {d.signs.map((x) => <li key={x}><span className="sg-box" aria-hidden="true" />{x}</li>)}
-            </ul>
           </div>
         </section>
 
