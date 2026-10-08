@@ -5,7 +5,9 @@ import Link from "next/link";
 import { GUIDE } from "@/content/guide";
 import { SERVICES } from "@/content/services";
 import { CTA } from "@/content/site";
-import { Icon } from "./Icon";
+import { IconImg, icon } from "./IconImg";
+
+const FILES = ["Sold My Business", "Planning for the Next Generation", "Advisors Don't Talk to Each Other", "Buried in Paperwork", "Advice Not Objective", "Not Sure a Family Office Fits"];
 
 const titleFor = (slug: string) => SERVICES.find((s) => s.slug === slug)?.title ?? slug;
 
@@ -32,7 +34,7 @@ export function Guide({ tone = "ivory" }: { tone?: "ivory" | "ivory-2" }) {
                   }
                 }}
               >
-                <span className="gi"><Icon name={item.icon} /></span>
+                <IconImg src={icon("Where Should You Start", FILES[k])} size={40} tile={false} />
                 {item.label}
               </button>
             ))}

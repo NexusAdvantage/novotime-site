@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { ADVISORS, CENTER_POINTS } from "@/content/conductor";
-import { Icon } from "./Icon";
+import { IconImg, icon } from "./IconImg";
 
 export function Conductor() {
   const left = ADVISORS.slice(0, 3);
@@ -8,7 +8,7 @@ export function Conductor() {
   const card = (a: (typeof ADVISORS)[number]) => (
     <article className="frame cond-card" key={a.role}>
       <div className="fi">
-        <span className="cond-ic"><Icon name={a.icon} /></span>
+        <IconImg src={icon("Conductors", a.role)} size={60} />
         <div>
           <h3>{a.role}</h3>
           <p>{a.d}</p>

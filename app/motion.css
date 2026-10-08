@@ -1,0 +1,34 @@
+/* ---------- life: hero entrance and scroll reveals ---------- */
+
+/* hero headline words rise in one after another */
+.h1-words .wd { display: inline-block; opacity: 0; transform: translateY(.45em); filter: blur(6px); animation: wordin .9s cubic-bezier(.2, .7, .2, 1) forwards; animation-delay: calc(var(--i) * 85ms + .15s); }
+.h1-words em .wd.foil { animation: wordin .9s cubic-bezier(.2, .7, .2, 1) forwards, sheen 9s ease-in-out 2s infinite; animation-delay: calc(var(--i) * 85ms + .15s), 2s; }
+@keyframes wordin { to { opacity: 1; transform: none; filter: none; } }
+
+/* the rest of the hero follows */
+.enter { opacity: 0; animation: enter .9s cubic-bezier(.2, .7, .2, 1) forwards; animation-delay: var(--d, 0s); }
+.goldrule.enter { transform: scaleX(0); animation-name: drawrule; }
+@keyframes enter { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
+@keyframes drawrule { from { opacity: 0; transform: scaleX(0); } to { opacity: 1; transform: scaleX(1); } }
+
+/* scroll reveals (only when the script is running, so nothing hides without it) */
+.motion .rv { opacity: 0; transform: translateY(28px); transition: opacity .9s cubic-bezier(.2, .7, .2, 1), transform .9s cubic-bezier(.2, .7, .2, 1); transition-delay: var(--rv, 0ms); }
+.motion .rv.in { opacity: 1; transform: none; }
+.motion .rule2.rv { transform: scaleX(0); transform-origin: left; }
+.motion .c .rule2.rv { transform-origin: center; }
+.motion .rule2.rv.in { transform: none; }
+
+/* ledger rows: the old way is struck through as the row arrives, then the NovoTime answer appears */
+.motion .lg-row.rv { transform: translateY(16px); }
+.motion .lg-without s { text-decoration: none; background: linear-gradient(var(--color-gold-mid), var(--color-gold-mid)) left 58% / 0% 1px no-repeat; transition: background-size .9s ease .5s; }
+.motion .lg-row.in .lg-without s { background-size: 100% 1px; }
+.motion .lg-row .lg-with { opacity: 0; transform: translateX(-12px); transition: opacity .7s ease 1.2s, transform .7s ease 1.2s; }
+.motion .lg-row.in .lg-with { opacity: 1; transform: none; }
+
+/* signs: the check draws itself */
+.motion .sign .sg-box::after { opacity: 0; transform: rotate(45deg) scale(.4); transition: opacity .4s ease .5s, transform .4s ease .5s; }
+.motion .sign.in .sg-box::after { opacity: 1; transform: rotate(45deg); }
+
+@media (prefers-reduced-motion: reduce) {
+  .h1-words .wd, .enter { opacity: 1; transform: none; filter: none; animation: none; }
+}
