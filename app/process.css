@@ -18,3 +18,7 @@
   .medal-ic { width: 132px; height: 132px; }
   .medal-ic img { width: 84px; height: 84px; }
 }
+
+/* Our Story: name cards on navy */
+.name-cards .card p { color: var(--color-on-navy-soft) !important; }
+.name-cards .card h3 { color: var(--color-on-navy) !important; }

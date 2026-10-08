@@ -30,11 +30,11 @@ export default function AboutPage() {
                   <div className="fi">
                     <IconImg src={icon("Our Story", t.title.replace("Time to Be ", "").replace("Time to ", ""))} size={76} />
                     <h3>{t.title}</h3>
+                    <p>{t.body}</p>
                   </div>
                 </div>
               ))}
             </div>
-            <p className="body-close">{MISSION.close}</p>
           </div>
         </section>
 
@@ -42,13 +42,15 @@ export default function AboutPage() {
           <div className="w">
             <h2 className="h2">The Meaning Behind <em className="foil">the Name</em></h2>
             <div className="rule2" />
-            <div className="name-grid">
+            <div className="cards c2 name-cards">
               {NAME.map((n) => (
-                <div key={n.word}>
-                  <span className="big-word foil">{n.word}</span>
-                  <h3>{n.title}</h3>
-                  <p>{n.body}</p>
-                </div>
+                <article className="frame dark card" key={n.word}>
+                  <div className="fi">
+                    <i className="dia" />
+                    <h3>{n.title}</h3>
+                    <p>{n.body}</p>
+                  </div>
+                </article>
               ))}
             </div>
           </div>
@@ -67,12 +69,6 @@ export default function AboutPage() {
                 </li>
               ))}
             </ol>
-            <figure className="frame dark fquote">
-              <div className="fi">
-                <blockquote>&ldquo;Investment performance may fluctuate, but <em>fees are constant.</em>&rdquo;</blockquote>
-                <figcaption className="fwho">{FOUNDER.name}<span>{FOUNDER.role}</span></figcaption>
-              </div>
-            </figure>
           </div>
         </section>
         <BookForm />

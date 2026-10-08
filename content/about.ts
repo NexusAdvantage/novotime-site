@@ -3,11 +3,10 @@
 
 export const MISSION = {
   times: [
-    { title: "Time to Be Present with Family", icon: "i-tree" },
-    { title: "Time to Pursue Your Passions", icon: "i-sun" },
-    { title: "Time to Explore New Opportunities", icon: "i-biz" },
+    { title: "Time to Be Present with Family", icon: "i-tree", body: "The paperwork, the follow ups, and the advisor calls come off your plate, so evenings and weekends belong to the people you love." },
+    { title: "Time to Pursue Your Passions", icon: "i-sun", body: "With the day to day handled by our team, the hours you used to spend managing your wealth go back to the things that matter to you." },
+    { title: "Time to Explore New Opportunities", icon: "i-biz", body: "A complete, organized picture of everything you own means you can say yes to the next venture with confidence." },
   ],
-  close: "And the greatest peace of mind of all: a team with nothing to gain but your trust.",
 };
 
 export const NAME = [
