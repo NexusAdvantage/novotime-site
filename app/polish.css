@@ -1,0 +1,41 @@
+/* Polish rules: one color headings, matte gold, no sub headings, single recommendation. */
+
+/* booking: next steps as single line bullets, no sub headings */
+ul.next-steps { list-style: none; }
+ul.next-steps li { display: flex; gap: 18px; align-items: baseline; padding: 20px 0; border-bottom: 1px solid rgba(212, 194, 124, .18); font-size: 18px; line-height: 1.6; color: var(--color-on-navy-2); }
+ul.next-steps li::before { content: ""; flex: 0 0 10px; height: 10px; transform: translateY(-1px) rotate(45deg); background: var(--foil-diamond); }
+p.direct { display: block; margin-top: 30px; font-size: 18px; line-height: 1.7; color: var(--color-on-navy-soft); }
+p.direct a { display: inline; font-size: inherit; color: var(--color-on-navy); border-bottom: 1px solid var(--color-gold-mid); }
+@media (max-width: 900px) { ul.next-steps li, p.direct { font-size: 17px; } }
+
+/* service glance card: plain list and one sentence, no labels */
+.glance-list { list-style: none; padding: 22px clamp(4px, 1vw, 16px) 6px; display: grid; gap: 10px; }
+.glance-list li { display: flex; gap: 14px; align-items: center; font-size: 18px; color: var(--color-on-navy-2); }
+.glance-list li::before { content: ""; flex: 0 0 8px; height: 8px; transform: rotate(45deg); background: var(--foil-diamond); }
+.glance-note { margin: 16px clamp(4px, 1vw, 16px) 8px; padding-top: 18px; border-top: 1px solid rgba(212, 194, 124, .22); font-size: 18px; line-height: 1.65; color: var(--color-on-navy-soft); }
+@media (max-width: 900px) { .glance-list li, .glance-note { font-size: 17px; } }
+
+/* headings are one color, set by the background: navy on light, ivory on navy. No gold words mid sentence. */
+h1 em, h2 em, h3 em, h1 .foil, h2 .foil, h3 .foil {
+  color: inherit !important; background: none !important; -webkit-text-fill-color: currentColor; animation: none !important;
+}
+
+/* buttons: one solid matte gold, no shine. Header button is filled so it reads as the main action. */
+.btn-foil, .nav .btn-outline, .site-footer .fcta {
+  background: var(--color-gold-mid) !important; background-image: none !important; color: var(--color-navy) !important;
+  border: 1px solid var(--color-gold-mid) !important; font-weight: 500; transition: background-color .25s, border-color .25s, color .25s;
+}
+.btn-foil:hover, .nav .btn-outline:hover, .site-footer .fcta:hover { background: var(--color-gold-light) !important; border-color: var(--color-gold-light) !important; color: var(--color-navy) !important; }
+.nav .btn-outline { padding: 14px 24px; }
+
+/* where should you start: one recommendation, then the meeting */
+.grec { display: flex; align-items: center; gap: 22px; margin: 30px 0 4px; padding: 18px 24px; background: var(--color-paper); border: 1px solid var(--color-gold-soft); text-decoration: none; color: var(--color-ink); font-size: 18px; transition: border-color .25s, transform .25s; }
+.grec:hover { border-color: var(--color-gold); transform: translateY(-2px); }
+.grec img { flex: 0 0 auto; height: 64px; width: auto; max-width: 110px; object-fit: contain; }
+.grec span { flex: 1; line-height: 1.5; }
+.grec b { font-weight: 500; }
+.grec i { font-style: normal; color: var(--color-gold); font-size: 20px; }
+
+/* no shiny foil anywhere: gold is one matte color */
+.foil { background: none !important; color: var(--color-gold-mid) !important; -webkit-text-fill-color: currentColor; animation: none !important; }
+.ivory .foil, .ivory-2 .foil { color: var(--color-gold) !important; }
