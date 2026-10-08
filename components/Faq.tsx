@@ -7,7 +7,7 @@ import type { ReactNode } from "react";
 
 type Item = { q: string; a: string };
 
-export function Faq({ items = FAQ, title, tone = "ivory" }: { items?: Item[]; title?: ReactNode; tone?: "ivory" | "ivory-2" }) {
+export function Faq({ items = FAQ, title, tone = "ivory", aside }: { items?: Item[]; title?: ReactNode; tone?: "ivory" | "ivory-2"; aside?: ReactNode }) {
   const [open, setOpen] = useState<Set<number>>(new Set([0]));
   const toggle = (k: number) =>
     setOpen((prev) => {
@@ -17,9 +17,12 @@ export function Faq({ items = FAQ, title, tone = "ivory" }: { items?: Item[]; ti
     });
   return (
     <section className={`sec ${tone}`} id="faq">
-      <div className="w c">
-        <h2 className="h2">{title ?? <>The Questions Other Family Offices <em>Hope You Won&rsquo;t Ask</em></>}</h2>
-        <div className="rule2" />
+      <div className={aside ? "w faq-split" : "w c"}>
+        <div className="faq-head">
+          <h2 className="h2">{title ?? <>The Questions Other Family Offices <em>Hope You Won&rsquo;t Ask</em></>}</h2>
+          <div className="rule2" />
+          {aside}
+        </div>
         <div className="faq">
           {items.map((f, k) => (
             <div className={`qi${open.has(k) ? " on" : ""}`} key={f.q}>

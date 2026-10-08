@@ -7,8 +7,10 @@ import { BookForm } from "@/components/BookForm";
 import { Footer } from "@/components/Footer";
 import { Arrow } from "@/components/Arrow";
 import { Ledger } from "@/components/Ledger";
+import { CtaRow, CtaCard } from "@/components/Cta";
 import { SERVICES } from "@/content/services";
 import { BEGIN, DISCLOSURES, detailFor } from "@/content/serviceDetails";
+import { CONNECTS } from "@/content/connects";
 
 type Params = { slug: string };
 
@@ -34,7 +36,7 @@ export default async function ServicePage({ params }: { params: Promise<Params> 
   const s = SERVICES.find((x) => x.slug === slug);
   const d = detailFor(slug);
   if (!s || !d) notFound();
-  const related = d.related.map((r) => SERVICES.find((x) => x.slug === r)!).filter(Boolean);
+  const related = d.related.map((r) => ({ ...SERVICES.find((x) => x.slug === r)!, why: CONNECTS[slug]?.[r] ?? "" }));
   const n = d.items.length;
   const layout = n === 5 ? "bento5" : n === 4 ? "c2" : "c3";
 
@@ -47,7 +49,8 @@ export default async function ServicePage({ params }: { params: Promise<Params> 
             <div className="intro-text">
               <h2 className="h2">{accent(d.headline)}</h2>
               <div className="rule2" />
-              {d.intro.map((p) => <p key={p.slice(0, 24)}>{p}</p>)}
+              {d.intro.slice(0, 2).map((p) => <p key={p.slice(0, 24)}>{p}</p>)}
+              <CtaRow />
             </div>
             <aside className="frame dark glance">
               <div className="fi">
@@ -92,13 +95,14 @@ export default async function ServicePage({ params }: { params: Promise<Params> 
           </div>
         </section>
 
-        <Ledger rows={d.ledger} closing={d.outcome} />
+        <Ledger rows={d.ledger} closing={d.outcome} cta />
 
         <section className="sec ivory">
           <div className="w signs">
             <div>
               <h2 className="h2">Signs It May <em>Be Time</em></h2>
               <div className="rule2" />
+              <CtaCard title={<>Recognize Your <em>Family Here?</em></>} body="Tell us what is on your desk. We will tell you plainly whether we can help, and what it would look like." />
             </div>
             <ul className="signs-list">
               {d.signs.map((x) => <li key={x}><span className="sg-box" aria-hidden="true" />{x}</li>)}
@@ -122,11 +126,16 @@ export default async function ServicePage({ params }: { params: Promise<Params> 
           </div>
         </section>
 
-        <Faq items={d.faqs} tone="ivory" title={<>Questions About <em>{s.title}</em></>} />
+        <Faq
+          items={d.faqs}
+          tone="ivory"
+          title={<>Questions About <em>{s.title}</em></>}
+          aside={<CtaCard title={<>Still Have <em>Questions?</em></>} body="Talk to our team directly. A real person answers, not an autoresponder." />}
+        />
 
         <section className="sec ivory-2">
           <div className="w">
-            <h2 className="h2">Often Paired <em>With</em></h2>
+            <h2 className="h2">How It <em>Connects</em></h2>
             <div className="rule2" />
             <div className="svc-grid">
               {related.map((r) => (
@@ -135,7 +144,7 @@ export default async function ServicePage({ params }: { params: Promise<Params> 
                     {r.iconImage && <img src={r.iconImage} alt="" loading="lazy" />}
                   </span>
                   <div className="sb-title"><h3>{r.title}</h3><Arrow /></div>
-                  <p>{r.summary}</p>
+                  <p>{r.why}</p>
                 </Link>
               ))}
             </div>

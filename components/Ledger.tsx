@@ -1,10 +1,11 @@
 import type { Row } from "@/content/serviceDetails";
+import { CtaRow } from "./Cta";
 
 /**
  * Signature device: the ledger of what comes off a family's desk.
  * Ties to the name: every row is time handed back.
  */
-export function Ledger({ rows, closing, title }: { rows: Row[]; closing?: string; title?: React.ReactNode }) {
+export function Ledger({ rows, closing, title, cta = false }: { rows: Row[]; closing?: string; title?: React.ReactNode; cta?: boolean }) {
   return (
     <section className="sec navy ledger-sec">
       <div className="w">
@@ -27,6 +28,7 @@ export function Ledger({ rows, closing, title }: { rows: Row[]; closing?: string
           </div>
         </div>
         {closing && <p className="lg-close">{closing}</p>}
+        {cta && <CtaRow center light />}
       </div>
     </section>
   );
