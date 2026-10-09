@@ -58,12 +58,11 @@ export function Header({ ctaHref = CTA.href }: { ctaHref?: string }) {
               <div className="mnav-sub">
                 {SERVICES.map((s) => <Link key={s.slug} href={`/services/${s.slug}`}>{s.title}</Link>)}
               </div>
-              <Link href="/approach">Our Approach</Link>
-              <Link href="/about">Our Story</Link>
-              <Link href="/values">Values</Link>
+              <Link href="/values">Our Values</Link>
               <div className="mnav-sub">
                 {VALUES.map((v) => <Link key={v.slug} href={`/values/${v.slug}`}>{v.title.replace(/<\/?em>/g, "")}</Link>)}
               </div>
+              <Link href="/about">Our Story</Link>
               {NAV_RIGHT.map((n) => <Link key={n.href} href={n.href}>{n.label}</Link>)}
             </div>
           </details>

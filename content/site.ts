@@ -17,10 +17,8 @@ export type NavItem = { label: string; href: string; children?: { label: string;
 // Services children are filled from content/services.ts in the Header.
 export const NAV_LEFT: NavItem[] = [
   { label: "Services", href: "/services" },
-  { label: "Our Approach", href: "/approach" },
-  { label: "Our Story", href: "/about" },
   {
-    label: "Values",
+    label: "Our Values",
     href: "/values",
     children: [
       { label: "We Stand on Integrity", href: "/values/integrity" },
@@ -30,6 +28,7 @@ export const NAV_LEFT: NavItem[] = [
       { label: "We Earn It with Humility", href: "/values/humility" },
     ],
   },
+  { label: "Our Story", href: "/about" },
 ];
 export const NAV_RIGHT = [{ label: "Contact", href: "/contact" }];
 // Every content page ends with the booking form (#book), so the CTA scrolls in place.
