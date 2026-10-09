@@ -1,19 +1,28 @@
 /* Values: home and overview rows, plus the single value pages. */
-.vrows { display: grid; gap: clamp(20px, 2vw, 28px); margin-top: clamp(48px, 5vw, 72px); }
-#values .w > .vrows:first-child { margin-top: 0; }
-.vrow2 { display: grid; grid-template-columns: 280px 1fr; background: var(--color-card); border: 1px solid var(--color-gold-soft); outline: 1px solid var(--color-rule); outline-offset: -11px; }
-.vrow2:nth-child(even) { grid-template-columns: 1fr 280px; }
-.vrow2:nth-child(even) .vrow2-art { order: 2; }
-.vrow2-art { margin: 10px; background: var(--color-navy); display: grid; place-items: center; min-height: 230px; position: relative; overflow: hidden; }
-.vrow2-art::before, .vrow2-art::after { content: ""; position: absolute; left: 50%; top: 50%; border-radius: 50%; border: 1px solid rgba(185, 162, 86, .35); transform: translate(-50%, -50%); }
-.vrow2-art::before { width: 200px; height: 200px; }
-.vrow2-art::after { width: 260px; height: 260px; border-color: rgba(185, 162, 86, .18); }
-.vrow2-medal { width: 140px; height: 140px; border-radius: 50%; background: var(--color-ivory); display: grid; place-items: center; position: relative; z-index: 1; box-shadow: 0 0 0 1px var(--color-gold-mid), 0 0 0 9px var(--color-navy), 0 0 0 10px rgba(185, 162, 86, .55); }
-.vrow2-medal img { width: 88px; height: 88px; object-fit: contain; }
-.vrow2-txt { padding: clamp(32px, 3.4vw, 56px) clamp(32px, 4vw, 72px); display: flex; flex-direction: column; justify-content: center; }
-.vrow2-txt h3 { font-family: var(--font-display); font-weight: 400; font-size: clamp(30px, 2.4vw, 42px); line-height: 1.1; color: var(--color-ink); }
-.vrow2-txt p { margin-top: 16px; font-size: 18px; line-height: 1.65; color: var(--color-ink-soft); max-width: 640px; }
-.vrow2-txt .more { margin-top: 24px; align-self: flex-start; }
+.bdr { display: flex; gap: 12px; height: 620px; margin-top: clamp(48px, 5vw, 72px); }
+#values .w > .bdr:first-child { margin-top: 0; }
+.bdr-spine { all: unset; box-sizing: border-box; cursor: pointer; flex: 0 0 120px; display: flex; flex-direction: column; align-items: center; gap: 30px; padding: 22px 0; background: var(--color-navy); border: 1px solid var(--color-gold-mid); position: relative; }
+.bdr-spine::after { content: ""; position: absolute; inset: 7px; border: 1px solid rgba(185, 162, 86, .28); pointer-events: none; }
+.bdr-spine:hover { background: var(--color-navy-deep); }
+.bdr-spine:hover .bdr-title { color: var(--color-gold-light); }
+.bdr-spine:focus-visible { outline: 2px solid var(--color-gold-light); outline-offset: 3px; }
+.bdr-band { flex: 0 0 auto; width: 64px; height: 7px; border-top: 1px solid var(--color-gold-mid); border-bottom: 1px solid var(--color-gold-mid); }
+.bdr-medal { flex: 0 0 auto; width: 140px; height: 140px; border-radius: 50%; background: var(--color-ivory); display: grid; place-items: center; box-shadow: 0 0 0 1px var(--color-gold-mid), 0 0 0 9px var(--color-card), 0 0 0 10px var(--color-gold-soft); }
+.bdr-medal img { width: 86px; height: 86px; object-fit: contain; }
+.bdr-medal.sm { width: 68px; height: 68px; box-shadow: 0 0 0 1px var(--color-gold-mid), 0 0 0 6px var(--color-navy), 0 0 0 7px rgba(185, 162, 86, .5); }
+.bdr-medal.sm img { width: 42px; height: 42px; }
+.bdr-title { flex: 1; writing-mode: vertical-rl; transform: rotate(180deg); font-family: var(--font-display); font-size: 25px; letter-spacing: .01em; color: var(--color-on-navy); white-space: nowrap; text-align: center; }
+.bdr-open { flex: 0 0 auto; width: 34px; height: 34px; border-radius: 50%; border: 1px solid var(--color-gold-mid); display: grid; place-items: center; font: 300 20px/1 var(--font-body); color: var(--color-gold-light); }
+.bdr-page { flex: 1; min-width: 0; display: flex; background: var(--color-card); border: 1px solid var(--color-gold-mid); position: relative; }
+.bdr-page::before { content: ""; flex: 0 0 14px; background: var(--color-navy); border-right: 1px solid var(--color-gold-mid); }
+.bdr-page::after { content: ""; position: absolute; top: 9px; bottom: 9px; left: 23px; right: 9px; border: 1px solid var(--color-rule); pointer-events: none; }
+.bdr-page-in { flex: 1; display: flex; flex-direction: column; justify-content: center; padding: clamp(40px, 4vw, 64px) clamp(40px, 5vw, 88px); }
+.bdr-page h3 { margin-top: 34px; font-family: var(--font-display); font-weight: 400; font-size: clamp(36px, 3vw, 50px); line-height: 1.06; color: var(--color-ink); }
+.bdr-line { margin-top: 12px; font-family: var(--font-display); font-size: clamp(21px, 1.6vw, 26px); line-height: 1.3; color: var(--color-gold); }
+.bdr-page p:not(.bdr-line) { margin-top: 20px; font-size: 18px; line-height: 1.75; color: var(--color-ink-soft); max-width: 640px; }
+.vbtn { margin-top: 32px; align-self: flex-start; display: inline-flex; gap: 12px; align-items: center; padding: 15px 26px; border: 1px solid var(--color-ink); color: var(--color-ink); font: 500 13px var(--font-body); letter-spacing: .14em; text-transform: uppercase; }
+.vbtn { text-decoration: none; }
+.vbtn:hover { background: var(--color-navy); border-color: var(--color-navy); color: var(--color-on-navy); }
 .more { color: var(--color-gold); }
 .navy .more, .frame.dark .more { color: var(--color-gold-light); }
 
@@ -36,11 +45,23 @@
 .vp-other h3 { margin-top: 22px; font-family: var(--font-display); font-weight: 400; font-size: 24px; line-height: 1.2; color: var(--color-ink); }
 .vp-other p { margin-top: 10px; font-size: 17px; line-height: 1.6; color: var(--color-ink-soft); flex: 1; }
 .vp-other .more { margin-top: 18px; }
-@media (max-width: 1100px) { .vp-others { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 1100px) {
+  .vp-others { grid-template-columns: 1fr 1fr; }
+  .bdr { flex-direction: column; height: auto; gap: 10px; }
+  .bdr-spine { flex: 0 0 auto; flex-direction: row; gap: 18px; padding: 16px 20px; width: 100%; }
+  .bdr-band { display: none; }
+  .bdr-title { writing-mode: horizontal-tb; transform: none; white-space: normal; text-align: left; font-size: 21px; line-height: 1.25; }
+  .bdr-medal.sm { width: 54px; height: 54px; }
+  .bdr-medal.sm img { width: 34px; height: 34px; }
+  .bdr-page::before { flex-basis: 10px; }
+  .bdr-page::after { left: 19px; }
+  .bdr-page-in { padding: 36px 28px 40px; }
+  .bdr-medal { width: 110px; height: 110px; }
+  .bdr-medal img { width: 68px; height: 68px; }
+  .bdr-page p:not(.bdr-line) { font-size: 17px; }
+}
+@media (max-width: 600px) { .vbtn { letter-spacing: .08em; padding: 14px 18px; } }
 @media (max-width: 900px) {
-  .vrow2, .vrow2:nth-child(even) { grid-template-columns: 1fr; }
-  .vrow2:nth-child(even) .vrow2-art { order: 0; }
-  .vrow2-art { min-height: 190px; }
   .vp-intro { grid-template-columns: 1fr; }
   .vp-seal { max-width: 320px; }
 }
