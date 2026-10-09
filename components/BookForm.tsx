@@ -33,7 +33,7 @@ export function BookForm() {
             {STEPS.map((x) => <li key={x}>{x}</li>)}
           </ul>
           <p className="direct">
-            Prefer to talk first? Call <a href={SITE.phoneHref}>{SITE.phoneDisplay}</a> or email{" "}
+            Prefer to write first? Email{" "}
             <a href={`mailto:${SITE.email}`}>{SITE.email}</a>.
           </p>
         </div>
@@ -58,7 +58,7 @@ export function BookForm() {
               <button className="btn-foil" type="submit" disabled={state === "sending"}>
                 {state === "sending" ? "Sending" : "Request My Meeting"}
               </button>
-              {state === "error" && <p className="ferr">Something went wrong. Please call or email us directly.</p>}
+              {state === "error" && <p className="ferr">Something went wrong. Please email us directly.</p>}
               <p className="priv">Everything you share is held in confidence. See our <a href="/privacy-policy">privacy policy</a>.</p>
             </form>
           )}

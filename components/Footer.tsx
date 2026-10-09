@@ -37,7 +37,6 @@ export function Footer() {
           <div className="fcol">
             <h3>Visit the Office</h3>
             <p>{a.street}<br />{a.city}, {a.regionLong} {a.zip}</p>
-            <a className="fnum" href={SITE.phoneHref}>{SITE.phoneDisplay}</a>
             <a href={`mailto:${SITE.email}`}>{SITE.email}</a>
           </div>
         </div>

@@ -22,9 +22,9 @@ export default function ContactPage() {
       <main>
         <section className="sec ivory">
           <div className="w">
-            <h2 className="h2">Visit, Call, <em>or Write</em></h2>
+            <h2 className="h2">Visit <em>or Write</em></h2>
             <div className="rule2" />
-            <div className="cards c3">
+            <div className="cards c2">
               <div className="frame card card-ic">
                 <div className="fi">
                   <IconImg src={icon("Contact", "Office")} size={76} />
@@ -32,13 +32,6 @@ export default function ContactPage() {
                   <p>{a.street}<br />{a.city}, {a.regionLong} {a.zip}</p>
                 </div>
               </div>
-              <a className="frame card card-ic" href={SITE.phoneHref}>
-                <div className="fi">
-                  <IconImg src={icon("Contact", "Call")} size={76} />
-                  <h3>Call</h3>
-                  <p className="num">{SITE.phoneDisplay}</p>
-                </div>
-              </a>
               <a className="frame card card-ic" href={`mailto:${SITE.email}`}>
                 <div className="fi">
                   <IconImg src={icon("Contact", "Email")} size={76} />

@@ -132,7 +132,7 @@ export default async function ServicePage({ params }: { params: Promise<Params> 
           items={d.faqs}
           tone="ivory-2"
           title={<>Questions About <em>{s.title}</em></>}
-          aside={<CtaCard title={<>Still Have <em>Questions?</em></>} body="Talk to our team directly. A real person answers, not an autoresponder." />}
+          aside={<CtaCard title={<>Still Have <em>Questions?</em></>} body="Send us your question and a member of our team will reply within one business day." />}
         />
       </main>
       <Footer />

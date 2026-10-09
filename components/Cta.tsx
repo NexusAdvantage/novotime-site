@@ -1,12 +1,11 @@
 import Link from "next/link";
-import { CTA, SITE } from "@/content/site";
+import { CTA } from "@/content/site";
 
-/** Gold button plus a direct phone line. Used inline at the end of sections. */
+/** Gold booking button. Used inline at the end of sections. */
 export function CtaRow({ center = false, light = false }: { center?: boolean; light?: boolean }) {
   return (
     <div className={`cta-row${center ? " c" : ""}${light ? " on-navy" : ""}`}>
       <Link className="btn-foil" href={CTA.href}>{CTA.label}</Link>
-      <a className="cta-call" href={SITE.phoneHref}>or call <span>{SITE.phoneDisplay}</span></a>
     </div>
   );
 }
@@ -19,7 +18,6 @@ export function CtaCard({ title, body }: { title: React.ReactNode; body: string 
         <h3>{title}</h3>
         <p>{body}</p>
         <Link className="btn-foil" href={CTA.href}>{CTA.label}</Link>
-        <a className="cta-call" href={SITE.phoneHref}>or call <span>{SITE.phoneDisplay}</span></a>
       </div>
     </div>
   );
