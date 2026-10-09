@@ -49,7 +49,7 @@ export default async function ValuePage({ params }: { params: Promise<Params> })
 
         <section className="sec navy">
           <div className="w">
-            <h2 className="h2">What It Looks Like <em>in Practice</em></h2>
+            <h2 className="h2">{v.practiceTitle}</h2>
             <div className="rule2" />
             <div className="cards c3 vp-cards">
               {v.practice.map((p) => (
@@ -62,14 +62,6 @@ export default async function ValuePage({ params }: { params: Promise<Params> })
                 </article>
               ))}
             </div>
-          </div>
-        </section>
-
-        <section className="sec ivory-2">
-          <div className="w vp-why">
-            <h2 className="h2">Why It Matters to <em>Your Family</em></h2>
-            <div className="rule2" />
-            <p>{v.why}</p>
           </div>
         </section>
 
