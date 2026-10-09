@@ -1,7 +1,7 @@
 import { Hero } from "@/components/Hero";
 import { Services } from "@/components/Services";
 import { Guide } from "@/components/Guide";
-import { ServiceTabs } from "@/components/ServiceTabs";
+import { Moments } from "@/components/Moments";
 import { Values } from "@/components/Values";
 import { BookForm } from "@/components/BookForm";
 import { Footer } from "@/components/Footer";
@@ -31,7 +31,7 @@ export default function Home() {
       <main>
         <Hero />
         <Services />
-        <ServiceTabs />
+        <Moments />
         <Guide />
         <Values />
         <BookForm />
