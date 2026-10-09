@@ -3,7 +3,6 @@ import { Services } from "@/components/Services";
 import { Guide } from "@/components/Guide";
 import { ServiceTabs } from "@/components/ServiceTabs";
 import { Values } from "@/components/Values";
-import { Conductor } from "@/components/Conductor";
 import { BookForm } from "@/components/BookForm";
 import { Footer } from "@/components/Footer";
 import { SITE } from "@/content/site";
@@ -33,7 +32,6 @@ export default function Home() {
         <Hero />
         <Services />
         <ServiceTabs />
-        <Conductor />
         <Guide />
         <Values />
         <BookForm />
