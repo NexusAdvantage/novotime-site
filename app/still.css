@@ -1,0 +1,6 @@
+/* No animation anywhere: everything renders in its final state. Hover and open states still change, just instantly. */
+*, *::before, *::after { animation: none !important; transition: none !important; }
+html { scroll-behavior: auto !important; }
+.rv, .enter, .h1-words .wd, .motion .lg-row .lg-with { opacity: 1 !important; transform: none !important; filter: none !important; }
+.ph-mark { opacity: 1 !important; }
+.card:hover, .grec:hover, .sb:hover .ar, .svc-row:hover .ar { transform: none !important; }
