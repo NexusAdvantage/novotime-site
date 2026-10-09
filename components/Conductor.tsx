@@ -17,7 +17,7 @@ export function Conductor() {
         <div className="rule2" />
         <svg viewBox={`0 0 ${W} 600`} className="tree" role="img" aria-label="Your six advisors connect to NovoTime, and NovoTime connects to your family">
           {XS.map((x, i) => (
-            <path key={i} d={`M${x} 150 C ${x} 250, ${W / 2} 230, ${W / 2} ${N_Y - 62}`} className="tree-thread" />
+            <path key={i} d={`M${x} 172 C ${x} 262, ${W / 2} 230, ${W / 2} ${N_Y - 62}`} className="tree-thread" />
           ))}
           <line x1={W / 2} y1={N_Y} x2={W / 2} y2={YOU_Y} className="tree-trunk" />
           {ADVISORS.map((a, i) => (
