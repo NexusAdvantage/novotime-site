@@ -1,5 +1,4 @@
 import { Hero } from "@/components/Hero";
-import { Services } from "@/components/Services";
 import { Guide } from "@/components/Guide";
 import { ServiceTabs } from "@/components/ServiceTabs";
 import { Values } from "@/components/Values";
@@ -31,9 +30,8 @@ export default function Home() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(orgSchema) }} />
       <main>
         <Hero />
-        <Services />
-        <ServiceTabs />
         <Conductor />
+        <ServiceTabs />
         <Guide />
         <Values />
         <BookForm />
