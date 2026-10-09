@@ -3,12 +3,6 @@
 import { useState, type FormEvent } from "react";
 import { SITE } from "@/content/site";
 
-const STEPS = [
-  "We schedule a time to meet, in person whenever possible.",
-  "You meet the people who would actually do your work, not a salesperson.",
-  "You get a clear answer: an exact scope and flat fee if we’re a fit, an honest referral if we’re not.",
-];
-
 export function BookForm() {
   const [state, setState] = useState<"idle" | "sending" | "sent" | "error">("idle");
 
@@ -29,9 +23,9 @@ export function BookForm() {
       <div className="w book-grid">
         <div>
           <h2 className="h2">Everything Starts with a <em className="foil">Conversation</em></h2>
-          <ul className="next-steps">
-            {STEPS.map((x) => <li key={x}>{x}</li>)}
-          </ul>
+          <p className="book-lead">
+            The first step is a meeting, in person whenever possible, with the people who would actually do your work, not a salesperson. You leave with a clear answer: an exact scope and flat fee if we’re a fit, or an honest referral if we’re not.
+          </p>
           <p className="direct">
             Prefer to write first? Email{" "}
             <a href={`mailto:${SITE.email}`}>{SITE.email}</a>.

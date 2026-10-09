@@ -4,9 +4,10 @@
 ul.next-steps { list-style: none; }
 ul.next-steps li { display: flex; gap: 18px; align-items: baseline; padding: 20px 0; border-bottom: 1px solid rgba(212, 194, 124, .18); font-size: 18px; line-height: 1.6; color: var(--color-on-navy-2); }
 ul.next-steps li::before { content: ""; flex: 0 0 10px; height: 10px; transform: translateY(-1px) rotate(45deg); background: var(--foil-diamond); }
-p.direct { display: block; margin-top: 30px; font-size: 18px; line-height: 1.7; color: var(--color-on-navy-soft); }
+p.book-lead { margin-top: 40px; max-width: 580px; font-size: 18px; line-height: 1.75; color: var(--color-on-navy-2); }
+p.direct { display: block; margin-top: 24px; font-size: 18px; line-height: 1.7; color: var(--color-on-navy-soft); }
 p.direct a { display: inline; font-size: inherit; color: var(--color-on-navy); border-bottom: 1px solid var(--color-gold-mid); }
-@media (max-width: 900px) { ul.next-steps li, p.direct { font-size: 17px; } }
+@media (max-width: 900px) { ul.next-steps li, p.direct, p.book-lead { font-size: 17px; } }
 
 /* service glance card: plain list and one sentence, no labels */
 .glance-list { list-style: none; padding: 22px clamp(4px, 1vw, 16px) 6px; display: grid; gap: 10px; }
