@@ -6,6 +6,7 @@ const COMPANY = [
   { label: "Home", href: "/" },
   { label: "Our Approach", href: "/approach" },
   { label: "Our Story", href: "/about" },
+  { label: "Our Values", href: "/values" },
   { label: "Contact", href: "/contact" },
 ];
 

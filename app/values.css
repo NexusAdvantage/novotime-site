@@ -1,0 +1,47 @@
+/* Values: home and overview rows, plus the single value pages. */
+.vrows { display: grid; gap: clamp(20px, 2vw, 28px); margin-top: clamp(48px, 5vw, 72px); }
+#values .w > .vrows:first-child { margin-top: 0; }
+.vrow2 { display: grid; grid-template-columns: 280px 1fr; background: var(--color-card); border: 1px solid var(--color-gold-soft); outline: 1px solid var(--color-rule); outline-offset: -11px; }
+.vrow2:nth-child(even) { grid-template-columns: 1fr 280px; }
+.vrow2:nth-child(even) .vrow2-art { order: 2; }
+.vrow2-art { margin: 10px; background: var(--color-navy); display: grid; place-items: center; min-height: 230px; position: relative; overflow: hidden; }
+.vrow2-art::before, .vrow2-art::after { content: ""; position: absolute; left: 50%; top: 50%; border-radius: 50%; border: 1px solid rgba(185, 162, 86, .35); transform: translate(-50%, -50%); }
+.vrow2-art::before { width: 200px; height: 200px; }
+.vrow2-art::after { width: 260px; height: 260px; border-color: rgba(185, 162, 86, .18); }
+.vrow2-medal { width: 140px; height: 140px; border-radius: 50%; background: var(--color-ivory); display: grid; place-items: center; position: relative; z-index: 1; box-shadow: 0 0 0 1px var(--color-gold-mid), 0 0 0 9px var(--color-navy), 0 0 0 10px rgba(185, 162, 86, .55); }
+.vrow2-medal img { width: 88px; height: 88px; object-fit: contain; }
+.vrow2-txt { padding: clamp(32px, 3.4vw, 56px) clamp(32px, 4vw, 72px); display: flex; flex-direction: column; justify-content: center; }
+.vrow2-txt h3 { font-family: var(--font-display); font-weight: 400; font-size: clamp(30px, 2.4vw, 42px); line-height: 1.1; color: var(--color-ink); }
+.vrow2-txt p { margin-top: 16px; font-size: 18px; line-height: 1.65; color: var(--color-ink-soft); max-width: 640px; }
+.vrow2-txt .more { margin-top: 24px; align-self: flex-start; }
+.more { color: var(--color-gold); }
+.navy .more, .frame.dark .more { color: var(--color-gold-light); }
+
+.vp-intro { display: grid; grid-template-columns: 1.3fr 1fr; gap: clamp(48px, 6vw, 110px); align-items: center; }
+.vp-intro p { margin-top: 26px; font-size: 18px; line-height: 1.75; color: var(--color-ink-soft); max-width: 640px; }
+.vp-seal { position: relative; display: grid; place-items: center; aspect-ratio: 1; max-width: 440px; width: 100%; justify-self: center; background: var(--color-navy); border-radius: 50%; }
+.vp-ring { position: absolute; inset: 22px; border-radius: 50%; border: 1px solid rgba(185, 162, 86, .5); }
+.vp-ring::after { content: ""; position: absolute; inset: 26px; border-radius: 50%; border: 1px dashed rgba(185, 162, 86, .35); }
+.vp-medal { width: 56%; aspect-ratio: 1; border-radius: 50%; background: var(--color-ivory); display: grid; place-items: center; position: relative; box-shadow: 0 0 0 1px var(--color-gold-mid), 0 0 0 12px var(--color-navy), 0 0 0 13px rgba(185, 162, 86, .6); }
+.vp-medal img { width: 62%; height: auto; }
+.vp-cards .card p { color: var(--color-on-navy-soft) !important; }
+.vp-cards .card h3 { color: var(--color-on-navy) !important; }
+.vp-why { max-width: 900px; }
+.vp-why p { margin-top: 26px; font-family: var(--font-body); font-size: 18px; line-height: 1.75; color: var(--color-ink-soft); }
+.vp-others { display: grid; grid-template-columns: repeat(4, 1fr); gap: clamp(16px, 1.6vw, 24px); margin-top: clamp(40px, 4vw, 60px); }
+.vp-other { display: flex; flex-direction: column; text-decoration: none; background: var(--color-card); border: 1px solid var(--color-gold-soft); padding: 30px 28px 32px; }
+.vp-other:hover { border-color: var(--color-gold); }
+.vp-other-ic { width: 76px; height: 76px; display: grid; place-items: center; border: 1px solid var(--color-gold-soft); background: var(--color-ivory); }
+.vp-other-ic img { width: 52px; height: 52px; object-fit: contain; }
+.vp-other h3 { margin-top: 22px; font-family: var(--font-display); font-weight: 400; font-size: 24px; line-height: 1.2; color: var(--color-ink); }
+.vp-other p { margin-top: 10px; font-size: 17px; line-height: 1.6; color: var(--color-ink-soft); flex: 1; }
+.vp-other .more { margin-top: 18px; }
+@media (max-width: 1100px) { .vp-others { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 900px) {
+  .vrow2, .vrow2:nth-child(even) { grid-template-columns: 1fr; }
+  .vrow2:nth-child(even) .vrow2-art { order: 0; }
+  .vrow2-art { min-height: 190px; }
+  .vp-intro { grid-template-columns: 1fr; }
+  .vp-seal { max-width: 320px; }
+}
+@media (max-width: 600px) { .vp-others { grid-template-columns: 1fr; } }

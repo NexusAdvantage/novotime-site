@@ -1,37 +1,54 @@
+import Image from "next/image";
 import Link from "next/link";
-import { ADVISORS, CENTER_POINTS } from "@/content/conductor";
-import { IconImg, icon } from "./IconImg";
+import { ADVISORS, HUB } from "@/content/conductor";
+import { FAVICON_N } from "@/content/favicon";
+import { icon } from "./IconImg";
+
+const Seal = () => (
+  <span className="adv-seal" aria-hidden="true">
+    <svg viewBox="40 40 230 230"><path d={FAVICON_N} /></svg>
+  </span>
+);
 
 export function Conductor() {
-  const left = ADVISORS.slice(0, 3);
-  const right = ADVISORS.slice(3);
-  const card = (a: (typeof ADVISORS)[number]) => (
-    <article className="frame cond-card" key={a.role}>
-      <div className="fi">
-        <IconImg src={icon("Conductors", a.role)} size={60} />
-        <div>
-          <h3>{a.role}</h3>
-          <p>{a.d}</p>
-        </div>
-      </div>
-    </article>
-  );
   return (
     <section className="sec ivory-2" id="coordination">
       <div className="w">
         <h2 className="h2">Your Advisors, Finally <em>on the Same Page</em></h2>
         <div className="rule2" />
-        <div className="cond">
-          <div className="cond-col">{left.map(card)}</div>
-          <div className="frame dark cond-center">
-            <div className="fi">
-              <span className="cond-mark">Novo<i>Time</i></span>
-              <p className="cond-lead">One central point of contact, so every advisor works from the same complete picture.</p>
-              <ul>{CENTER_POINTS.map((p) => <li key={p}>{p}</li>)}</ul>
-              <Link className="more" href="/approach">See How We Work <span aria-hidden="true">&rarr;</span></Link>
-            </div>
+        <div className="hub">
+          <div className="hub-lead">
+            <Seal />
+            <h3>{HUB.title}</h3>
+            <p>{HUB.body}</p>
+            <Link className="more" href="/approach">See How We Work <span aria-hidden="true">&rarr;</span></Link>
           </div>
-          <div className="cond-col">{right.map(card)}</div>
+          <div className="hub-points">
+            {HUB.points.map((p) => (
+              <div className="hub-pt" key={p.t}>
+                <h3>{p.t}</h3>
+                <p>{p.d}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+        <div className="adv">
+          {ADVISORS.map((a) => (
+            <article className="adv-item" key={a.role}>
+              <div className="adv-art" aria-hidden="true">
+                <Seal />
+                <i className="adv-line"><b /></i>
+                <span className="adv-medal">
+                  <Image src={encodeURI(icon("Conductors", a.role))} alt="" width={72} height={72} sizes="72px" />
+                </span>
+              </div>
+              <div className="adv-txt">
+                <h3>{a.role}</h3>
+                <p>{a.d}</p>
+                <Link className="more" href={`/services/${a.slug}`}>{a.link} <span aria-hidden="true">&rarr;</span></Link>
+              </div>
+            </article>
+          ))}
         </div>
       </div>
     </section>

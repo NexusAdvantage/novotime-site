@@ -12,6 +12,8 @@ import "./motion.css";
 import "./polish.css";
 import "./hero.css";
 import "./process.css";
+import "./conductor.css";
+import "./values.css";
 import "./still.css";
 import { SvgSprite } from "@/components/SvgSprite";
 import { ScrollFlag } from "@/components/ScrollFlag";

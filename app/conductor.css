@@ -1,0 +1,34 @@
+/* Home: Your Advisors, Finally on the Same Page. Each advisor is its own sub section, drawn as NovoTime joined to that advisor. */
+.adv { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(20px, 2vw, 32px); margin-top: clamp(48px, 5vw, 72px); }
+.adv-item { background: var(--color-card); border: 1px solid var(--color-gold-soft); outline: 1px solid var(--color-rule); outline-offset: -11px; display: flex; flex-direction: column; }
+.adv-art { position: relative; display: flex; align-items: center; gap: 0; padding: 34px clamp(28px, 3vw, 48px); background: var(--color-navy); border-bottom: 3px solid var(--color-gold-mid); margin: 10px 10px 0; }
+.adv-seal { flex: 0 0 64px; height: 64px; border-radius: 50%; display: grid; place-items: center; border: 1px solid var(--color-gold-mid); box-shadow: 0 0 0 6px var(--color-navy), 0 0 0 7px rgba(185, 162, 86, .35); }
+.adv-seal svg { width: 34px; height: 34px; fill: var(--color-gold-light); }
+.adv-line { flex: 1; height: 1px; margin: 0 18px; background: repeating-linear-gradient(90deg, var(--color-gold-mid) 0 6px, transparent 6px 12px); position: relative; }
+.adv-line b { position: absolute; left: 50%; top: 50%; width: 10px; height: 10px; background: var(--color-gold-light); transform: translate(-50%, -50%) rotate(45deg); }
+.adv-medal { flex: 0 0 104px; height: 104px; border-radius: 50%; background: var(--color-ivory); display: grid; place-items: center; box-shadow: 0 0 0 1px var(--color-gold-mid), 0 0 0 8px var(--color-navy), 0 0 0 9px rgba(185, 162, 86, .45); }
+.adv-medal img { width: 64px; height: 64px; object-fit: contain; }
+.adv-txt { padding: clamp(28px, 2.6vw, 40px) clamp(28px, 3vw, 48px) clamp(32px, 3vw, 44px); display: flex; flex-direction: column; flex: 1; }
+.adv-txt h3 { font-family: var(--font-display); font-weight: 400; font-size: clamp(26px, 1.9vw, 32px); line-height: 1.15; color: var(--color-ink); }
+.adv-txt p { margin-top: 14px; font-size: 18px; line-height: 1.65; color: var(--color-ink-soft); flex: 1; }
+.adv-txt .more { margin-top: 24px; align-self: flex-start; }
+@media (max-width: 900px) {
+  .adv { grid-template-columns: 1fr; }
+  .adv-art { padding: 26px 24px; }
+  .adv-medal { flex-basis: 88px; height: 88px; }
+  .adv-medal img { width: 54px; height: 54px; }
+  .adv-txt p { font-size: 17px; }
+}
+.hub { display: grid; grid-template-columns: 1fr 1.15fr; gap: clamp(36px, 5vw, 90px); margin-top: clamp(48px, 5vw, 72px); padding: clamp(40px, 4.4vw, 72px); background: var(--color-navy); border: 1px solid var(--color-gold-mid); outline: 1px solid rgba(185, 162, 86, .3); outline-offset: -12px; }
+.hub-lead .adv-seal { width: 84px; height: 84px; }
+.hub-lead .adv-seal svg { width: 44px; height: 44px; }
+.hub-lead h3 { margin-top: 30px; font-family: var(--font-display); font-weight: 400; font-size: clamp(30px, 2.4vw, 42px); line-height: 1.12; color: var(--color-on-navy) !important; }
+.hub-lead p { margin-top: 18px; font-size: 18px; line-height: 1.7; color: var(--color-on-navy-soft); }
+.hub-lead .more { margin-top: 26px; display: inline-flex; }
+.hub-points { display: grid; align-content: center; border-top: 1px solid rgba(212, 194, 124, .25); }
+.hub-pt { padding: 26px 0 26px 32px; border-bottom: 1px solid rgba(212, 194, 124, .25); position: relative; }
+.hub-pt::before { content: ""; position: absolute; left: 2px; top: 37px; width: 10px; height: 10px; transform: rotate(45deg); background: var(--color-gold-light); }
+.hub-pt h3 { font-family: var(--font-display); font-weight: 400; font-size: clamp(24px, 1.7vw, 28px); color: var(--color-on-navy) !important; }
+.hub-pt p { margin-top: 8px; font-size: 18px; line-height: 1.65; color: var(--color-on-navy-soft); }
+.hub + .adv { margin-top: clamp(20px, 2vw, 32px); }
+@media (max-width: 900px) { .hub { grid-template-columns: 1fr; } .hub-pt p, .hub-lead p { font-size: 17px; } }

@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { NAV_LEFT, NAV_RIGHT, CTA } from "@/content/site";
 import { SERVICES } from "@/content/services";
+import { VALUES } from "@/content/values";
 
 function Caret() {
   return (
@@ -59,6 +60,10 @@ export function Header({ ctaHref = CTA.href }: { ctaHref?: string }) {
               </div>
               <Link href="/approach">Our Approach</Link>
               <Link href="/about">Our Story</Link>
+              <Link href="/values">Values</Link>
+              <div className="mnav-sub">
+                {VALUES.map((v) => <Link key={v.slug} href={`/values/${v.slug}`}>{v.title.replace(/<\/?em>/g, "")}</Link>)}
+              </div>
               {NAV_RIGHT.map((n) => <Link key={n.href} href={n.href}>{n.label}</Link>)}
             </div>
           </details>

@@ -19,6 +19,17 @@ export const NAV_LEFT: NavItem[] = [
   { label: "Services", href: "/services" },
   { label: "Our Approach", href: "/approach" },
   { label: "Our Story", href: "/about" },
+  {
+    label: "Values",
+    href: "/values",
+    children: [
+      { label: "We Stand on Integrity", href: "/values/integrity" },
+      { label: "We Serve One Interest", href: "/values/one-interest" },
+      { label: "We Find a Way", href: "/values/find-a-way" },
+      { label: "We Challenge the Playbook", href: "/values/challenge-the-playbook" },
+      { label: "We Earn It with Humility", href: "/values/humility" },
+    ],
+  },
 ];
 export const NAV_RIGHT = [{ label: "Contact", href: "/contact" }];
 // Every content page ends with the booking form (#book), so the CTA scrolls in place.
