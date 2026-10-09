@@ -46,7 +46,6 @@ export function Values({ heading = true }: { heading?: boolean }) {
                       </span>
                       <div className="bdr-copy">
                         <h3 dangerouslySetInnerHTML={{ __html: v.title }} />
-                        <p className="bdr-line">{v.headline}</p>
                         <p>{v.intro}</p>
                         <Link className="vbtn" href={valueHref(v.slug)} tabIndex={on ? 0 : -1}>Read More About {v.name} <span aria-hidden="true">&rarr;</span></Link>
                       </div>
