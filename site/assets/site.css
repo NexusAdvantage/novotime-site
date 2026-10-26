@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,500;6..96,600&display=swap');
 :root{--navy:#002F5F;--gold:#86731E;--ink:#22364D;--body:#4A5869;--line:#E6EAF0;--soft:#F6F8FB}
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
@@ -11,7 +12,7 @@ h3{font-size:22px;letter-spacing:-.02em;line-height:1.25}
 .narrow{max-width:760px}
 header.top{position:absolute;top:0;left:0;right:0;z-index:10;display:flex;justify-content:space-between;align-items:center;padding:28px 6vw}
 header.top.solid{position:relative;border-bottom:1px solid var(--line)}
-.lk{display:flex;align-items:center;gap:14px}.lk img{height:28px;width:auto}.lk span{font-family:'Bodoni Moda',serif;font-size:30px;color:var(--navy);letter-spacing:.01em;line-height:1}
+.lk{display:flex;align-items:center;gap:16px}.lk img{height:38px;width:auto}.lk span{font-family:'Bodoni Moda',serif;font-weight:500;font-variation-settings:'opsz' 11;font-size:34px;color:var(--navy);letter-spacing:.015em;line-height:1}
 nav.main{display:flex;gap:40px}nav.main a{font-size:15px;font-weight:500;color:var(--navy);position:relative}
 nav.main a::after{content:"";position:absolute;left:0;right:100%;bottom:-6px;height:1px;background:var(--gold);transition:right .4s ease}
 nav.main a:hover::after,nav.main a.on::after{right:0}
@@ -63,7 +64,7 @@ form button{margin-top:36px;background:var(--navy);color:#fff;border:0;border-ra
 .card.reveal.in:nth-child(2),.card.reveal.in:nth-child(4){transform:translateY(60px)}
 @media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
 @media (max-width:860px){
- .w{padding:0 22px}header.top{padding:20px 22px}nav.main{gap:20px}.lk span{font-size:24px}.lk img{height:22px}
+ .w{padding:0 22px}header.top{padding:20px 22px}nav.main{gap:20px}.lk span{font-size:27px}.lk img{height:30px}
  .hero .txt{max-width:88vw;top:auto;bottom:10vh;transform:none}
  section{padding:90px 0}.cards{grid-template-columns:1fr}.card:nth-child(n){transform:none!important}
  .svc-row,.contact-grid,footer .cols{grid-template-columns:1fr;gap:16px}
