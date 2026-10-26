@@ -10,20 +10,4 @@
 <footer><div class="w"><div class="cols"><div><a class="lk" href="index.html"><img src="assets/nt-mark.svg" alt=""><span>NovoTime</span></a></div>
 <div class="fl"><a href="services.html">Services</a><a href="contact.html">Contact Us</a><a href="founder.html">About the Founder</a></div>
 <div>9375 Burt St., Suite 202<br>Omaha, NE 68114<br><a href="tel:+14022398086" style="color:#fff">402-239-8086</a><br><a href="mailto:contact@novo-time.com" style="color:#fff">contact@novo-time.com</a></div></div>
-<p class="disc">NovoTime LLC is not a registered investment adviser and does not provide investment advice, recommendations, or analysis. NovoTime LLC does not review or evaluate the performance of investments or investment managers or effect securities transactions. All investment advice, performance reviews, and related services are provided by licensed independent investment advisers. NovoTime LLC does not supervise or assume responsibility for the advice or services provided by such third parties. Any educational sessions, materials, or discussions provided by NovoTime LLC are general in nature, intended for informational purposes only, and do not constitute investment or legal advice. Clients should consult their own qualified investment advisers or legal professionals before making investment or legal decisions.</p><div class="bot">&copy; NovoTime LLC</div></div></footer><script src="assets/site.js"></script><script>const RM=matchMedia("(prefers-reduced-motion: reduce)").matches;const c=document.getElementById('c'),x=c.getContext('2d');let W,H,d=Math.min(devicePixelRatio||1,2);
-function rs(){W=c.clientWidth;H=c.clientHeight;c.width=W*d;c.height=H*d;x.setTransform(d,0,0,d,0,0)}addEventListener('resize',rs);rs();
-const L=90,S=120,A=[0,47,95],B=[79,122,163],C=[150,128,40];
-function col(u){const m=u<.5?[A,B,u/.5]:[B,C,(u-.5)/.5];return m[0].map((v,i)=>Math.round(v+(m[1][i]-v)*m[2])).join(',')}
-const cols=[...Array(L)].map((_,k)=>col(k/(L-1)));
-function bz(p0,p1,p2,p3,s){const m=1-s;return m*m*m*p0+3*m*m*s*p1+3*m*s*s*p2+s*s*s*p3}
-function db(p0,p1,p2,p3,s){const m=1-s;return 3*m*m*(p1-p0)+6*m*s*(p2-p1)+3*s*s*(p3-p2)}
-let st=performance.now();
-function f(now){const t=(now-st)/1000;x.clearRect(0,0,W,H);
-const sw=Math.sin(t*.04),sw2=Math.cos(t*.03);
-const P=[[W*.50,-H*.15],[W*(.62+.03*sw),H*(.25+.03*sw2)],[W*(.80-.03*sw2),H*(.55+.04*sw)],[W*1.12,H*1.05]];
-const pts=[];for(let i=0;i<=S;i++){const s=i/S,px=bz(P[0][0],P[1][0],P[2][0],P[3][0],s),py=bz(P[0][1],P[1][1],P[2][1],P[3][1],s),tx=db(P[0][0],P[1][0],P[2][0],P[3][0],s),ty=db(P[0][1],P[1][1],P[2][1],P[3][1],s),l=Math.hypot(tx,ty);
-pts.push([px,py,-ty/l,tx/l,H*.34*(.55+.45*Math.sin(Math.PI*s)),Math.cos(s*2.4+t*.07)])}
-for(let k=0;k<L;k++){const u=k/(L-1)-.5;x.beginPath();for(let i=0;i<=S;i++){const p=pts[i],o=u*p[4]*p[5],X=p[0]+p[2]*o,Y=p[1]+p[3]*o;i?x.lineTo(X,Y):x.moveTo(X,Y)}
-x.strokeStyle=`rgba(${cols[k]},${.30+.40*Math.sin(Math.PI*(u+.5))})`;x.lineWidth=1;x.stroke()}
-if(!RM)requestAnimationFrame(f)}requestAnimationFrame(f);
-</script></body></html>
+<p class="disc">NovoTime LLC is not a registered investment adviser and does not provide investment advice, recommendations, or analysis. NovoTime LLC does not review or evaluate the performance of investments or investment managers or effect securities transactions. All investment advice, performance reviews, and related services are provided by licensed independent investment advisers. NovoTime LLC does not supervise or assume responsibility for the advice or services provided by such third parties. Any educational sessions, materials, or discussions provided by NovoTime LLC are general in nature, intended for informational purposes only, and do not constitute investment or legal advice. Clients should consult their own qualified investment advisers or legal professionals before making investment or legal decisions.</p><div class="bot">&copy; NovoTime LLC</div></div></footer><script src="assets/site.js"></script><script src="assets/ribbon.js"></script></body></html>
