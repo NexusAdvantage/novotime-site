@@ -1,4 +1,4 @@
-(function(){const c=document.getElementById('c');if(!c)return;const x=c.getContext('2d');const RM=matchMedia('(prefers-reduced-motion: reduce)').matches;let W,H,d=Math.min(devicePixelRatio||1,1.5);
+(function(){const c=document.getElementById('c');if(!c)return;const x=c.getContext('2d');const RM=true;let W,H,d=Math.min(devicePixelRatio||1,1.5);
 function rs(){W=c.clientWidth;H=c.clientHeight;c.width=W*d;c.height=H*d;x.setTransform(d,0,0,d,0,0)}addEventListener('resize',rs);rs();
 const st=performance.now();let last=0,vis=true,run=false;
 const S=[[.565,.82,.022,1],[.605,.74,.033,0],[.655,.65,.047,1],[.72,.55,.064,0]];
