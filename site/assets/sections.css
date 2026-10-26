@@ -58,3 +58,5 @@ svg.lines{-webkit-mask-image:linear-gradient(to bottom,transparent 0,#000 24%,#0
 /* keep every decoration inside its section so the fade happens before the edge */
 .intro>svg.lines{bottom:0;top:0;height:100%}
 .approach2>svg.lines,.deco>svg.lines,.page-head>svg.lines{top:0;height:100%}
+/* ribbon lines only in the hero and the navy independence feature; everywhere else stays clean */
+svg.lines{display:none}.feature>svg.lines{display:block}
