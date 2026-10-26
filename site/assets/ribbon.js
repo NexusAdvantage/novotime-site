@@ -1,4 +1,4 @@
-(function(){const c=document.getElementById('c');if(!c)return;const x=c.getContext('2d');const RM=matchMedia('(prefers-reduced-motion: reduce)').matches;let W,H,d=Math.min(devicePixelRatio||1,1.5);
+(function(){const c=document.getElementById('c');if(!c)return;const x=c.getContext('2d');const RM=true;let W,H,d=Math.min(devicePixelRatio||1,1.5);
 function rs(){W=c.clientWidth;H=c.clientHeight;c.width=W*d;c.height=H*d;x.setTransform(d,0,0,d,0,0)}addEventListener('resize',rs);rs();
 const st=performance.now();let last=0,vis=true,run=false;
 const B=[[157,184,211,.70,.74,.34,.30,0],[217,200,142,.60,.86,.66,.26,1.7],[110,150,190,.45,.95,.50,.22,3.1],[233,223,184,.55,.66,.82,.24,4.4],[201,214,228,.65,.98,.18,.26,5.2]];
