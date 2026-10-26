@@ -50,3 +50,11 @@
 .svc-block li::before{content:"";position:absolute;left:0;top:-1px;width:28px;height:2px;background:var(--gold)}
 @media (max-width:1000px){.glass,.tiles{grid-template-columns:1fr 1fr}.glass .card2:nth-child(even){margin-top:0}}
 @media (max-width:860px){.svc-block{padding:32px 26px}.intro .w,.approach2 .head,.svc-block,.svc-block ul{grid-template-columns:1fr;gap:24px}.glass,.tiles{grid-template-columns:1fr}.svc2 .head{display:block}.intro .side{border-left:0;padding-left:0}}
+/* seamless edges: decorative lines and the hero ribbon dissolve instead of cutting off */
+svg.lines{-webkit-mask-image:linear-gradient(to bottom,transparent 0,#000 24%,#000 76%,transparent 100%);mask-image:linear-gradient(to bottom,transparent 0,#000 24%,#000 76%,transparent 100%)}
+.hero canvas{-webkit-mask-image:linear-gradient(to bottom,#000 0,#000 62%,transparent 100%);mask-image:linear-gradient(to bottom,#000 0,#000 62%,transparent 100%)}
+/* lighter, more refined hero type */
+.hero h1{font-weight:400;font-size:clamp(40px,4.7vw,70px);letter-spacing:-.032em;line-height:1.08;color:var(--navy)}
+/* keep every decoration inside its section so the fade happens before the edge */
+.intro>svg.lines{bottom:0;top:0;height:100%}
+.approach2>svg.lines,.deco>svg.lines,.page-head>svg.lines{top:0;height:100%}
