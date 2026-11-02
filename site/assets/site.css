@@ -14,10 +14,10 @@ section{padding:150px 0}
 .eyebrow{font-size:12.5px;font-weight:500;letter-spacing:.24em;text-transform:uppercase;color:var(--gold-l)}
 .link{display:inline-block;font-size:15px;font-weight:500;color:var(--navy);border-bottom:1px solid var(--gold);padding-bottom:4px;transition:color .3s}
 .link:hover{color:var(--gold)}.link.light{color:#fff;border-color:var(--gold-l)}.link.light:hover{color:var(--gold-l)}
-.btn{display:inline-block;padding:17px 34px;border:1px solid var(--gold-l);color:#fff;font-size:15px;font-weight:500;letter-spacing:.02em;transition:background .35s,color .35s}
-.btn:hover{background:var(--gold-l);color:var(--deep)}
+.btn{display:inline-block;padding:17px 34px;border:1px solid var(--gold-l);border-radius:8px;background:var(--gold-l);color:var(--deep);font-size:15px;font-weight:600;letter-spacing:.02em;transition:background .35s,border-color .35s,transform .35s}
+.btn:hover{background:#D6C48C;border-color:#D6C48C;transform:translateY(-1px)}
 .btn.solid{background:var(--navy);border-color:var(--navy);cursor:pointer;font:inherit;font-size:15px;font-weight:500}
-.btn.solid:hover{background:var(--deep);color:#fff}
+.btn.solid{color:#fff}.btn.solid:hover{background:var(--deep);border-color:var(--deep);color:#fff}
 
 /* header */
 header.top{position:absolute;top:0;left:0;right:0;z-index:10;display:flex;justify-content:space-between;align-items:center;padding:30px max(56px,calc((100vw - 1240px)/2 + 56px))}
