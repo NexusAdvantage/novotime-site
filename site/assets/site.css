@@ -89,13 +89,14 @@ header.dark nav.main a::after{background:var(--gold-l)}
 
 /* engagement */
 .engage{position:relative;background:radial-gradient(ellipse 50% 70% at 0% 100%,rgba(180,156,56,.16),rgba(180,156,56,0) 70%),linear-gradient(180deg,#FBF9F4,#F5F1E6)}
-.squares{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));margin-top:72px;border-top:1px solid rgba(134,115,30,.28);border-left:1px solid rgba(134,115,30,.28)}
-.sq{position:relative;min-height:400px;padding:44px 32px 40px;background:rgba(255,255,255,.7);border-right:1px solid rgba(134,115,30,.28);border-bottom:1px solid rgba(134,115,30,.28);transition:background .5s ease,color .5s ease}
-.sq::before{content:"";position:absolute;left:32px;top:-1px;width:44px;height:2px;background:var(--gold);transition:width .5s ease}
-.sq .ic{display:block;width:44px;height:44px;color:var(--gold)}.sq .ic svg{width:100%;height:100%}
-.sq h3{margin-top:34px;font-family:Newsreader,Georgia,serif;font-weight:400;font-size:27px;letter-spacing:-.015em;color:var(--navy);transition:color .5s ease}
-.sq p{margin-top:14px;font-size:15.5px;line-height:1.75;transition:color .5s ease}
-.sq:hover{background:var(--deep)}.sq:hover::before{width:calc(100% - 64px)}.sq:hover h3{color:#fff}.sq:hover p{color:#B9C6D6}.sq:hover .ic{color:var(--gold-l)}
+.squares{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));margin-top:80px}
+.sq{position:relative;padding:4px 36px 8px}
+.sq:first-child{padding-left:0}.sq:last-child{padding-right:0}
+.sq+.sq{border-left:1px solid rgba(134,115,30,.3)}
+.sq .ic{display:flex;align-items:center;justify-content:center;width:72px;height:72px;border-radius:50%;border:1px solid rgba(134,115,30,.45);color:var(--gold);transition:background .4s,color .4s}.sq .ic svg{width:30px;height:30px}
+.sq:hover .ic{background:var(--gold);color:#fff}
+.sq h3{margin-top:30px;font-family:Newsreader,Georgia,serif;font-weight:400;font-size:27px;letter-spacing:-.015em;color:var(--navy)}
+.sq p{margin-top:14px;font-size:15.5px;line-height:1.8}
 .promise{margin-top:90px;padding-top:56px;border-top:1px solid rgba(134,115,30,.3);display:flex;flex-direction:column;align-items:center;text-align:center}
 .promise p{font-family:Newsreader,Georgia,serif;font-size:clamp(30px,3.2vw,46px);line-height:1.2;color:var(--navy);letter-spacing:-.015em}
 .promise .link{margin-top:30px}
@@ -150,7 +151,7 @@ footer .bot{margin-top:24px;font-size:13px;color:#6F8197}
 @keyframes up{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:none}}
 @media (prefers-reduced-motion:reduce){.reveal,.hero .txt>*{opacity:1;transform:none;transition:none;animation:none}.hero .scroll{display:none}}
 @media (max-width:1000px){.svcpick{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media (max-width:1100px){.squares{grid-template-columns:repeat(2,minmax(0,1fr))}.sq{min-height:0}}
+@media (max-width:1100px){.squares{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:56px}.sq:nth-child(3){padding-left:0;border-left:0}.sq:nth-child(2){padding-right:0}}
 
 @media (max-width:760px){
  .w{padding:0 22px}header.top{padding:20px 22px}nav.main{gap:18px}nav.main a{font-size:13px}.lk span{font-size:24px}.lk img{height:26px}
@@ -159,7 +160,7 @@ footer .bot{margin-top:24px;font-size:13px;color:#6F8197}
  .cols2,.pillars,.slist .w,.contact-grid,footer .cols{grid-template-columns:1fr;gap:0}
  .cols2{gap:22px}.pillar,.pillar:nth-child(even){padding:44px 0;border-left:0}.pillar+.pillar{border-top:1px solid rgba(0,47,95,.14)}.note::after{width:80vw;right:-30%;opacity:.05}.contact-grid{gap:40px}footer .cols{gap:30px}
  .phead{padding:170px 0 90px}
- .squares{grid-template-columns:1fr}.sq{padding:36px 26px}.sq::before{left:26px}.sq:hover::before{width:calc(100% - 52px)}.promise{margin-top:64px}
+ .squares{grid-template-columns:1fr;row-gap:0}.sq,.sq:nth-child(n){padding:36px 0;border-left:0}.sq+.sq{border-top:1px solid rgba(134,115,30,.3)}.sq:first-child{padding-top:0}
 }
 @media (max-width:420px){nav.main{gap:14px}nav.main a{font-size:12.5px}.lk span{font-size:21px}.lk{gap:9px}.lk img{height:22px}}
 @media (max-width:350px){header.top .lk span{display:none}}
