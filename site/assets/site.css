@@ -157,3 +157,14 @@ footer .bot{margin-top:24px;font-size:13px;color:#6F8197}
 }
 @media (max-width:420px){nav.main{gap:14px}nav.main a{font-size:12.5px}.lk span{font-size:21px}.lk{gap:9px}.lk img{height:22px}}
 @media (max-width:350px){header.top .lk span{display:none}}
+
+/* light version */
+.eyebrow{color:var(--gold)}
+header.dark .lk span,header.dark nav.main a{color:var(--navy)}header.dark nav.main a::after{background:var(--gold)}
+.hero{color:var(--body);background:radial-gradient(ellipse 70% 80% at 85% 30%,#DDE7F3 0%,rgba(221,231,243,0) 70%),linear-gradient(180deg,#FFFFFF 0%,#F6F3EC 100%)}
+.hero h1{color:var(--ink)}.hero .sub{color:var(--body)}
+.link.light{color:var(--navy);border-color:var(--gold)}.link.light:hover{color:var(--gold)}
+.feature{color:var(--body);background:linear-gradient(180deg,#F3EDDF,#EEE6D2)}.feature .big{color:var(--ink)}
+.svcpanel{background:#EEF2F7;color:var(--body)}.pane h3{color:var(--navy)}.pane li{border-top-color:rgba(0,47,95,.12)}.svcpanel::after{opacity:.06}
+.cta{color:var(--body);background:radial-gradient(ellipse 60% 90% at 50% 0%,#DDE7F3 0%,rgba(221,231,243,0) 70%),linear-gradient(180deg,#FFFFFF,#F3F6F9)}.cta h2{color:var(--ink)}
+.phead{color:var(--body);background:radial-gradient(ellipse 70% 90% at 85% 20%,#DDE7F3 0%,rgba(221,231,243,0) 70%),linear-gradient(180deg,#FFFFFF,#F6F3EC)}.phead h1{color:var(--ink)}
