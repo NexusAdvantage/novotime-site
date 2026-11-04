@@ -1,6 +1,6 @@
 (function(){const c=document.getElementById('c');if(!c)return;const x=c.getContext('2d');const RM=matchMedia('(prefers-reduced-motion: reduce)').matches;let W,H,d=Math.min(devicePixelRatio||1,1.5);
 function rs(){W=c.clientWidth;H=c.clientHeight;c.width=W*d;c.height=H*d;x.setTransform(d,0,0,d,0,0);x.lineJoin='round'}addEventListener('resize',rs);rs();
-const L=56,S=90,A=[120,160,205],B=[170,195,225],C=[180,156,56];
+const L=56,S=90,A=[120,160,205],B=[170,195,225],C=[201,184,118];
 function col(u){const m=u<.5?[A,B,u/.5]:[B,C,(u-.5)/.5];return m[0].map((v,i)=>Math.round(v+(m[1][i]-v)*m[2])).join(',')}
 const styles=[...Array(L)].map((_,k)=>{const u=k/(L-1)-.5;return `rgba(${col(k/(L-1))},${(.10+.34*Math.sin(Math.PI*(u+.5))).toFixed(3)})`});
 function bz(p0,p1,p2,p3,s){const m=1-s;return m*m*m*p0+3*m*m*s*p1+3*m*s*s*p2+s*s*s*p3}
