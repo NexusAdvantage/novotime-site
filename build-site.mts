@@ -46,10 +46,17 @@ const cta = (p = '') => `<section class="cta"><div class="w"><p class="eyebrow r
 const phead = (h1: string, sub = '') => `<section class="phead"><svg class="lines" data-l="dark" aria-hidden="true"></svg><div class="w"><h1>${h1}</h1>${sub ? `<p class="sub">${sub}</p>` : ''}</div></section>`;
 const faq = (items: any[]) => items.map(q => `<details class="qa reveal"><summary>${E(q.q)}</summary><p>${E(q.a)}</p></details>`).join('');
 
-// services overview
-const cards = SV.map(s => `<a class="scard reveal" href="services/${s.slug}.html"><h3>${s.name}</h3><p class="g">${s.tag}</p><p class="d">${E(SUM[s.slug])}</p><span class="more">View service</span></a>`).join('');
-write('services.html', page('Our Services', 's', phead('Our Services', 'There is no all-or-nothing package. Choose only the services most valuable to you.') +
-  `<section class="sgrid-sec"><div class="w"><div class="sgrid">${cards}</div></div></section>` + cta(),
+// services overview: three groups of large rows, middle group on navy
+const GROUPS: [string, string, string[]][] = [
+  ['Managing the <em>Day to Day</em>', 'g1', ['financial-administration', 'tax-and-compliance', 'investment-coordination']],
+  ['Protecting What <em>You&rsquo;ve Built</em>', 'g2', ['risk-and-insurance', 'estate-and-legal', 'documents-and-information']],
+  ['Caring for <em>Family and Home</em>', 'g3', ['governance-and-philanthropy', 'next-generation-education', 'travel-and-property']],
+];
+const BY: Record<string, any> = Object.fromEntries(SV.map(s => [s.slug, s]));
+const groups = GROUPS.map(([h, cls, slugs]) => `<section class="sgroup ${cls}">${cls === 'g2' ? '<svg class="lines" data-l="dark" aria-hidden="true"></svg>' : ''}<div class="w"><h2 class="reveal">${h}</h2><div class="srows">` +
+  slugs.map(sl => { const s = BY[sl]; return `<a class="srow reveal" href="services/${s.slug}.html"><h3>${s.name}</h3><p class="g">${s.tag}</p><p class="d">${E(SUM[s.slug])}</p><span class="go">View service</span></a>`; }).join('') +
+  `</div></div></section>`).join('');
+write('services.html', page('Our Services', 's', phead('Our Services', 'There is no all-or-nothing package. Choose only the services most valuable to you.') + groups + cta(),
   '', 'The nine services NovoTime provides to families, from financial administration to travel and property.'));
 
 // service pages
@@ -73,22 +80,37 @@ for (const s of SV) {
 }
 
 // about
-const letter = read('founder.html').match(/<section class="letter">[\s\S]*?<\/section>/)![0];
+const letterSec = read('founder.html').match(/<section class="letter">[\s\S]*?<\/section>/)![0];
+const paras = [...letterSec.matchAll(/<p class="reveal">([\s\S]*?)<\/p>/g)].map(m => m[1]);
+const quote = letterSec.match(/<p class="q reveal">([\s\S]*?)<\/p>/)![1];
+const sig = letterSec.match(/<p class="sig reveal">([\s\S]*?)<small>([\s\S]*?)<\/small><\/p>/)!;
 const name = NAME.map((n: any) => `<div class="reveal"><p class="word">${n.word}</p><h3>${E(n.title)}</h3><p>${E(n.body)}</p></div>`).join('');
-const times = MISSION.times.map((t: any) => `<div class="t reveal"><h3>${E(t.title)}</h3><p>${E(t.body)}</p></div>`).join('');
+const times = MISSION.times.map((t: any) => `<div class="trow reveal"><h3>${E(t.title)}</h3><p>${E(t.body)}</p></div>`).join('');
 const path = FOUNDER.chapters.map((c: any) => `<div class="st reveal"><h3>${E(c.title)}</h3><p>${E(c.body)}</p></div>`).join('');
-const vals = VALUES.map((v: any) => `<div class="v reveal"><h3>${v.title}</h3><p>${E(v.lines[0])}</p><p>${E(v.lines[1])}</p></div>`).join('');
-write('about.html', page('About', 'a', phead('Why I started <em>NovoTime.</em>') + letter +
-  `<section class="nm"><svg class="lines" data-l="dark" aria-hidden="true"></svg><div class="w"><h2 class="reveal">What Our Name Means</h2><div class="nm2">${name}</div></div></section>` +
-  `<section class="times"><div class="w"><h2 class="reveal">Time Given Back</h2><div class="tgrid">${times}</div></div></section>` +
+const vals = VALUES.map((v: any) => `<div class="v reveal"><h3>${v.title}</h3><p>${E(v.lines[0])} ${E(v.lines[1])}</p></div>`).join('');
+write('about.html', page('About', 'a', phead('Why I started <em>NovoTime.</em>') +
+  `<section class="story"><div class="w"><p class="open reveal">${paras[0]}</p><div class="cols">${paras.slice(1).map(t => `<p>${t}</p>`).join('')}</div></div></section>` +
+  `<section class="pull"><svg class="lines" data-l="dark" aria-hidden="true"></svg><div class="w"><p class="q reveal">${quote}</p><p class="by reveal">${sig[1]}<small>${sig[2]}</small></p></div></section>` +
+  `<section class="nm"><div class="w"><h2 class="reveal">What Our Name Means</h2><div class="nm2">${name}</div></div></section>` +
   `<section class="path"><div class="w"><h2 class="reveal">Diana&rsquo;s Path</h2><div class="tl">${path}</div></div></section>` +
-  `<section class="vals"><div class="w"><h2 class="reveal">What We Stand On</h2><div class="vlist">${vals}</div></div></section>` + cta(),
+  `<section class="vals"><svg class="lines" data-l="dark" aria-hidden="true"></svg><div class="w"><h2 class="reveal">What We <em>Stand On</em></h2><div class="vlist">${vals}</div></div></section>` +
+  `<section class="times"><div class="w"><h2 class="reveal">Time Given Back</h2><div class="tlist">${times}</div></div></section>` + cta(),
   '', 'Why Diana V. Novoselska founded NovoTime, what the name means, and the values behind the work.'));
 write('founder.html', '<!doctype html><html lang="en"><head><meta charset="utf-8"><meta http-equiv="refresh" content="0; url=about.html"><link rel="canonical" href="about.html"><title>About | NovoTime</title></head><body><a href="about.html">About NovoTime</a></body></html>\n');
 
 // contact
-const cgrid = read('contact.html').match(/<section class="contact">[\s\S]*?<\/section>/)![0];
-write('contact.html', page('Contact Us', 'c', phead('Let&rsquo;s start <em>a conversation.</em>') + cgrid +
+const cform = `<section class="reach"><div class="w"><div class="rgrid2">
+<div class="direct reveal"><h2>Reach Us Directly</h2>
+<div class="dl"><span>Phone</span><a href="tel:+14022398086">402-239-8086</a></div>
+<div class="dl"><span>Email</span><a href="mailto:contact@novo-time.com">contact@novo-time.com</a></div>
+<div class="dl"><span>Office</span><p>9375 Burt St., Suite 202<br>Omaha, NE 68114</p></div></div>
+<form class="cf reveal" onsubmit="event.preventDefault()"><h2>Send a Message</h2>
+<div class="two"><label>Name<input class="f" name="name" autocomplete="name"></label><label>Email<input class="f" type="email" name="email" autocomplete="email"></label></div>
+<label>Phone<input class="f" type="tel" name="phone" autocomplete="tel"></label>
+<label>How can we help?<textarea class="f" name="message" rows="4"></textarea></label>
+<button type="submit" class="btn">Send message</button></form>
+</div></div></section>`;
+write('contact.html', page('Contact Us', 'c', phead('Let&rsquo;s start <em>a conversation.</em>') + cform +
   `<section class="faqs alt"><div class="w"><h2 class="reveal">Common Questions</h2><div class="qas">${faq(FAQ)}</div></div></section>`,
   '', 'Start a conversation with NovoTime in Omaha.'));
 
