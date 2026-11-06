@@ -77,12 +77,17 @@ const letterSec = read('founder.html').match(/<section class="letter">[\s\S]*?<\
 const paras = [...letterSec.matchAll(/<p class="reveal">([\s\S]*?)<\/p>/g)].map(m => m[1]);
 const quote = letterSec.match(/<p class="q reveal">([\s\S]*?)<\/p>/)![1];
 const sig = letterSec.match(/<p class="sig reveal">([\s\S]*?)<small>([\s\S]*?)<\/small><\/p>/)!;
+// letter shown as four chapters; each chapter opens on Diana's own first sentence set large
+const lead1 = (t: string) => { const i = t.indexOf('. ') + 1; return [t.slice(0, i), t.slice(i + 1)]; };
+const chapters: [string, string[]][] = [[paras[0], [paras[1], paras[2]]]];
+for (const [a, b] of [[3, 4], [5, 6], [7, 8]]) { const [l, r] = lead1(paras[a]); chapters.push([l, [r, paras[b]]]); }
+const story = chapters.map(([l, b], k) => `<div class="ch${k === 0 ? ' first' : ''}"><p class="lead reveal">${l}</p><div class="body reveal">${b.map(t => `<p>${t}</p>`).join('')}</div></div>`).join('');
 const name = NAME.map((n: any) => `<div class="reveal"><p class="word">${n.word}</p><h3>${E(n.title)}</h3><p>${E(n.body)}</p></div>`).join('');
 const times = MISSION.times.map((t: any) => `<div class="trow reveal"><h3>${E(t.title)}</h3><p>${E(t.body)}</p></div>`).join('');
 const path = FOUNDER.chapters.map((c: any) => `<div class="st reveal"><h3>${E(c.title)}</h3><p>${E(c.body)}</p></div>`).join('');
 const vals = VALUES.map((v: any) => `<div class="v reveal"><h3>${v.title}</h3><p>${E(v.lines[0])} ${E(v.lines[1])}</p></div>`).join('');
 write('about.html', page('About', 'a', phead('Why I started <em>NovoTime.</em>') +
-  `<section class="story"><div class="w"><p class="open reveal">${paras[0]}</p><div class="cols">${paras.slice(1).map(t => `<p>${t}</p>`).join('')}</div></div></section>` +
+  `<section class="story"><div class="w">${story}</div></section>` +
   `<section class="pull"><svg class="lines" data-l="dark" aria-hidden="true"></svg><div class="w"><p class="q reveal">${quote}</p><p class="by reveal">${sig[1]}<small>${sig[2]}</small></p></div></section>` +
   `<section class="nm"><div class="w"><h2 class="reveal">What Our Name Means</h2><div class="nm2">${name}</div></div></section>` +
   `<section class="path"><div class="w"><h2 class="reveal">Diana&rsquo;s Path</h2><div class="tl">${path}</div></div></section>` +
