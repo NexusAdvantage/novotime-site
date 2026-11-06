@@ -46,17 +46,10 @@ const cta = (p = '') => `<section class="cta"><div class="w"><p class="eyebrow r
 const phead = (h1: string, sub = '') => `<section class="phead"><svg class="lines" data-l="dark" aria-hidden="true"></svg><div class="w"><h1>${h1}</h1>${sub ? `<p class="sub">${sub}</p>` : ''}</div></section>`;
 const faq = (items: any[]) => items.map(q => `<details class="qa reveal"><summary>${E(q.q)}</summary><p>${E(q.a)}</p></details>`).join('');
 
-// services overview: three groups of large rows, middle group on navy
-const GROUPS: [string, string, string[]][] = [
-  ['Managing the <em>Day to Day</em>', 'g1', ['financial-administration', 'tax-and-compliance', 'investment-coordination']],
-  ['Protecting What <em>You&rsquo;ve Built</em>', 'g2', ['risk-and-insurance', 'estate-and-legal', 'documents-and-information']],
-  ['Caring for <em>Family and Home</em>', 'g3', ['governance-and-philanthropy', 'next-generation-education', 'travel-and-property']],
-];
-const BY: Record<string, any> = Object.fromEntries(SV.map(s => [s.slug, s]));
-const groups = GROUPS.map(([h, cls, slugs]) => `<section class="sgroup ${cls}">${cls === 'g2' ? '<svg class="lines" data-l="dark" aria-hidden="true"></svg>' : ''}<div class="w"><h2 class="reveal">${h}</h2><div class="srows">` +
-  slugs.map(sl => { const s = BY[sl]; return `<a class="srow reveal" href="services/${s.slug}.html"><h3>${s.name}</h3><p class="g">${s.tag}</p><p class="d">${E(SUM[s.slug])}</p><span class="go">View service</span></a>`; }).join('') +
-  `</div></div></section>`).join('');
-write('services.html', page('Our Services', 's', phead('Our Services', 'There is no all-or-nothing package. Choose only the services most valuable to you.') + groups + cta(),
+// services overview: one continuous index of all nine services
+const idxRows = SV.map(s => `<a class="sx reveal" href="services/${s.slug}.html"><div class="sx-l"><h2>${s.name}</h2><p class="g">${s.tag}</p></div><div class="sx-r"><p>${E(SUM[s.slug])}</p><span class="go">View service</span></div></a>`).join('');
+write('services.html', page('Our Services', 's', phead('Our Services', 'There is no all-or-nothing package. Choose only the services most valuable to you.') +
+  `<section class="sindex"><div class="w"><div class="sxl">${idxRows}</div></div></section>` + cta(),
   '', 'The nine services NovoTime provides to families, from financial administration to travel and property.'));
 
 // service pages
