@@ -39,17 +39,18 @@ ${body}
 <footer><div class="w"><div class="cols"><div><a class="lk" href="${p}index.html"><img src="${p}assets/nt-mark.svg" alt=""><span>NovoTime</span></a><p class="tag">Independent by design. Personal by nature.</p></div>
 <div class="fl"><a href="${p}services.html">Services</a><a href="${p}about.html">About</a><a href="${p}contact.html">Contact Us</a></div>
 <div>9375 Burt St., Suite 202<br>Omaha, NE 68114<br><a href="tel:+14022398086">402-239-8086</a><br><a href="mailto:contact@novo-time.com">contact@novo-time.com</a></div></div>
-${DISC}<div class="bot">&copy; NovoTime LLC</div></div></footer><script src="${p}assets/site.js"></script></body></html>
+${DISC}<div class="bot">&copy; NovoTime LLC</div></div></footer><script src="${p}assets/site.js"></script><script src="${p}assets/ribbon.js"></script></body></html>
 `;
 }
 const cta = (p = '') => `<section class="cta"><div class="w"><p class="eyebrow reveal">A simpler financial life starts here</p><h2 class="reveal">Let&rsquo;s make room<br>for <em>what matters.</em></h2><a class="btn reveal" href="${p}contact.html">Contact us</a></div></section>`;
-const phead = (h1: string, sub = '') => `<section class="phead"><svg class="lines" data-l="dark" aria-hidden="true"></svg><div class="w"><h1>${h1}</h1>${sub ? `<p class="sub">${sub}</p>` : ''}</div></section>`;
+const phead = (h1: string, sub = '') => `<section class="phead"><canvas id="c" data-v="flow" aria-hidden="true"></canvas><div class="w"><h1>${h1}</h1>${sub ? `<p class="sub">${sub}</p>` : ''}</div></section>`;
 const faq = (items: any[]) => items.map(q => `<details class="qa reveal"><summary>${E(q.q)}</summary><p>${E(q.a)}</p></details>`).join('');
 
-// services overview: one continuous index of all nine services
-const idxRows = SV.map(s => `<a class="sx reveal" href="services/${s.slug}.html"><div class="sx-l"><h2>${s.name}</h2><p class="g">${s.tag}</p></div><div class="sx-r"><p>${E(SUM[s.slug])}</p><span class="go">View service</span></div></a>`).join('');
+// services overview: two staggered columns that flow down the page
+const si = (s: any) => `<a class="si reveal" href="services/${s.slug}.html"><h2>${s.name}</h2><p class="g">${s.tag}</p><p class="d">${E(SUM[s.slug])}</p><span class="go">View service</span></a>`;
+const colA = SV.filter((_, k) => k % 2 === 0).map(si).join(''), colB = SV.filter((_, k) => k % 2 === 1).map(si).join('');
 write('services.html', page('Our Services', 's', phead('Our Services', 'There is no all-or-nothing package. Choose only the services most valuable to you.') +
-  `<section class="sindex"><div class="w"><div class="sxl">${idxRows}</div></div></section>` + cta(),
+  `<section class="sflow"><svg class="lines" data-l="light" aria-hidden="true"></svg><div class="w"><div class="sfg"><div class="sfa">${colA}</div><div class="sfb">${colB}</div></div></div></section>` + cta(),
   '', 'The nine services NovoTime provides to families, from financial administration to travel and property.'));
 
 // service pages
@@ -81,14 +82,14 @@ const sig = letterSec.match(/<p class="sig reveal">([\s\S]*?)<small>([\s\S]*?)<\
 const lead1 = (t: string) => { const i = t.indexOf('. ') + 1; return [t.slice(0, i), t.slice(i + 1)]; };
 const chapters: [string, string[]][] = [[paras[0], [paras[1], paras[2]]]];
 for (const [a, b] of [[3, 4], [5, 6], [7, 8]]) { const [l, r] = lead1(paras[a]); chapters.push([l, [r, paras[b]]]); }
-const story = chapters.map(([l, b], k) => `<div class="ch${k === 0 ? ' first' : ''}"><p class="lead reveal">${l}</p><div class="body reveal">${b.map(t => `<p>${t}</p>`).join('')}</div></div>`).join('');
+const story = chapters.map(([l, b], k) => `<div class="ch${k === 0 ? ' first' : ''}"><p class="lead reveal">${l}</p>${b.map(t => `<p class="reveal">${t}</p>`).join('')}</div>`).join('') +
+  `<div class="close reveal"><p class="q">${quote}</p><p class="by">${sig[1]}<small>${sig[2]}</small></p></div>`;
 const name = NAME.map((n: any) => `<div class="reveal"><p class="word">${n.word}</p><h3>${E(n.title)}</h3><p>${E(n.body)}</p></div>`).join('');
 const times = MISSION.times.map((t: any) => `<div class="trow reveal"><h3>${E(t.title)}</h3><p>${E(t.body)}</p></div>`).join('');
 const path = FOUNDER.chapters.map((c: any) => `<div class="st reveal"><h3>${E(c.title)}</h3><p>${E(c.body)}</p></div>`).join('');
 const vals = VALUES.map((v: any) => `<div class="v reveal"><h3>${v.title}</h3><p>${E(v.lines[0])} ${E(v.lines[1])}</p></div>`).join('');
 write('about.html', page('About', 'a', phead('Why I started <em>NovoTime.</em>') +
-  `<section class="story"><div class="w">${story}</div></section>` +
-  `<section class="pull"><svg class="lines" data-l="dark" aria-hidden="true"></svg><div class="w"><p class="q reveal">${quote}</p><p class="by reveal">${sig[1]}<small>${sig[2]}</small></p></div></section>` +
+  `<section class="story"><svg class="lines" data-l="light" aria-hidden="true"></svg><div class="w"><div class="flow">${story}</div></div></section>` +
   `<section class="nm"><div class="w"><h2 class="reveal">What Our Name Means</h2><div class="nm2">${name}</div></div></section>` +
   `<section class="path"><div class="w"><h2 class="reveal">Diana&rsquo;s Path</h2><div class="tl">${path}</div></div></section>` +
   `<section class="vals"><svg class="lines" data-l="dark" aria-hidden="true"></svg><div class="w"><h2 class="reveal">What We <em>Stand On</em></h2><div class="vlist">${vals}</div></div></section>` +
