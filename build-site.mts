@@ -78,16 +78,18 @@ const letterSec = read('founder.html').match(/<section class="letter">[\s\S]*?<\
 const paras = [...letterSec.matchAll(/<p class="reveal">([\s\S]*?)<\/p>/g)].map(m => m[1]);
 const quote = letterSec.match(/<p class="q reveal">([\s\S]*?)<\/p>/)![1];
 const sig = letterSec.match(/<p class="sig reveal">([\s\S]*?)<small>([\s\S]*?)<\/small><\/p>/)!;
-// short version of Diana's letter: her opening, three of her own lines, her closing words
-const last = (t: string) => { const xs = t.split(/(?<=\.)\s/); return xs[xs.length - 1]; };
-const lines3 = [last(paras[1]), last(paras[3]), last(paras[5])];
+// Diana's story in four sections: one heading and her own words as body text
 const PH = `<div class="ph"><div class="ph-in"><img src="assets/nt-mark.svg" alt=""><span>Headshot of Diana</span></div></div>`;
+const body = (xs: string[]) => xs.map(t => `<p>${t}</p>`).join('');
+const story =
+  `<section class="sa s-1"><div class="w s1g"><div><h2 class="reveal">Where It Started</h2><div class="sb reveal">${body([paras[0], paras[1], paras[2]])}</div></div><div class="s1p reveal">${PH}</div></div></section>` +
+  `<section class="sa s-2"><div class="w"><h2 class="reveal">A Better Way</h2><div class="sb cols reveal">${body([paras[3], paras[4]])}</div></div></section>` +
+  `<section class="sa s-3"><svg class="lines" data-l="dark" aria-hidden="true"></svg><div class="w"><h2 class="reveal">Something <em>Different</em></h2><div class="sb cols reveal">${body([paras[5], paras[6]])}</div></div></section>` +
+  `<section class="sa s-4"><div class="w"><h2 class="reveal">What Our Name Means</h2><div class="sb cols reveal">${body([paras[7], paras[8]])}</div>` +
+  `<div class="close reveal"><p class="q">${quote}</p><p class="by">${sig[1]}<small>${sig[2]}</small></p></div></div></section>`;
 const path = FOUNDER.chapters.map((c: any) => `<div class="st reveal"><h3>${E(c.title)}</h3><p>${E(c.body)}</p></div>`).join('');
 const vals = VALUES.map((v: any) => `<div class="v reveal"><h3>${v.title}</h3><p>${E(v.lines[0])} ${E(v.lines[1])}</p></div>`).join('');
-write('about.html', page('About', 'a', phead('Why I started <em>NovoTime.</em>', 'Diana V. Novoselska, Founder') +
-  `<section class="ab"><div class="w ab-g"><div class="ab-t"><p class="open reveal">${paras[0]}</p><p class="reveal">${paras[2]}</p></div><div class="ab-p reveal">${PH}</div></div>` +
-  `<div class="w"><div class="three">${lines3.map((t, k) => `<p class="reveal" data-d="${k * 120}">${t}</p>`).join('')}</div>` +
-  `<div class="close reveal"><p class="q">${quote}</p><p class="by">${sig[1]}<small>${sig[2]}</small></p></div></div></section>` +
+write('about.html', page('About', 'a', phead('Why I started <em>NovoTime.</em>', 'Diana V. Novoselska, Founder') + story +
   `<section class="path"><div class="w"><h2 class="reveal">Diana&rsquo;s Path</h2><div class="tl">${path}</div></div></section>` +
   `<section class="vals"><svg class="lines" data-l="dark" aria-hidden="true"></svg><div class="w"><h2 class="reveal">What We <em>Stand On</em></h2><div class="vlist">${vals}</div></div></section>` + cta(),
   '', 'Why Diana V. Novoselska founded NovoTime and the values behind the work.'));
