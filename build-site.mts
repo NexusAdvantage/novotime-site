@@ -94,8 +94,6 @@ write('services.html', page('Our Services', 's', phead('Our Services') +
 
 // service pages
 mkdirSync(`${OUT}/services`, { recursive: true });
-const lc = (t: string) => t.split(' ').map(w => /^[A-Z0-9]{2,}$/.test(w) ? w : w.toLowerCase()).join(' ');
-const andList = (xs: string[]) => xs.length < 2 ? xs.join('') : xs.slice(0, -1).join(', ') + (xs.length > 2 ? ',' : '') + ' and ' + xs[xs.length - 1];
 const carousel = `<script>document.querySelectorAll('.car').forEach(c=>{const t=c.querySelector('.track'),st=()=>t.querySelector('.rc').offsetWidth+32;c.querySelector('.prev').onclick=()=>t.scrollBy({left:-st(),behavior:'smooth'});c.querySelector('.next').onclick=()=>t.scrollBy({left:st(),behavior:'smooth'})})</script>`;
 const arrow = (d: string) => `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="${d}"/></svg>`;
 for (const s of SV) {
@@ -104,7 +102,6 @@ for (const s of SV) {
   const rows = s.items.map((t, k) => `<li class="reveal" data-d="${(k % 3) * 100}">${icon(pick(t))}<p>${t}</p></li>`).join('');
   const led = d.ledger.map((r: any, k: number) => `<div class="dd reveal" data-d="${(k % 2) * 100}"><h3>${E(r.task)}</h3><p>${E(r.with)}.</p></div>`).join('');
   const ih = d.inHouse.map((t: string, k: number) => `<li class="reveal" data-d="${k * 90}">${icon(pick(t))}<p>${E(t)}</p></li>`).join('');
-  const who = d.partners.length ? `All of this is done in house by NovoTime, in coordination with ${andList(d.partners.map(lc))}.` : 'All of this is done in house by NovoTime.';
   const k0 = SLUGS.indexOf(s.slug);
   const others = [...SLUGS.slice(k0 + 1), ...SLUGS.slice(0, k0)];
   const rel = others.map(r => `<a class="rc" href="${r}.html">${icon(SVC_IC[r])}<h3>${NM[r]}</h3><p>${SV.find(x => x.slug === r)!.tag}</p><span class="go">View service</span></a>`).join('');
@@ -112,7 +109,7 @@ for (const s of SV) {
     `<section class="sintro"><div class="w"><h2 class="reveal">${E(d.headline)}</h2><div class="lede">${intro}</div></div></section>` +
     `<section class="incl"><div class="w"><h2 class="reveal">What&rsquo;s Included</h2><ul class="rows" style="--c:${s.items.length % 2 === 0 ? 2 : 3}">${rows}</ul></div></section>` +
     `<section class="ledger"><svg class="lines" data-l="dark" aria-hidden="true"></svg><div class="w"><h2 class="reveal">How We Handle <em>the Everyday</em></h2><div class="ddg">${led}</div></div></section>` +
-    `<section class="who"><div class="w"><h2 class="reveal">Who Does the Work</h2><ul class="ihs">${ih}</ul><p class="wsum reveal">${E(who)}</p></div></section>` +
+    `<section class="who"><div class="w"><h2 class="reveal">Who Does the Work</h2><ul class="ihs">${ih}</ul></div></section>` +
     `<section class="faqs"><div class="w"><h2 class="reveal">Common Questions</h2><div class="qas">${faq(d.faqs)}</div></div></section>` +
     `<section class="related"><div class="w"><div class="car"><div class="carh"><h2 class="reveal">Explore Other Services</h2><div class="nav2"><button class="prev" aria-label="Previous">${arrow('M15 5l-7 7 7 7')}</button><button class="next" aria-label="Next">${arrow('M9 5l7 7-7 7')}</button></div></div><div class="track">${rel}</div></div></div></section>${carousel}` + cta('../');
   write(`services/${s.slug}.html`, page(s.name, 's', body, '../', E(SUM[s.slug])));

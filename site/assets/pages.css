@@ -230,3 +230,14 @@
 .close .q span.on:nth-last-child(-n+4){color:var(--gold)}
 @media (max-width:1000px){.tl::after{display:none}}
 .st:last-child:not(.on)::before{background:#FBFAF7}
+/* service intro: heading on one line, both paragraphs across the full width */
+.sintro{position:relative;overflow:hidden}
+.sintro::after{content:"";position:absolute;right:-4%;top:50%;width:min(560px,44vw);aspect-ratio:790/520;transform:translateY(-50%);background:url(nt-mark.svg) center/contain no-repeat;opacity:.06;pointer-events:none}
+.sintro .w{position:relative;z-index:1}
+.sintro h2,.sintro .lede{max-width:none}
+.sintro h2{font-size:clamp(34px,3.4vw,50px)}
+.sintro .lede{display:grid;grid-template-columns:1fr 1fr;column-gap:72px;margin-top:56px;padding-top:44px;border-top:1px solid rgba(134,115,30,.28);position:relative}
+.sintro .lede::before{content:"";position:absolute;left:0;top:-1px;width:64px;height:2px;background:var(--gold)}
+.sintro .lede p+p{margin-top:0}
+@media (min-width:1001px){.sintro h2{white-space:nowrap}}
+@media (max-width:760px){.sintro .lede{grid-template-columns:1fr;row-gap:22px;margin-top:40px;padding-top:32px}.sintro::after{width:80vw;right:-30%;opacity:.05}}
