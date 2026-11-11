@@ -156,8 +156,8 @@
 .lede{margin-top:40px}.lede p+p{margin-top:24px}
 .ic{width:34px;height:34px;color:var(--gold);flex:none}
 /* included */
-.rows{list-style:none;display:grid;grid-template-columns:1fr 1fr;column-gap:72px;margin-top:56px}
-.rows li{display:flex;gap:24px;align-items:flex-start;padding:32px 0;border-top:1px solid rgba(134,115,30,.28)}
+.rows{--g:56px;list-style:none;display:flex;flex-wrap:wrap;justify-content:center;column-gap:var(--g);margin-top:56px}
+.rows li{flex:0 0 calc((100% - var(--g) * (var(--c) - 1)) / var(--c));display:flex;gap:24px;align-items:flex-start;padding:32px 0;border-top:1px solid rgba(134,115,30,.28)}
 .rows li .ic{margin-top:2px}
 /* everyday */
 .ddg{display:grid;grid-template-columns:1fr 1fr;column-gap:72px;row-gap:8px;margin-top:56px}
@@ -188,10 +188,10 @@
 .rc .go::after{content:"";display:block;width:28px;height:1px;margin-top:8px;background:var(--gold);transition:width .5s}
 .rc:hover::after{transform:none}.rc:hover h3,.rc:hover .go{color:#fff}.rc:hover p{color:#C3CEDB}.rc:hover .ic{color:var(--gold-l)}.rc:hover .go::after{width:84px;background:var(--gold-l)}
 .gc .ic{margin-bottom:24px;transition:color .5s}.gc:hover .ic{color:var(--gold-l)}
-@media (max-width:1000px){.track{grid-auto-columns:calc((100% - 32px)/2)}.ihs li{flex-basis:50%}}
+@media (max-width:1000px){.rows{--g:40px}.track{grid-auto-columns:calc((100% - 32px)/2)}.ihs li{flex-basis:50%}}
 @media (max-width:760px){
  .sub section{padding:72px 0}.sub .phead{padding:130px 0 90px}.sub .sa{padding:60px 0}.sub .s-1{padding-top:72px}.sub .cta{padding:96px 0}
- .rows,.ddg{grid-template-columns:1fr;margin-top:40px}.rows li{padding:24px 0}
+ .ddg{grid-template-columns:1fr;margin-top:40px}.rows{--c:1!important;margin-top:40px}.rows li{padding:24px 0}
  .sub .sb p,.lede p,.rows li p,.dd p,.ihs p,.wsum,.qa p,.rc p,.gc p,.st p,.v p{font-size:17px}
  .ihs li{flex-basis:50%;padding:0 10px}.ihs{margin-top:40px}
  .track{grid-auto-columns:84%;gap:20px}.nav2 button{width:44px;height:44px}.rc{padding:36px 28px 32px;min-height:300px}

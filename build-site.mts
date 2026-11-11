@@ -101,7 +101,7 @@ const arrow = (d: string) => `<svg viewBox="0 0 24 24" fill="none" stroke="curre
 for (const s of SV) {
   const d = SD[s.slug];
   const intro = d.intro.slice(0, 2).map((t: string) => `<p class="reveal">${E(t)}</p>`).join('');
-  const rows = s.items.map((t, k) => `<li class="reveal" data-d="${(k % 2) * 100}">${icon(pick(t))}<p>${t}</p></li>`).join('');
+  const rows = s.items.map((t, k) => `<li class="reveal" data-d="${(k % 3) * 100}">${icon(pick(t))}<p>${t}</p></li>`).join('');
   const led = d.ledger.map((r: any, k: number) => `<div class="dd reveal" data-d="${(k % 2) * 100}"><h3>${E(r.task)}</h3><p>${E(r.with)}.</p></div>`).join('');
   const ih = d.inHouse.map((t: string, k: number) => `<li class="reveal" data-d="${k * 90}">${icon(pick(t))}<p>${E(t)}</p></li>`).join('');
   const who = d.partners.length ? `All of this is done in house by NovoTime, in coordination with ${andList(d.partners.map(lc))}.` : 'All of this is done in house by NovoTime.';
@@ -110,7 +110,7 @@ for (const s of SV) {
   const rel = others.map(r => `<a class="rc" href="${r}.html">${icon(SVC_IC[r])}<h3>${NM[r]}</h3><p>${SV.find(x => x.slug === r)!.tag}</p><span class="go">View service</span></a>`).join('');
   const body = phead(s.name) +
     `<section class="sintro"><div class="w"><h2 class="reveal">${E(d.headline)}</h2><div class="lede">${intro}</div></div></section>` +
-    `<section class="incl"><div class="w"><h2 class="reveal">What&rsquo;s Included</h2><ul class="rows">${rows}</ul></div></section>` +
+    `<section class="incl"><div class="w"><h2 class="reveal">What&rsquo;s Included</h2><ul class="rows" style="--c:${s.items.length % 2 === 0 ? 2 : 3}">${rows}</ul></div></section>` +
     `<section class="ledger"><svg class="lines" data-l="dark" aria-hidden="true"></svg><div class="w"><h2 class="reveal">How We Handle <em>the Everyday</em></h2><div class="ddg">${led}</div></div></section>` +
     `<section class="who"><div class="w"><h2 class="reveal">Who Does the Work</h2><ul class="ihs">${ih}</ul><p class="wsum reveal">${E(who)}</p></div></section>` +
     `<section class="faqs"><div class="w"><h2 class="reveal">Common Questions</h2><div class="qas">${faq(d.faqs)}</div></div></section>` +
