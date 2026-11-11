@@ -78,19 +78,21 @@ const letterSec = read('founder.html').match(/<section class="letter">[\s\S]*?<\
 const paras = [...letterSec.matchAll(/<p class="reveal">([\s\S]*?)<\/p>/g)].map(m => m[1]);
 const quote = letterSec.match(/<p class="q reveal">([\s\S]*?)<\/p>/)![1];
 const sig = letterSec.match(/<p class="sig reveal">([\s\S]*?)<small>([\s\S]*?)<\/small><\/p>/)!;
-// Diana's story in four sections: one heading and her own words as body text
+// Diana's story in four sections, each with its own layout built from her words
 const PH = `<div class="ph"><div class="ph-in"><img src="assets/nt-mark.svg" alt=""><span>Headshot of Diana</span></div></div>`;
 const body = (xs: string[]) => xs.map(t => `<p>${t}</p>`).join('');
+const path = FOUNDER.chapters.map((c: any) => `<div class="st reveal"><h3>${E(c.title)}</h3><p>${E(c.body)}</p></div>`).join('');
+const four = ['Handles the complexities', 'Brings the right people together', 'Looks ahead', 'Follows through'];
+const p7 = paras[7].split(/(?<=\.)\s/);
 const story =
   `<section class="sa s-1"><div class="w s1g"><div><h2 class="reveal">Where It Started</h2><div class="sb reveal">${body([paras[0], paras[1], paras[2]])}</div></div><div class="s1p reveal">${PH}</div></div></section>` +
-  `<section class="sa s-2"><div class="w"><h2 class="reveal">A Better Way</h2><div class="sb reveal">${body([paras[3], paras[4]])}</div></div></section>` +
-  `<section class="sa s-3"><svg class="lines" data-l="dark" aria-hidden="true"></svg><div class="w"><h2 class="reveal">Something <em>Different</em></h2><div class="sb reveal">${body([paras[5], paras[6]])}</div></div></section>` +
-  `<section class="sa s-4"><div class="w"><h2 class="reveal">What Our Name Means</h2><div class="sb reveal">${body([paras[7], paras[8]])}</div>` +
+  `<section class="sa s-2"><div class="w"><h2 class="reveal">A Better Way</h2><div class="sb reveal">${body([paras[3], paras[4]])}</div><div class="tl">${path}</div></div></section>` +
+  `<section class="sa s-3"><svg class="lines" data-l="dark" aria-hidden="true"></svg><div class="w"><h2 class="reveal">Something <em>Different</em></h2><div class="sb reveal">${body([paras[5], paras[6]])}</div><div class="four">${four.map((t, k) => `<p class="reveal" data-d="${k * 110}">${t}</p>`).join('')}</div></div></section>` +
+  `<section class="sa s-4"><div class="w"><h2 class="reveal">What Our Name Means</h2><div class="nt"><div class="reveal"><p class="wd">Novo</p><p>Novo means new.</p></div><div class="reveal" data-d="120"><p class="wd">Time</p><p>You can never buy back time.</p></div></div>` +
+  `<div class="sb reveal">${body([p7.slice(2).join(' '), paras[8]])}</div>` +
   `<div class="close reveal"><p class="q">${quote}</p><p class="by">${sig[1]}<small>${sig[2]}</small></p></div></div></section>`;
-const path = FOUNDER.chapters.map((c: any) => `<div class="st reveal"><h3>${E(c.title)}</h3><p>${E(c.body)}</p></div>`).join('');
 const vals = VALUES.map((v: any) => `<div class="v reveal"><h3>${v.title}</h3><p>${E(v.lines[0])} ${E(v.lines[1])}</p></div>`).join('');
 write('about.html', page('About', 'a', phead('Why I started <em>NovoTime.</em>', 'Diana V. Novoselska, Founder') + story +
-  `<section class="path"><div class="w"><h2 class="reveal">Diana&rsquo;s Path</h2><div class="tl">${path}</div></div></section>` +
   `<section class="vals"><svg class="lines" data-l="dark" aria-hidden="true"></svg><div class="w"><h2 class="reveal">What We <em>Stand On</em></h2><div class="vlist">${vals}</div></div></section>` + cta(),
   '', 'Why Diana V. Novoselska founded NovoTime and the values behind the work.'));
 write('founder.html', '<!doctype html><html lang="en"><head><meta charset="utf-8"><meta http-equiv="refresh" content="0; url=about.html"><link rel="canonical" href="about.html"><title>About | NovoTime</title></head><body><a href="about.html">About NovoTime</a></body></html>\n');
