@@ -56,16 +56,6 @@ const RULES: [RegExp, string][] = [[/password/i, 'key'], [/secure|cybersecurity/
   [/meeting/i, 'calendar'], [/mission|values/i, 'compass'], [/family|intergenerational/i, 'people']];
 const pick = (t: string) => (RULES.find(([r]) => r.test(t)) || [, 'doc'])[1] as string;
 
-// hero emblem: a gold ring that draws itself around a large line drawing, with a light orbiting the ring
-const draw1 = (h: string) => h.replace(/<(path|circle|rect)\b/g, '<$1 pathLength="1" vector-effect="non-scaling-stroke"');
-const MARK = '<path d="M355 541 L175 541 Q105 541 105 471 L105 60 L655 570"/><path d="M545 101 L725 101 Q795 101 795 171 L795 580 L255 70"/>';
-const emblem = (inner: string) => `<div class="emb" aria-hidden="true"><svg viewBox="0 0 400 400" fill="none" stroke-linecap="round" stroke-linejoin="round"><circle class="e-halo" cx="200" cy="200" r="188"/><circle class="e-ring" cx="200" cy="200" r="160" pathLength="1"/><g class="e-orb"><circle cx="200" cy="40" r="3.5"/></g>${inner}</svg></div>`;
-const embIcon = (k: string) => emblem(`<g class="e-in" transform="translate(110 110) scale(7.5)">${draw1(IC[k])}</g>`);
-const embMark = () => emblem(`<g class="e-in" transform="translate(110 141) scale(.2273)"><g transform="translate(-60 -60)">${draw1(MARK)}</g></g>`);
-const embHub = (keys: string[]) => emblem(keys.map((k, i) => { const a = -Math.PI / 2 + i * 2 * Math.PI / keys.length, x = 200 + 160 * Math.cos(a), y = 200 + 160 * Math.sin(a);
-  return `<g class="e-node" style="--i:${i}"><circle class="e-dot" cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="22"/><g transform="translate(${(x - 13).toFixed(1)} ${(y - 13).toFixed(1)}) scale(1.0833)">${draw1(IC[k])}</g></g>`; }).join('') +
-  `<g class="e-in" transform="translate(145 164) scale(.1392)"><g transform="translate(-60 -60)">${draw1(MARK)}</g></g>`);
-
 const SD: Record<string, any> = Object.fromEntries(SERVICE_DETAILS.map((x: any) => [x.slug, x]));
 const SUM: Record<string, string> = Object.fromEntries(SERVICES.map((x: any) => [x.slug, x.summary]));
 const svcSrc = read('services.html');
@@ -92,13 +82,13 @@ ${DISC}<div class="bot">&copy; NovoTime LLC</div></div></footer><script src="${p
 `;
 }
 const cta = (p = '') => `<section class="cta"><div class="w"><h2 class="reveal">Let&rsquo;s make room<br>for <em>what matters.</em></h2><a class="btn reveal" href="${p}contact.html">Contact us</a></div></section>`;
-const phead = (h1: string, em = '', lt = false) => `<section class="phead${em ? ' has-emb' : ''}${lt ? ' lt' : ''}"><canvas id="c" data-v="flow"${lt ? ' data-t="light"' : ''} aria-hidden="true"></canvas><div class="w"><h1>${h1}</h1>${em}</div></section>`;
+const phead = (h1: string, lt = false) => `<section class="phead${lt ? ' lt' : ''}"><canvas id="c" data-v="flow"${lt ? ' data-t="light"' : ''} aria-hidden="true"></canvas><div class="w"><h1>${h1}</h1></div></section>`;
 const faq = (items: any[]) => items.map(q => `<details class="qa reveal"><summary>${E(q.q)}</summary><p>${E(q.a)}</p></details>`).join('');
 
 // services overview: an even three by three grid with Diana's names and taglines
 const cells = SV.map((s, k) => `<a class="gc reveal" data-d="${(k % 3) * 120}" href="services/${s.slug}.html"><span class="gl" aria-hidden="true"></span>${icon(SVC_IC[s.slug])}<h2>${s.name}</h2><p>${s.tag}</p><span class="go">View service</span></a>`).join('');
 const glow = `<script>document.querySelectorAll('.gc').forEach(c=>c.addEventListener('pointermove',e=>{const r=c.getBoundingClientRect();c.style.setProperty('--x',(e.clientX-r.left)+'px');c.style.setProperty('--y',(e.clientY-r.top)+'px')}))</script>`;
-write('services.html', page('Our Services', 's', phead('Our Services', embHub(SLUGS.map(k => SVC_IC[k]))) +
+write('services.html', page('Our Services', 's', phead('Our Services') +
   `<section class="sgrid"><svg class="lines" data-l="light" aria-hidden="true"></svg><div class="w"><div class="gg">${cells}</div></div></section>${glow}` + cta(),
   '', 'The nine services NovoTime provides to families, from financial administration to travel and property.'));
 
@@ -118,7 +108,7 @@ for (const s of SV) {
   const k0 = SLUGS.indexOf(s.slug);
   const others = [...SLUGS.slice(k0 + 1), ...SLUGS.slice(0, k0)];
   const rel = others.map(r => `<a class="rc" href="${r}.html">${icon(SVC_IC[r])}<h3>${NM[r]}</h3><p>${SV.find(x => x.slug === r)!.tag}</p><span class="go">View service</span></a>`).join('');
-  const body = phead(s.name, embIcon(SVC_IC[s.slug])) +
+  const body = phead(s.name) +
     `<section class="sintro"><div class="w"><h2 class="reveal">${E(d.headline)}</h2><div class="lede">${intro}</div></div></section>` +
     `<section class="incl"><div class="w"><h2 class="reveal">What&rsquo;s Included</h2><ul class="rows" style="--c:${s.items.length % 2 === 0 ? 2 : 3}">${rows}</ul></div></section>` +
     `<section class="ledger"><svg class="lines" data-l="dark" aria-hidden="true"></svg><div class="w"><h2 class="reveal">How We Handle <em>the Everyday</em></h2><div class="ddg">${led}</div></div></section>` +
@@ -149,7 +139,7 @@ const aboutFx = `<script>(function(){const tl=document.querySelector('.tl'),q=do
 let t=0;function u(){t=0;const vh=innerHeight;if(tl){const r=tl.getBoundingClientRect(),p=Math.max(0,Math.min(1,(vh*.8-r.top)/(r.width>700?vh*.45:r.height)));tl.style.setProperty('--p',p.toFixed(3));st.forEach((s,i)=>s.classList.toggle('on',p>=(st.length>1?i/(st.length-1):0)-.001))}
 if(q.length){const r=q[0].parentNode.getBoundingClientRect(),p=Math.max(0,Math.min(1,(vh*.85-r.top)/(vh*.5)));const n=Math.round(p*q.length);q.forEach((s,i)=>s.classList.toggle('on',i<n))}}
 addEventListener('scroll',()=>{if(!t)t=requestAnimationFrame(u)},{passive:true});u()})()</script>`;
-write('about.html', page('About', 'a', phead('Why I started <em>NovoTime.</em>', embMark()) + story +
+write('about.html', page('About', 'a', phead('Why I started <em>NovoTime.</em>') + story +
   `<section class="vals"><svg class="lines" data-l="dark" aria-hidden="true"></svg><div class="w"><h2 class="reveal">What We <em>Stand On</em></h2><div class="vlist">${vals}</div></div></section>` + cta() + aboutFx,
   '', 'Why Diana V. Novoselska founded NovoTime and the values behind the work.'));
 write('founder.html', '<!doctype html><html lang="en"><head><meta charset="utf-8"><meta http-equiv="refresh" content="0; url=about.html"><link rel="canonical" href="about.html"><title>About | NovoTime</title></head><body><a href="about.html">About NovoTime</a></body></html>\n');
@@ -166,7 +156,7 @@ const cform = `<section class="reach"><div class="w"><div class="rgrid2">
 <label>How can we help?<textarea class="f" name="message" rows="4"></textarea></label>
 <button type="submit" class="btn">Send message</button></form>
 </div></div></section>`;
-write('contact.html', page('Contact Us', 'c', phead('Let&rsquo;s start <em>a conversation.</em>', embIcon('chat')) + cform +
+write('contact.html', page('Contact Us', 'c', phead('Let&rsquo;s start <em>a conversation.</em>') + cform +
   `<section class="faqs alt"><div class="w"><h2 class="reveal">Common Questions</h2><div class="qas">${faq(FAQ)}</div></div></section>`,
   '', 'Start a conversation with NovoTime in Omaha.'));
 
