@@ -164,5 +164,7 @@ SV.forEach((s, k) => {
   const j = idx.indexOf(a); const e = idx.indexOf('</ul>', j) + 5;
   idx = idx.slice(0, e) + `<a class="link light more" href="services/${s.slug}.html">View ${s.name}</a>` + idx.slice(e);
 });
+const DOTS = `<section class="dots"><div class="w"><h2 class="reveal">Every Dot, <em>Connected.</em></h2><div class="stage"></div><p class="after reveal">Your CPA, your attorneys, your banks and your advisers each do their own job well. NovoTime is the one team connecting all of them around your family, so nothing falls through the cracks.</p></div></section>`;
+idx = idx.replace('<section class="approach">', DOTS + '<section class="approach">').replace('</body>', '<script src="assets/dots.js"></script></body>');
 write('index.html', idx);
 console.log('built', SV.length, 'service pages');

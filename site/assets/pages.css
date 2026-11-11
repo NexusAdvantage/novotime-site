@@ -196,3 +196,26 @@
  .ihs li{flex-basis:50%;padding:0 10px}.ihs{margin-top:40px}
  .track{grid-auto-columns:84%;gap:20px}.nav2 button{width:44px;height:44px}.rc{padding:36px 28px 32px;min-height:300px}
 }
+
+/* connect the dots */
+.dots{position:relative;overflow:hidden;padding:150px 0 140px;background:radial-gradient(ellipse 60% 55% at 50% 52%,rgba(44,95,148,.55) 0%,rgba(44,95,148,0) 70%),linear-gradient(180deg,#002F5F 0%,#001F40 100%);color:#C3CEDB;text-align:center}
+.dots h2{color:#fff;margin:0 auto}.dots h2 em{color:var(--gold-l)}
+.dots .stage{position:relative;height:clamp(560px,52vw,720px);margin-top:40px}
+.dots .stage svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.dots .tg{stroke:#7F93AA;stroke-width:1;stroke-dasharray:3 6}
+.dots .gl{fill:none;stroke:var(--gold-l);stroke-width:1.2;stroke-opacity:.75}
+.dots .ring{fill:none;stroke:var(--gold-l);stroke-width:1.5;transform:rotate(-90deg);transform-origin:center;transform-box:fill-box}
+.dots .halo{fill:none;stroke:var(--gold-l);stroke-opacity:.35;stroke-width:1;stroke-dasharray:2 7}
+.dots .pl{fill:#F1E3AE;filter:drop-shadow(0 0 6px rgba(232,214,150,.9))}
+.dots .core{position:absolute;border-radius:50%;display:grid;place-items:center;background:radial-gradient(circle at 50% 35%,rgba(201,184,118,.22),rgba(201,184,118,.04) 70%);box-shadow:0 0 80px rgba(201,184,118,.18) inset;opacity:0}
+.dots .core span{font-family:Newsreader,Georgia,serif;font-size:clamp(22px,2.2vw,32px);line-height:1.15;color:#fff;letter-spacing:-.01em}
+.dots .tag{position:absolute;transform:translate(-50%,-50%);display:flex;align-items:center;gap:10px;padding:8px 18px;background:#001F40;font-family:'Bodoni Moda',Georgia,serif;font-size:17px;color:var(--gold-l);opacity:0;white-space:nowrap}
+.dots .tag img{width:22px}
+.dots .nd{position:absolute;left:0;top:0;width:0;height:0;opacity:0;will-change:transform}
+.dots .nd i{position:absolute;left:-6px;top:-6px;width:12px;height:12px;border-radius:50%;border:1.5px solid #9FB0C3;background:#002F5F;transition:border-color .6s,background .6s,box-shadow .6s}
+.dots .nd span{position:absolute;left:0;top:18px;transform:translateX(-50%);white-space:nowrap;font-size:16px;color:#C3CEDB;transition:color .6s}
+.dots .nd.on i{border-color:var(--gold-l);background:var(--gold-l);box-shadow:0 0 18px rgba(232,214,150,.7)}
+.dots .nd.on span{color:#fff}
+.dots .after{max-width:760px;margin:24px auto 0;font-size:18px;line-height:1.8;color:#C3CEDB}
+@media (max-width:760px){.dots{padding:96px 0 90px}.dots .stage{height:600px;margin-top:20px}.dots .nd span{font-size:13px;white-space:normal;width:104px;text-align:center}.dots .after{font-size:17px}.dots .tag{font-size:14px;padding:6px 12px}}
+.dots .nd.up span{top:auto;bottom:18px}
