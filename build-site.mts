@@ -147,8 +147,8 @@ const cform = `<section class="reach"><div class="w"><div class="rgrid2">
 <div class="dl"><span>Phone</span><a href="tel:+14022398086">402-239-8086</a></div>
 <div class="dl"><span>Email</span><a href="mailto:contact@novo-time.com">contact@novo-time.com</a></div>
 <div class="dl"><span>Office</span><p>9375 Burt St., Suite 202<br>Omaha, NE 68114</p></div></div>
-<form class="cf reveal" onsubmit="event.preventDefault()"><h2>Send a Message</h2>
-<div class="two"><label>Name<input class="f" name="name" autocomplete="name"></label><label>Email<input class="f" type="email" name="email" autocomplete="email"></label></div>
+<form class="cf reveal" onsubmit="event.preventDefault();const f=this.elements,b=['Name: '+f.name.value,'Email: '+f.email.value,'Phone: '+f.phone.value,'',f.message.value].join('\\n');location.href='mailto:contact@novo-time.com?subject='+encodeURIComponent('Website inquiry from '+(f.name.value||'a visitor'))+'&body='+encodeURIComponent(b)"><h2>Send a Message</h2>
+<div class="two"><label>Name<input class="f" name="name" autocomplete="name" required></label><label>Email<input class="f" type="email" name="email" autocomplete="email" required></label></div>
 <label>Phone<input class="f" type="tel" name="phone" autocomplete="tel"></label>
 <label>How can we help?<textarea class="f" name="message" rows="4"></textarea></label>
 <button type="submit" class="btn">Send message</button></form>
@@ -159,6 +159,8 @@ write('contact.html', page('Contact Us', 'c', phead('Let&rsquo;s start <em>a con
 
 // homepage: About link, subpage styles, and a link from each service panel to its page
 let idx = read('index.html').replace('<p class="eyebrow reveal">A simpler financial life starts here</p>', '').replaceAll('href="founder.html"', 'href="about.html"')
+  .replace('Your financial life,<br><em>brought together.</em>', 'Your family&rsquo;s affairs,<br><em>brought together.</em>').replace('behind your financial life', 'behind your family&rsquo;s finances').replace('part of their financial life', 'part of their finances')
+  .replace('</title>', '</title><meta name="description" content="NovoTime is an independent family office in Omaha. One team that handles the financial administration, tax coordination and paperwork behind your family, with nothing to sell.">')
   .replace('<link rel="stylesheet" href="assets/site.css">', '<link rel="stylesheet" href="assets/site.css"><link rel="stylesheet" href="assets/pages.css">');
 SV.forEach((s, k) => {
   const a = `<div class="pane${k === 0 ? ' on' : ''}" id="sp${k}" role="tabpanel">`;
