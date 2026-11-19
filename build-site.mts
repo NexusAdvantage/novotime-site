@@ -5,7 +5,6 @@
 import { readFileSync, writeFileSync, mkdirSync, cpSync, rmSync } from 'node:fs';
 import { SERVICE_DETAILS } from './content/serviceDetails.ts';
 import { SERVICES } from './content/services.ts';
-import { FOUNDER } from './content/about.ts';
 import { VALUES } from './content/values.ts';
 import { FAQ } from './content/faq.ts';
 
@@ -13,7 +12,9 @@ const SRC = 'site', OUT = 'dist';
 rmSync(OUT, { recursive: true, force: true });
 cpSync(SRC, OUT, { recursive: true });
 const read = (f: string) => readFileSync(`${SRC}/${f}`, 'utf8');
-const write = (f: string, s: string) => writeFileSync(`${OUT}/${f}`, s);
+// Diana spells it advisor everywhere; the legal disclosure keeps its regulatory wording
+const advisor = (s: string) => s.split(/(<p class="disc">[\s\S]*?<\/p>)/).map(p => p.startsWith('<p class="disc">') ? p : p.replace(/([Aa])dviser/g, '$1dvisor')).join('');
+const write = (f: string, s: string) => writeFileSync(`${OUT}/${f}`, advisor(s));
 const E = (t: string) => t.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
   .replace(/’/g, '&rsquo;').replace(/‘/g, '&lsquo;').replace(/“/g, '&ldquo;').replace(/”/g, '&rdquo;');
 
@@ -51,7 +52,7 @@ const RULES: [RegExp, string][] = [[/password/i, 'key'], [/secure|cybersecurity/
   [/property management|real estate/i, 'house'], [/one.on.one|group/i, 'people'], [/foundational/i, 'book'], [/education|lesson|age and experience/i, 'cap'],
   [/bank/i, 'bank'], [/bill|budget/i, 'receipt'], [/reconcil/i, 'check'], [/book/i, 'book'], [/tax planning/i, 'calendar'], [/return/i, 'doc'],
   [/charit|philanthrop/i, 'heart'], [/vehicle/i, 'building'], [/k.1|document|record|storage|inventory/i, 'folder'], [/claims|communication|carriers/i, 'chat'],
-  [/renewal|deadline/i, 'calendar'], [/insurance|coverage/i, 'shield'], [/adviser/i, 'people'], [/capital call|distribution|transfer|liquidity/i, 'arrows'],
+  [/renewal|deadline/i, 'calendar'], [/insurance|coverage/i, 'shield'], [/advis[eo]r/i, 'people'], [/capital call|distribution|transfer|liquidity/i, 'arrows'],
   [/report/i, 'chart'], [/beneficiar/i, 'person'], [/estate|counsel|legal/i, 'scale'], [/entity|business|trustee/i, 'building'],
   [/meeting/i, 'calendar'], [/mission|values/i, 'compass'], [/family|intergenerational/i, 'people']];
 const pick = (t: string) => (RULES.find(([r]) => r.test(t)) || [, 'doc'])[1] as string;
@@ -81,7 +82,7 @@ ${body}
 ${DISC}<div class="bot">&copy; NovoTime LLC</div></div></footer><script src="${p}assets/site.js"></script><script src="${p}assets/ribbon.js"></script></body></html>
 `;
 }
-const cta = (p = '') => `<section class="cta"><div class="w"><h2 class="reveal">Let&rsquo;s make room<br>for <em>what matters.</em></h2><a class="btn reveal" href="${p}contact.html">Contact us</a></div></section>`;
+const cta = (p = '') => `<section class="cta"><div class="w"><p class="eyebrow reveal">A simpler financial life starts here</p><h2 class="reveal">Let&rsquo;s make time<br>for <em>what matters.</em></h2><a class="btn reveal" href="${p}contact.html">Contact us</a></div></section>`;
 const phead = (h1: string, lt = false) => `<section class="phead${lt ? ' lt' : ''}"><canvas id="c" data-v="flow"${lt ? ' data-t="light"' : ''} aria-hidden="true"></canvas><div class="w"><h1>${h1}</h1></div></section>`;
 const faq = (items: any[]) => items.map(q => `<details class="qa reveal"><summary>${E(q.q)}</summary><p>${E(q.a)}</p></details>`).join('');
 
@@ -115,30 +116,40 @@ for (const s of SV) {
   write(`services/${s.slug}.html`, page(s.name, 's', body, '../', E(SUM[s.slug])));
 }
 
-// about
-const letterSec = read('founder.html').match(/<section class="letter">[\s\S]*?<\/section>/)![0];
-const paras = [...letterSec.matchAll(/<p class="reveal">([\s\S]*?)<\/p>/g)].map(m => m[1]);
-const quote = letterSec.match(/<p class="q reveal">([\s\S]*?)<\/p>/)![1];
-const sig = letterSec.match(/<p class="sig reveal">([\s\S]*?)<small>([\s\S]*?)<\/small><\/p>/)!;
-// Diana's story in four sections, each with its own layout built from her words
-const PH = `<div class="ph"><div class="ph-in"><img src="assets/nt-mark.svg" alt=""><span>Headshot of Diana</span></div></div>`;
-const body = (xs: string[]) => xs.map(t => `<p>${t}</p>`).join('');
-const path = FOUNDER.chapters.map((c: any) => `<div class="st reveal"><h3>${E(c.title)}</h3><p>${E(c.body)}</p></div>`).join('');
-const four = ['Handles the complexities', 'Brings the right people together', 'Looks ahead', 'Follows through'];
+// about: team first, built from Diana's working copy
+const ABOUT = {
+  who: 'NovoTime is a fully independent team that manages your financial life with the care and discipline of a well-run business. We act as your personal controller, your big-picture integrator, and the point of connection between all your advisors, so you have greater clarity and peace of mind. Our only product is the work we do for you every day.',
+  story: [
+    'For years, a dear friend told me his advisors were doing right by him. Then one day he came to me and said, “I have lost a lot of money, I no longer actively work, and everyone is shrugging their shoulders and blaming it on lack of information.” It was clear he had lost more than money. He had lost trust and peace of mind.',
+    'Each of his advisors had done their own job well, but no one saw the full picture. He didn’t know which questions to ask, what information to share, or, most importantly, how to put the advice into action. Nobody was connecting the dots.',
+    'Once we brought the right professionals together, he got back on solid ground. But I couldn’t unsee the problem.',
+    'I knew there was a better way because I had lived it. After five years in traditional wealth management, I spent most of my career inside a single-family office, first as Chief Investment Officer and later also as Chief Operating Officer. Every day, I saw what an independent team could do: see the whole picture, anticipate what was coming, and make sure nothing fell through the cracks. It taught me something I still believe: good advice is only as valuable as what happens next.',
+    'Too often, that kind of support is reserved for those wealthy and experienced enough to build it themselves. I don’t believe it should be. So I brought together a team that shares that belief, and together we built something different.'],
+  quotes: ['I couldn’t unsee the problem.', 'Good advice is only as valuable as what happens next.'],
+  edu: ['Master of Security Analysis and Portfolio Management, Creighton University', 'Master of Business Administration (MBA), Creighton University', 'Bachelor of Arts in Finance, Banking, Investment and Portfolio Management, University of Nebraska at Omaha'],
+  different: ['Our team knows the investment world from the inside, and we deliberately chose not to be another wealth management firm. We wanted our independence to be beyond question. We sell no financial products and earn no commissions, from anyone, on anything.',
+    'NovoTime gives people who have worked hard for what they have an advocate in their corner: a team that handles the complexities, brings the right people together, looks ahead, and follows through.'],
+  name: '<em>Novo</em> means new, and while you can always earn more money, you can never buy back time. NovoTime is about giving you new time, and the freedom to devote it to whatever matters most to you. And knowing someone is looking out for your interests is where peace of mind begins.',
+  zeroes: 'We don’t measure a client by the zeroes. We ask one question: Can our team make a real, consistent, and lasting difference in your life?',
+  quote: 'Bring us the problems everyone else doesn’t want to deal with. That’s where we do our best work.',
+};
+const words = (t: string) => E(t).split(/(\s+)/).map(w => /^\s+$/.test(w) ? w : `<span>${w}</span>`).join('');
+const aboutHero = `<section class="phead ahero"><canvas id="c" data-v="flow" aria-hidden="true"></canvas><div class="w ahg"><div><p class="aeb">About NovoTime</p><h1>The Purpose Behind <em>NovoTime.</em></h1><p class="sub">We run the day-to-day, bring your advisors together, and make sure nothing falls through the cracks.</p></div><div class="tph"><div class="tph-in"><img src="assets/nt-mark.svg" alt=""><span>Team photo</span></div></div></div></section>`;
 const story =
-  `<section class="sa s-1"><div class="w s1g"><div><h2 class="reveal">Where It Started</h2><div class="sb reveal">${body([paras[0], paras[1], paras[2]])}</div></div><div class="s1p reveal">${PH}</div></div></section>` +
-  `<section class="sa s-2"><div class="w"><h2 class="reveal">A Better Way</h2><div class="sb reveal">${body([paras[3], paras[4]])}</div><div class="tl">${path}</div></div></section>` +
-  `<section class="sa s-3"><svg class="lines" data-l="dark" aria-hidden="true"></svg><div class="w"><h2 class="reveal">Something <em>Different</em></h2><div class="sb reveal">${body([paras[5], paras[6]])}</div><div class="four">${four.map((t, k) => `<p class="reveal" data-d="${k * 110}">${t}</p>`).join('')}</div></div></section>` +
-  `<section class="sa s-4"><div class="w"><h2 class="reveal">What Our Name Means</h2><div class="sb reveal">${body([paras[7], paras[8]])}</div>` +
-  `<div class="close reveal"><p class="q">${quote.split(/(\s+)/).map(w => /^\s+$/.test(w) ? w : `<span>${w}</span>`).join('')}</p><p class="by">${sig[1]}<small>${sig[2]}</small></p></div></div></section>`;
+  `<section class="sa a-who"><div class="w"><h2 class="reveal">Who We Are</h2><div class="sb reveal"><p>${E(ABOUT.who)}</p></div></div></section>` +
+  `<section class="sa a-story"><div class="w"><h2 class="reveal">How NovoTime Began</h2><div class="asg"><div class="sb reveal">${ABOUT.story.map(t => `<p>${E(t)}</p>`).join('')}` +
+  `<div class="sig2"><p class="nm">Diana V. Novoselska</p><p class="rl">Founder</p>${ABOUT.edu.map(t => `<p class="ed">${E(t)}</p>`).join('')}</div></div>` +
+  `<div class="pqs">${ABOUT.quotes.map((t, k) => `<p class="pq reveal" data-d="${k * 140}">${E(t)}</p>`).join('')}</div></div></div></section>` +
+  `<section class="sa s-3"><svg class="lines" data-l="dark" aria-hidden="true"></svg><div class="w"><h2 class="reveal">Why We&rsquo;re <em>Different</em></h2><div class="sb reveal">${ABOUT.different.map(t => `<p>${E(t)}</p>`).join('')}</div></div></section>` +
+  `<section class="sa a-name"><div class="w"><h2 class="reveal">What Our Name Means</h2><div class="sb reveal"><p>${ABOUT.name}</p></div></div></section>`;
 const vals = VALUES.map((v: any) => `<div class="v reveal"><h3>${v.title}</h3><p>${E(v.lines[0])} ${E(v.lines[1])}</p></div>`).join('');
-const aboutFx = `<script>(function(){const tl=document.querySelector('.tl'),q=document.querySelectorAll('.close .q span'),st=[...document.querySelectorAll('.tl .st')];if(matchMedia('(prefers-reduced-motion: reduce)').matches){tl&&tl.style.setProperty('--p',1);q.forEach(s=>s.classList.add('on'));st.forEach(s=>s.classList.add('on'));return}
-let t=0;function u(){t=0;const vh=innerHeight;if(tl){const r=tl.getBoundingClientRect(),p=Math.max(0,Math.min(1,(vh*.8-r.top)/(r.width>700?vh*.45:r.height)));tl.style.setProperty('--p',p.toFixed(3));st.forEach((s,i)=>s.classList.toggle('on',p>=(st.length>1?i/(st.length-1):0)-.001))}
-if(q.length){const r=q[0].parentNode.getBoundingClientRect(),p=Math.max(0,Math.min(1,(vh*.85-r.top)/(vh*.5)));const n=Math.round(p*q.length);q.forEach((s,i)=>s.classList.toggle('on',i<n))}}
+const closing = `<section class="sa a-close"><div class="w"><p class="zr reveal">${E(ABOUT.zeroes)}</p><div class="close"><p class="q">${words(ABOUT.quote)}</p></div></div></section>`;
+const aboutFx = `<script>(function(){const q=document.querySelectorAll('.close .q span');if(matchMedia('(prefers-reduced-motion: reduce)').matches){q.forEach(s=>s.classList.add('on'));return}
+let t=0;function u(){t=0;const vh=innerHeight;if(q.length){const r=q[0].parentNode.getBoundingClientRect(),p=Math.max(0,Math.min(1,(vh*.85-r.top)/(vh*.5)));const n=Math.round(p*q.length);q.forEach((s,i)=>s.classList.toggle('on',i<n))}}
 addEventListener('scroll',()=>{if(!t)t=requestAnimationFrame(u)},{passive:true});u()})()</script>`;
-write('about.html', page('About', 'a', phead('Why I started <em>NovoTime.</em>') + story +
-  `<section class="vals"><svg class="lines" data-l="dark" aria-hidden="true"></svg><div class="w"><h2 class="reveal">What We <em>Stand On</em></h2><div class="vlist">${vals}</div></div></section>` + cta() + aboutFx,
-  '', 'Why Diana V. Novoselska founded NovoTime and the values behind the work.'));
+write('about.html', page('About', 'a', aboutHero + story +
+  `<section class="vals"><svg class="lines" data-l="dark" aria-hidden="true"></svg><div class="w"><h2 class="reveal">What We <em>Stand On</em></h2><div class="vlist">${vals}</div></div></section>` + closing + cta() + aboutFx,
+  '', 'NovoTime is an independent team in Omaha that runs the day-to-day of your financial life and brings your advisors together.'));
 write('founder.html', '<!doctype html><html lang="en"><head><meta charset="utf-8"><meta http-equiv="refresh" content="0; url=about.html"><link rel="canonical" href="about.html"><title>About | NovoTime</title></head><body><a href="about.html">About NovoTime</a></body></html>\n');
 
 // contact
@@ -153,13 +164,16 @@ const cform = `<section class="reach"><div class="w"><div class="rgrid2">
 <label>How can we help?<textarea class="f" name="message" rows="4"></textarea></label>
 <button type="submit" class="btn">Send message</button></form>
 </div></div></section>`;
-write('contact.html', page('Contact Us', 'c', phead('Let&rsquo;s start <em>a conversation.</em>') + cform +
+const map = `<section class="map"><iframe title="NovoTime office on Burt St. in Omaha" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=9375+Burt+St+Suite+202,+Omaha,+NE+68114&z=15&output=embed"></iframe></section>`;
+write('contact.html', page('Contact Us', 'c', phead('Let&rsquo;s start <em>a conversation.</em>') + cform + map +
   `<section class="faqs alt"><div class="w"><h2 class="reveal">Common Questions</h2><div class="qas">${faq(FAQ)}</div></div></section>`,
   '', 'Start a conversation with NovoTime in Omaha.'));
 
 // homepage: About link, subpage styles, and a link from each service panel to its page
-let idx = read('index.html').replace('<p class="eyebrow reveal">A simpler financial life starts here</p>', '').replaceAll('href="founder.html"', 'href="about.html"')
-  .replace('Your financial life,<br><em>brought together.</em>', 'Your family&rsquo;s affairs,<br><em>brought together.</em>').replace('behind your financial life', 'behind your family&rsquo;s finances').replace('part of their financial life', 'part of their finances')
+let idx = read('index.html').replaceAll('href="founder.html"', 'href="about.html"')
+  .replace('<h1>Your financial life,<br><em>brought together.</em></h1>', '<h1>Your financial life,<br><em>brought together</em><span class="l3">by one team, fully on your side.</span></h1>')
+  .replace('One team with nothing to sell, so you have more time and peace of mind for what matters to you.', 'So you have more time and peace of mind for what matters most.')
+  .replace('Let&rsquo;s make room<br>for', 'Let&rsquo;s make time<br>for')
   .replace('</title>', '</title><meta name="description" content="NovoTime is an independent family office in Omaha. One team that handles the financial administration, tax coordination and paperwork behind your family, with nothing to sell.">')
   .replace('<link rel="stylesheet" href="assets/site.css">', '<link rel="stylesheet" href="assets/site.css"><link rel="stylesheet" href="assets/pages.css">');
 SV.forEach((s, k) => {
@@ -167,7 +181,7 @@ SV.forEach((s, k) => {
   const j = idx.indexOf(a); const e = idx.indexOf('</ul>', j) + 5;
   idx = idx.slice(0, e) + `<a class="link light more" href="services/${s.slug}.html">View ${s.name}</a>` + idx.slice(e);
 });
-const DOTS = `<section class="dots"><div class="w"><h2 class="reveal">Every Dot, <em>Connected.</em></h2><div class="stage"></div></div></section>`;
+const DOTS = `<section class="dots"><div class="w"><h2 class="reveal">Every Dot, <em>Connected.</em></h2><div class="stage"></div><p class="after reveal">Your CPA, attorney, insurance agent, banker, and investment advisor each do their own job well. NovoTime runs the day-to-day of your financial life and connects all of them around you, so nothing falls through the cracks.</p></div></section>`;
 idx = idx.replace('<section class="approach">', DOTS + '<section class="approach">').replace('</body>', '<script src="assets/dots.js"></script></body>');
 write('index.html', idx);
 console.log('built', SV.length, 'service pages');
