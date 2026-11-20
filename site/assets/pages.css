@@ -380,3 +380,8 @@ header.top{padding:30px max(64px,calc((100vw - 1640px)/2 + 64px))}
 .close .q span,.close .q span.on,.close .q span.on:nth-last-child(-n+4){color:var(--navy)}
 @media (max-width:760px){.a-close .close .q{font-size:17px}}
 .a-who .sb,.a-name .sb{max-width:1000px}
+/* name sits on the right, ribbon mirrored so it sweeps through the open left side */
+.flow .rib{transform:scaleX(-1)}
+.flow .a-name .w{text-align:right}
+.flow .a-name .sb{margin-left:auto}
+@media (max-width:760px){.flow .a-name .w{text-align:left}.flow .a-name .sb{margin-left:0}}
