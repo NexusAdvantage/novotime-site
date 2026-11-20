@@ -296,7 +296,6 @@ header.top{padding:30px max(64px,calc((100vw - 1640px)/2 + 64px))}
 .a-who,.a-story,.a-name{position:relative;overflow:hidden}
 .a-who::after{content:"";position:absolute;right:-4%;top:50%;width:min(560px,34vw);aspect-ratio:790/520;transform:translateY(-50%);background:url(nt-mark.svg) center/contain no-repeat;opacity:.05;pointer-events:none}
 .a-who .w,.a-name .w,.a-story .w{position:relative;z-index:1}
-.a-who .sb p,.a-name .sb p{font-family:Newsreader,Georgia,serif;font-size:clamp(26px,2.3vw,36px)!important;line-height:1.45!important;color:var(--navy)!important;letter-spacing:-.01em}
 .a-who .sb{max-width:1240px}
 .sto{display:grid;grid-template-columns:1fr 1fr;column-gap:96px;margin-top:56px;padding-top:44px;border-top:1px solid rgba(134,115,30,.28);position:relative}
 .sto::before{content:"";position:absolute;left:0;top:-1px;width:64px;height:2px;background:var(--gold)}
@@ -360,3 +359,24 @@ header.top{padding:30px max(64px,calc((100vw - 1640px)/2 + 64px))}
 @media (max-width:1100px){.cvg{grid-template-columns:1fr;row-gap:40px}}
 @media (max-width:1000px){.fd{grid-template-columns:1fr}.fdp{min-height:0;aspect-ratio:4/3}}
 @media (max-width:760px){.fd{padding:0}.fdr{padding:36px 24px}.fdp-in{inset:16px}.cv b{font-size:19px}}
+/* about: why different, name and values share one light field with a blue ribbon running through */
+.flow{position:relative;overflow:hidden;background:linear-gradient(180deg,#FBFAF7 0%,#F6F2E8 50%,#FBFAF7 100%)}
+.flow .rib{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.flow>section{position:relative;z-index:1;background:none!important}
+.flow .s-3 h2,.flow .vals h2{color:var(--navy)}.flow .s-3 h2 em,.flow .vals h2 em{color:var(--gold)}
+.sub .flow .s-3 .sb p{color:var(--body)}
+.flow .sa,.sub .flow .s-3{padding:72px 0}
+.flow>section:first-of-type{padding-top:120px}
+.flow .vals{padding:72px 0 120px;color:var(--body)}
+.flow .vlist .v::before{background:var(--gold)}
+.flow .vlist .v{border-top-color:rgba(134,115,30,.25)}
+.flow .v h3{color:var(--navy)}.flow .v h3 em{color:var(--gold)}
+.sub .flow .v p{color:var(--body)}
+.flow .s-3 .sb,.flow .a-name .sb{position:relative}
+@media (max-width:760px){.flow .sa,.sub .flow .s-3{padding:48px 0}.flow>section:first-of-type{padding-top:80px}.flow .vals{padding:48px 0 80px}}
+/* body text stays in the body font at one size */
+.a-close .close{margin-top:24px;padding-top:0;border-top:0}
+.a-close .close .q{font-family:Manrope,sans-serif;font-size:20px;line-height:1.8;letter-spacing:0;font-weight:500;max-width:1000px}
+.close .q span,.close .q span.on,.close .q span.on:nth-last-child(-n+4){color:var(--navy)}
+@media (max-width:760px){.a-close .close .q{font-size:17px}}
+.a-who .sb,.a-name .sb{max-width:1000px}

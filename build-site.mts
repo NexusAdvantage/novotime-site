@@ -141,15 +141,23 @@ const story =
   `<div class="chs">${[[0, 3], [3, 5]].map(([a, b], k) => `<div class="ch reveal"><p class="pq">${E(ABOUT.quotes[k])}</p><div class="chb">${ABOUT.story.slice(a, b).map(t => `<p>${E(t)}</p>`).join('')}</div></div>`).join('')}</div>` +
   `<div class="fd reveal"><div class="fdp"><div class="fdp-in"><img src="assets/nt-mark.svg" alt=""><span>Photo of Diana</span></div></div><div class="fdr"><p class="nm">Diana V. Novoselska</p><p class="rl">Founder, NovoTime</p>` +
   `<div class="cvg"><div class="cv" style="grid-column:1/-1"><h3>${icon('cap')}Education</h3><ul>${ABOUT.edu.map(([a, b]) => `<li><b>${E(a)}</b><span>${E(b)}</span></li>`).join('')}</ul></div></div></div></div></div></section>` +
-  `<section class="sa s-3"><svg class="lines" data-l="dark" aria-hidden="true"></svg><div class="w"><h2 class="reveal">Why We&rsquo;re <em>Different</em></h2><div class="sb reveal">${ABOUT.different.map(t => `<p>${E(t)}</p>`).join('')}</div></div></section>` +
+  `<div class="flow"><svg class="rib" aria-hidden="true"></svg><section class="sa s-3"><div class="w"><h2 class="reveal">Why We&rsquo;re <em>Different</em></h2><div class="sb reveal">${ABOUT.different.map(t => `<p>${E(t)}</p>`).join('')}</div></div></section>` +
   `<section class="sa a-name"><div class="w"><h2 class="reveal">What Our Name Means</h2><div class="sb reveal"><p>${ABOUT.name}</p></div></div></section>`;
 const vals = VALUES.map((v: any) => `<div class="v reveal"><h3>${v.title}</h3><p>${E(v.lines[0])} ${E(v.lines[1])}</p></div>`).join('');
 const closing = `<section class="sa a-close"><div class="w"><p class="zr reveal">${E(ABOUT.zeroes)}</p><div class="close"><p class="q">${words(ABOUT.quote)}</p></div></div></section>`;
 const aboutFx = `<script>(function(){const q=document.querySelectorAll('.close .q span');if(matchMedia('(prefers-reduced-motion: reduce)').matches){q.forEach(s=>s.classList.add('on'));return}
 let t=0;function u(){t=0;const vh=innerHeight;if(q.length){const r=q[0].parentNode.getBoundingClientRect(),p=Math.max(0,Math.min(1,(vh*.85-r.top)/(vh*.5)));const n=Math.round(p*q.length);q.forEach((s,i)=>s.classList.toggle('on',i<n))}}
 addEventListener('scroll',()=>{if(!t)t=requestAnimationFrame(u)},{passive:true});u()})()</script>`;
+// one blue ribbon weaving down through the light sections
+const ribbon = `<script>(function(){const f=document.querySelector('.flow'),s=f&&f.querySelector('.rib');if(!s)return;const NS='http://www.w3.org/2000/svg',L=34,S=90,RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const A=[0,47,95],B=[79,122,163],C=[134,115,30],col=u=>{const m=u<.5?[A,B,u/.5]:[B,C,(u-.5)/.5];return m[0].map((v,i)=>Math.round(v+(m[1][i]-v)*m[2])).join(',')};
+const ps=[...Array(L)].map((_,k)=>{const p=document.createElementNS(NS,'path'),u=k/(L-1);p.setAttribute('fill','none');p.setAttribute('stroke','rgb('+col(u)+')');p.setAttribute('stroke-opacity',(.05+.17*Math.sin(Math.PI*u)).toFixed(3));p.setAttribute('stroke-width','1.1');s.appendChild(p);return p});
+let W,H;function draw(t){W=f.clientWidth;H=f.clientHeight;s.setAttribute('viewBox','0 0 '+W+' '+H);const bw=Math.min(W*.34,460);
+ps.forEach((p,k)=>{const u=k/(L-1)-.5;let d='';for(let i=0;i<=S;i++){const y=-60+(H+120)*i/S,q=y/H,cx=W*(.5+.36*Math.sin(q*Math.PI*2.2-.9+t*.00006)),tw=Math.cos(q*Math.PI*3.4+.6+t*.0001),x=cx+u*bw*tw,yy=y+u*bw*.35*Math.sin(q*Math.PI*3.4+.6+t*.0001);d+=(i?'L':'M')+x.toFixed(1)+' '+yy.toFixed(1)}p.setAttribute('d',d)})}
+let vis=false,raf=0,last=0;function loop(n){if(!vis){raf=0;return}if(n-last>40){last=n;draw(n)}raf=requestAnimationFrame(loop)}
+draw(0);addEventListener('resize',()=>draw(performance.now()));if(!RM)new IntersectionObserver(e=>{vis=e[0].isIntersecting;if(vis&&!raf)raf=requestAnimationFrame(loop)}).observe(f)})()</script>`;
 write('about.html', page('About', 'a', aboutHero + story +
-  `<section class="vals"><svg class="lines" data-l="dark" aria-hidden="true"></svg><div class="w"><h2 class="reveal">What We <em>Stand On</em></h2><div class="vlist">${vals}</div></div></section>` + closing + cta() + aboutFx,
+  `<section class="vals"><div class="w"><h2 class="reveal">What We <em>Stand On</em></h2><div class="vlist">${vals}</div></div></section></div>` + closing + cta() + aboutFx + ribbon,
   '', 'NovoTime is an independent team in Omaha that runs the day-to-day of your financial life and brings your advisors together.'));
 write('founder.html', '<!doctype html><html lang="en"><head><meta charset="utf-8"><meta http-equiv="refresh" content="0; url=about.html"><link rel="canonical" href="about.html"><title>About | NovoTime</title></head><body><a href="about.html">About NovoTime</a></body></html>\n');
 
