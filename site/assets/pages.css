@@ -338,3 +338,25 @@ header.top{padding:30px max(64px,calc((100vw - 1640px)/2 + 64px))}
 .edl .ic{width:28px;height:28px}
 @media (max-width:1000px){.chb{column-gap:56px}.fd{grid-template-columns:1fr;row-gap:32px}}
 @media (max-width:760px){.chb{column-count:1}.chb p{font-size:17px}.ch+.ch{margin-top:56px}.ch{padding-top:36px}.fd{margin-top:56px;padding:36px 24px}.edl li{font-size:16px;gap:16px}}
+/* founder, resume style with photo */
+.fd{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,8fr);column-gap:0;align-items:stretch;padding:0;overflow:hidden}
+.fdp{position:relative;background:linear-gradient(180deg,#002F5F 0%,#001F40 100%);min-height:520px}
+.fdp-in{position:absolute;inset:28px;border:1px solid rgba(201,184,118,.4);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px}
+.fdp-in img{width:56px;opacity:.5}.fdp-in span{font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:#9FB0C3}
+.fdr{padding:60px 64px}
+.fd .rl{margin-top:12px}
+.cvg{display:grid;grid-template-columns:1fr 1fr;column-gap:64px;margin-top:40px;padding-top:36px;border-top:1px solid rgba(134,115,30,.25);position:relative}
+.cvg::before{content:"";position:absolute;left:0;top:-1px;width:64px;height:2px;background:var(--gold)}
+.cv h3{display:flex;align-items:center;gap:12px;font-family:Manrope,sans-serif;font-size:12.5px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--navy)}
+.cv h3 .ic{width:24px;height:24px}
+.cv ul{list-style:none;margin-top:24px;position:relative}
+.cv ul::before{content:"";position:absolute;left:5px;top:10px;bottom:10px;width:1px;background:rgba(134,115,30,.3)}
+.cv li{position:relative;padding-left:32px}
+.cv li+li{margin-top:22px}
+.cv li::before{content:"";position:absolute;left:0;top:6px;width:11px;height:11px;border-radius:50%;background:#fff;border:2px solid var(--gold)}
+.cv li:first-child::before{background:var(--gold)}
+.cv b{display:block;font-family:Newsreader,Georgia,serif;font-weight:400;font-size:21px;line-height:1.3;color:var(--navy);letter-spacing:-.005em}
+.cv span{display:block;margin-top:4px;font-size:15px;line-height:1.5;color:#7A8796}
+@media (max-width:1100px){.cvg{grid-template-columns:1fr;row-gap:40px}}
+@media (max-width:1000px){.fd{grid-template-columns:1fr}.fdp{min-height:0;aspect-ratio:4/3}}
+@media (max-width:760px){.fd{padding:0}.fdr{padding:36px 24px}.fdp-in{inset:16px}.cv b{font-size:19px}}
