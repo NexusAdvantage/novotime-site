@@ -137,9 +137,10 @@ const words = (t: string) => E(t).split(/(\s+)/).map(w => /^\s+$/.test(w) ? w : 
 const aboutHero = `<section class="phead ahero"><canvas id="c" data-v="flow" aria-hidden="true"></canvas><div class="w ahg"><div><p class="aeb">About NovoTime</p><h1>The Purpose Behind <em>NovoTime.</em></h1><p class="sub">We run the day-to-day, bring your advisors together, and make sure nothing falls through the cracks.</p></div><div class="tph"><div class="tph-in"><img src="assets/nt-mark.svg" alt=""><span>Team photo</span></div></div></div></section>`;
 const story =
   `<section class="sa a-who"><div class="w"><h2 class="reveal">Who We Are</h2><div class="sb reveal"><p>${E(ABOUT.who)}</p></div></div></section>` +
-  `<section class="sa a-story"><div class="w"><h2 class="reveal">How NovoTime Began</h2><div class="asg"><div class="sb reveal">${ABOUT.story.map(t => `<p>${E(t)}</p>`).join('')}` +
-  `<div class="sig2"><p class="nm">Diana V. Novoselska</p><p class="rl">Founder</p>${ABOUT.edu.map(t => `<p class="ed">${E(t)}</p>`).join('')}</div></div>` +
-  `<div class="pqs">${ABOUT.quotes.map((t, k) => `<p class="pq reveal" data-d="${k * 140}">${E(t)}</p>`).join('')}</div></div></div></section>` +
+  `<section class="sa a-story"><div class="w"><h2 class="reveal">How NovoTime Began</h2>` +
+  `<div class="sto"><div class="sb reveal">${ABOUT.story.slice(0, 3).map(t => `<p>${E(t)}</p>`).join('')}</div><div class="sb reveal" data-d="120">${ABOUT.story.slice(3).map(t => `<p>${E(t)}</p>`).join('')}</div></div>` +
+  `<div class="pqs">${ABOUT.quotes.map((t, k) => `<p class="pq reveal" data-d="${k * 140}">${E(t)}</p>`).join('')}</div>` +
+  `<div class="sig2 reveal"><p class="nm">Diana V. Novoselska</p><p class="rl">Founder</p><div class="eds">${ABOUT.edu.map(t => `<p class="ed">${E(t)}</p>`).join('')}</div></div></div></section>` +
   `<section class="sa s-3"><svg class="lines" data-l="dark" aria-hidden="true"></svg><div class="w"><h2 class="reveal">Why We&rsquo;re <em>Different</em></h2><div class="sb reveal">${ABOUT.different.map(t => `<p>${E(t)}</p>`).join('')}</div></div></section>` +
   `<section class="sa a-name"><div class="w"><h2 class="reveal">What Our Name Means</h2><div class="sb reveal"><p>${ABOUT.name}</p></div></div></section>`;
 const vals = VALUES.map((v: any) => `<div class="v reveal"><h3>${v.title}</h3><p>${E(v.lines[0])} ${E(v.lines[1])}</p></div>`).join('');
