@@ -320,3 +320,21 @@ header.top{padding:30px max(64px,calc((100vw - 1640px)/2 + 64px))}
 .a-close .zr{max-width:1000px}.a-close .close .q{max-width:1240px}
 @media (max-width:1000px){.vlist{grid-template-columns:1fr 1fr;column-gap:56px}.eds{grid-template-columns:1fr;row-gap:14px}}
 @media (max-width:760px){.sto,.a-story .pqs,.s-3 .sb,.vlist,.a-story .sig2{grid-template-columns:1fr}.sto{row-gap:22px;margin-top:40px;padding-top:32px}.a-story .pqs{row-gap:32px;margin-top:48px}.s-3 .sb{row-gap:22px}.a-story .sig2>div.eds{grid-column:1;grid-row:auto;margin-top:24px}.a-who::after{width:80vw;opacity:.04}}
+/* about story: each quote opens its part of the story, founder card below */
+.chs{margin-top:56px}
+.ch{position:relative;padding-top:48px;border-top:1px solid rgba(134,115,30,.28)}
+.ch::before{content:"";position:absolute;left:0;top:-1px;width:64px;height:2px;background:var(--gold)}
+.ch+.ch{margin-top:72px}
+.a-story .ch .pq{border-left:0;padding:0;font-size:clamp(32px,3vw,46px);line-height:1.2;max-width:1100px}
+.chb{margin-top:32px;column-count:2;column-gap:96px}
+.chb p{font-size:18px;line-height:1.8;color:var(--body)}
+.chb p+p{margin-top:24px}
+.fd{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,7fr);column-gap:96px;align-items:center;margin-top:88px;padding:52px 56px;background:#fff;border:1px solid rgba(134,115,30,.22);box-shadow:0 24px 60px -40px rgba(0,31,64,.35)}
+.fd .nm{font-family:Newsreader,Georgia,serif;font-size:clamp(32px,2.8vw,42px);line-height:1.15;color:var(--navy);letter-spacing:-.015em}
+.fd .rl{margin-top:12px;font-size:12.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--gold)}
+.edl{list-style:none}
+.edl li{display:flex;align-items:center;gap:20px;padding:18px 0;border-top:1px solid rgba(134,115,30,.2);font-size:17px;line-height:1.5;color:var(--ink)}
+.edl li:first-child{border-top:0;padding-top:0}.edl li:last-child{padding-bottom:0}
+.edl .ic{width:28px;height:28px}
+@media (max-width:1000px){.chb{column-gap:56px}.fd{grid-template-columns:1fr;row-gap:32px}}
+@media (max-width:760px){.chb{column-count:1}.chb p{font-size:17px}.ch+.ch{margin-top:56px}.ch{padding-top:36px}.fd{margin-top:56px;padding:36px 24px}.edl li{font-size:16px;gap:16px}}
