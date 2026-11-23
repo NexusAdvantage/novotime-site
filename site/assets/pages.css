@@ -385,3 +385,8 @@ header.top{padding:30px max(64px,calc((100vw - 1640px)/2 + 64px))}
 .flow .a-name .w{text-align:right}
 .flow .a-name .sb{margin-left:auto}
 @media (max-width:760px){.flow .a-name .w{text-align:left}.flow .a-name .sb{margin-left:0}}
+/* paragraphs always stack in one column, never two text blocks side by side */
+.cols2,.sintro .lede,.s-3 .sb,.sto{display:block;max-width:1000px}
+.cols2 p+p,.sintro .lede p+p,.s-3 .sb p+p,.sto .sb+.sb{margin-top:24px}
+.chb{column-count:1;max-width:1000px}
+.a-story .pqs{display:block}
