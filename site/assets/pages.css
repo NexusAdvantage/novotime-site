@@ -426,3 +426,12 @@ header.top{padding:30px max(64px,calc((100vw - 1640px)/2 + 64px))}
 @media (prefers-reduced-motion:reduce){.dial .hm,.dial .hs{animation:none}}
 @media (max-width:1100px){.dial{display:none}}
 .flow .a-name{overflow:visible}
+/* the NovoTime mark as a fine outline, large and cropped into the open side of a section */
+.rflow .cn,.dial{display:none}
+.bm{position:absolute;pointer-events:none;opacity:0;transition:opacity 1.6s ease,transform 1.6s cubic-bezier(.2,.7,.2,1)}
+.bm.in{opacity:1;transform:none}
+.bm-r{right:-14vw;top:16%;width:min(900px,46vw);transform:translateX(60px)}
+.rflow .ch{max-width:1000px}
+.bm-l{left:-8vw;top:50%;width:min(560px,32vw);margin-top:calc(min(560px,32vw)*-.33);transform:translateX(-60px)}
+@media (max-width:1600px){.bm-r{display:none}}
+@media (max-width:1300px){.bm-l{display:none}}

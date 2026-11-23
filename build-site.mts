@@ -135,31 +135,27 @@ const ABOUT = {
 };
 const words = (t: string) => E(t).split(/(\s+)/).map(w => /^\s+$/.test(w) ? w : `<span>${w}</span>`).join('');
 const aboutHero = `<section class="phead ahero"><canvas id="c" data-v="flow" aria-hidden="true"></canvas><div class="w ahg"><div><p class="aeb">About NovoTime</p><h1>The Purpose Behind <em>NovoTime.</em></h1><p class="sub">We run the day-to-day, bring your advisors together, and make sure nothing falls through the cracks.</p></div><div class="tph"><div class="tph-in"><img src="assets/nt-mark.svg" alt=""><span>Team photo</span></div></div></div></section>`;
-// a quiet clock face for What Our Name Means: new time
-const dial = `<svg class="dial" viewBox="0 0 400 400" aria-hidden="true"><circle cx="200" cy="200" r="190" class="d1"/><circle cx="200" cy="200" r="150" class="d2"/>${[...Array(60)].map((_, k) => { const a = k * Math.PI / 30, r1 = k % 5 ? 178 : 168, r2 = 186; return `<line x1="${(200 + r1 * Math.sin(a)).toFixed(1)}" y1="${(200 - r1 * Math.cos(a)).toFixed(1)}" x2="${(200 + r2 * Math.sin(a)).toFixed(1)}" y2="${(200 - r2 * Math.cos(a)).toFixed(1)}" class="${k % 5 ? 't' : 'T'}"/>`; }).join('')}<g class="hm"><line x1="200" y1="200" x2="200" y2="92"/></g><g class="hs"><line x1="200" y1="214" x2="200" y2="58"/></g><circle cx="200" cy="200" r="5" class="dc"/></svg>`;
+// the NovoTime mark drawn as a fine gold outline, used large and cropped as the page's graphic device
+const MP = ['M355 541 L175 541 Q105 541 105 471 L105 60 L655 570', 'M545 101 L725 101 Q795 101 795 171 L795 580 L255 70'];
+const mark = (id: string, cls: string) => `<svg class="bm ${cls}" viewBox="60 60 790 520" aria-hidden="true"><defs><linearGradient id="g${id}" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#86731E"/><stop offset="1" stop-color="#2C5F94"/></linearGradient>` +
+  `<mask id="o${id}" maskUnits="userSpaceOnUse" x="0" y="0" width="900" height="700"><g fill="none" stroke-linejoin="miter" stroke-miterlimit="10">${MP.map(d => `<path d="${d}" stroke="#fff" stroke-width="52"/>`).join('')}${MP.map(d => `<path d="${d}" stroke="#000" stroke-width="48"/>`).join('')}</g></mask>` +
+  `<mask id="f${id}" maskUnits="userSpaceOnUse" x="0" y="0" width="900" height="700"><g fill="none" stroke="#fff" stroke-width="52" stroke-linejoin="miter" stroke-miterlimit="10">${MP.map(d => `<path d="${d}"/>`).join('')}</g></mask>` +
+  `<clipPath id="c${id}"><rect x="0" y="72" width="900" height="497"/></clipPath></defs><g clip-path="url(#c${id})"><rect x="0" y="0" width="900" height="700" fill="#C9B876" fill-opacity=".07" mask="url(#f${id})"/><rect x="0" y="0" width="900" height="700" fill="url(#g${id})" mask="url(#o${id})"/></g></svg>`;
 const story =
-  `<div class="rflow"><svg class="cn" aria-hidden="true"></svg><section class="sa a-who"><div class="w"><h2 class="reveal">Who We Are</h2><div class="sb reveal"><p>${E(ABOUT.who)}</p></div></div></section>` +
+  `<div class="rflow">${mark('a', 'bm-r')}<section class="sa a-who"><div class="w"><h2 class="reveal">Who We Are</h2><div class="sb reveal"><p>${E(ABOUT.who)}</p></div></div></section>` +
   `<section class="sa a-story"><div class="w"><h2 class="reveal">How NovoTime Began</h2>` +
   `<div class="chs">${[[0, 3], [3, 5]].map(([a, b], k) => `<div class="ch reveal"><p class="pq">${E(ABOUT.quotes[k])}</p><div class="chb">${ABOUT.story.slice(a, b).map(t => `<p>${E(t)}</p>`).join('')}</div></div>`).join('')}</div>` +
   `<div class="fd reveal"><div class="fdp"><div class="fdp-in"><img src="assets/nt-mark.svg" alt=""><span>Photo of Diana</span></div></div><div class="fdr"><p class="nm">Diana V. Novoselska</p><p class="rl">Founder, NovoTime</p>` +
   `<div class="cvg"><div class="cv" style="grid-column:1/-1"><h3>${icon('cap')}Education</h3><ul>${ABOUT.edu.map(([a, b]) => `<li><b>${E(a)}</b><span>${E(b)}</span></li>`).join('')}</ul></div></div></div></div></div></section>` +
   `</div><div class="flow"><section class="sa s-3"><div class="w"><h2 class="reveal">Why We&rsquo;re <em>Different</em></h2><div class="sb reveal">${ABOUT.different.map(t => `<p>${E(t)}</p>`).join('')}</div></div></section>` +
-  `<section class="sa a-name">${dial}<div class="w"><h2 class="reveal">What Our Name Means</h2><div class="sb reveal"><p>${ABOUT.name}</p></div></div></section>`;
+  `<section class="sa a-name">${mark('b', 'bm-l')}<div class="w"><h2 class="reveal">What Our Name Means</h2><div class="sb reveal"><p>${ABOUT.name}</p></div></div></section>`;
 const vals = VALUES.map((v: any) => `<div class="v reveal"><h3>${v.title}</h3><p>${E(v.lines[0])} ${E(v.lines[1])}</p></div>`).join('');
 const closing = `<section class="sa a-close"><div class="w"><p class="zr reveal">${E(ABOUT.zeroes)}</p><div class="close"><p class="q">${words(ABOUT.quote)}</p></div></div></section>`;
 const aboutFx = `<script>(function(){const q=document.querySelectorAll('.close .q span');if(matchMedia('(prefers-reduced-motion: reduce)').matches){q.forEach(s=>s.classList.add('on'));return}
 let t=0;function u(){t=0;const vh=innerHeight;if(q.length){const r=q[0].parentNode.getBoundingClientRect(),p=Math.max(0,Math.min(1,(vh*.85-r.top)/(vh*.5)));const n=Math.round(p*q.length);q.forEach((s,i)=>s.classList.toggle('on',i<n))}}
 addEventListener('scroll',()=>{if(!t)t=requestAnimationFrame(u)},{passive:true});u()})()</script>`;
-// connect the dots down the open right side of the story: lines draw in and nodes light up as you read
-const ribbon = `<script>(function(){const s=document.querySelector('.cn');if(!s)return;const f=s.parentNode,NS='http://www.w3.org/2000/svg';let nodes=[],path,len=0,dots=[];
-function build(){s.innerHTML='';const W=f.clientWidth,H=f.clientHeight,fd=f.querySelector('.fd'),B=fd?fd.getBoundingClientRect().top-f.getBoundingClientRect().top-60:H;s.setAttribute('viewBox','0 0 '+W+' '+H);if(W<1100)return;const x0=W*.76,x1=W*.93,n=Math.max(7,Math.round(B/240));
-nodes=[...Array(n)].map((_,k)=>{const t=(k+.5)/n,j=Math.sin(k*2.3)*.5+.5;return[x0+(x1-x0)*j,B*.06+B*.94*t]});
-const ghost=document.createElementNS(NS,'path'),d='M'+nodes.map(p=>p[0].toFixed(1)+' '+p[1].toFixed(1)).join('L');ghost.setAttribute('d',d);ghost.setAttribute('class','cg');s.appendChild(ghost);
-for(let k=0;k<n-2;k+=2){const l=document.createElementNS(NS,'line');l.setAttribute('x1',nodes[k][0]);l.setAttribute('y1',nodes[k][1]);l.setAttribute('x2',nodes[k+2][0]);l.setAttribute('y2',nodes[k+2][1]);l.setAttribute('class','cx');s.appendChild(l)}
-path=document.createElementNS(NS,'path');path.setAttribute('d',d);path.setAttribute('class','cp');s.appendChild(path);len=path.getTotalLength();path.style.strokeDasharray=len;
-dots=nodes.map(p=>{const c=document.createElementNS(NS,'circle');c.setAttribute('cx',p[0]);c.setAttribute('cy',p[1]);c.setAttribute('r',6);c.setAttribute('class','cd');s.appendChild(c);return c});u()}
-function u(){if(!path)return;const r=f.getBoundingClientRect(),vh=innerHeight,y=vh*.6-r.top,H=f.clientHeight;path.style.strokeDashoffset=len*(1-Math.max(0,Math.min(1,(y-nodes[0][1])/(nodes[nodes.length-1][1]-nodes[0][1]))));dots.forEach((c,k)=>c.classList.toggle('on',nodes[k][1]<y))}
-let t=0;addEventListener('scroll',()=>{if(!t)t=requestAnimationFrame(()=>{t=0;u()})},{passive:true});addEventListener('resize',build);build()})()</script>`;
+// fade the mark in when it scrolls into view
+const ribbon = `<script>(function(){const io=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target)}}),{threshold:.15});document.querySelectorAll('.bm').forEach(m=>io.observe(m))})()</script>`;
 write('about.html', page('About', 'a', aboutHero + story +
   `<section class="vals"><div class="w"><h2 class="reveal">What We <em>Stand On</em></h2><div class="vlist">${vals}</div></div></section></div>` + closing + cta() + aboutFx + ribbon,
   '', 'NovoTime is an independent team in Omaha that runs the day-to-day of your financial life and brings your advisors together.'));
