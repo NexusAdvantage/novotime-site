@@ -435,3 +435,22 @@ header.top{padding:30px max(64px,calc((100vw - 1640px)/2 + 64px))}
 .bm-l{left:-8vw;top:50%;width:min(560px,32vw);margin-top:calc(min(560px,32vw)*-.33);transform:translateX(-60px)}
 @media (max-width:1600px){.bm-r{display:none}}
 @media (max-width:1300px){.bm-l{display:none}}
+/* story visual beside each part of the story */
+.bm{display:none!important}
+.viz{display:none}
+@media (min-width:1300px){
+ .rflow .ch{max-width:none;display:grid;grid-template-columns:minmax(0,1fr) clamp(340px,30vw,520px);grid-template-rows:auto 1fr;column-gap:72px;align-items:start}
+ .rflow .ch>.pq,.rflow .ch>.chb{grid-column:1}
+ .viz{display:block;grid-column:2;grid-row:1/span 2;align-self:center;max-width:520px;width:100%;justify-self:end}
+}
+.viz svg{display:block;width:100%;height:auto;overflow:visible}
+.viz .vr{fill:none;stroke:var(--gold);stroke-width:1.5;transform:rotate(-90deg);transform-origin:260px 240px}
+.viz .vt{stroke:#9FB0C3;stroke-width:1;stroke-dasharray:3 6}
+.viz .vs{stroke:var(--gold);stroke-width:1.2}
+.viz .vcc{fill:rgba(201,184,118,.14);stroke:rgba(134,115,30,.45);stroke-width:1}
+.viz .vct{font:500 21px Newsreader,Georgia,serif;fill:var(--navy)}
+.viz .vtag{font:600 13px Manrope,sans-serif;letter-spacing:.24em;text-transform:uppercase;fill:var(--gold)}
+.viz .vn circle{fill:#FBFAF7;stroke:#9FB0C3;stroke-width:1.5;transition:fill .5s,stroke .5s}
+.viz .vn text{font:500 17px Manrope,sans-serif;fill:#5B6B7D;transition:fill .5s}
+.viz .vn.on circle{fill:var(--gold);stroke:var(--gold)}
+.viz .vn.on text{fill:var(--navy)}
