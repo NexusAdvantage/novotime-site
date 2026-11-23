@@ -125,6 +125,7 @@ const ABOUT = {
     'Once we brought the right professionals together, he got back on solid ground. But I couldn’t unsee the problem.',
     'I knew there was a better way because I had lived it. After five years in traditional wealth management, I spent most of my career inside a single-family office, first as Chief Investment Officer and later also as Chief Operating Officer. Every day, I saw what an independent team could do: see the whole picture, anticipate what was coming, and make sure nothing fell through the cracks. It taught me something I still believe: good advice is only as valuable as what happens next.',
     'Too often, that kind of support is reserved for those wealthy and experienced enough to build it themselves. I don’t believe it should be. So I brought together a team that shares that belief, and together we built something different.'],
+  roles: ['Your personal controller', 'Your big-picture integrator', 'The point of connection between all your advisors'],
   quotes: ['I couldn’t unsee the problem.', 'Good advice is only as valuable as what happens next.'],
   edu: [['Master of Security Analysis and Portfolio Management', 'Creighton University'], ['Master of Business Administration (MBA)', 'Creighton University'], ['Bachelor of Arts in Finance, Banking, Investment and Portfolio Management', 'University of Nebraska at Omaha']],
   different: ['Our team knows the investment world from the inside, and we deliberately chose not to be another wealth management firm. We wanted our independence to be beyond question. We sell no financial products and earn no commissions, from anyone, on anything.',
@@ -142,11 +143,11 @@ const mark = (id: string, cls: string) => `<svg class="bm ${cls}" viewBox="60 60
   `<mask id="f${id}" maskUnits="userSpaceOnUse" x="0" y="0" width="900" height="700"><g fill="none" stroke="#fff" stroke-width="52" stroke-linejoin="miter" stroke-miterlimit="10">${MP.map(d => `<path d="${d}"/>`).join('')}</g></mask>` +
   `<clipPath id="c${id}"><rect x="0" y="72" width="900" height="497"/></clipPath></defs><g clip-path="url(#c${id})"><rect x="0" y="0" width="900" height="700" fill="#C9B876" fill-opacity=".07" mask="url(#f${id})"/><rect x="0" y="0" width="900" height="700" fill="url(#g${id})" mask="url(#o${id})"/></g></svg>`;
 const story =
-  `<div class="rflow"><section class="sa a-who"><div class="w"><h2 class="reveal">Who We Are</h2><div class="sb reveal"><p>${E(ABOUT.who)}</p></div></div></section>` +
+  `<div class="rflow"><section class="sa a-who"><div class="w"><h2 class="reveal">Who We Are</h2><div class="sb reveal"><p>${E(ABOUT.who)}</p></div><div class="roles">${ABOUT.roles.map((t, k) => `<div class="role reveal" data-d="${k * 120}"><p>${t}</p></div>`).join('')}</div></div></section>` +
   `<section class="sa a-story"><div class="w"><h2 class="reveal">How NovoTime Began</h2>` +
-  `<div class="chs">${[[0, 3], [3, 5]].map(([a, b], k) => `<div class="ch reveal"><p class="pq">${E(ABOUT.quotes[k])}</p><div class="chb">${ABOUT.story.slice(a, b).map(t => `<p>${E(t)}</p>`).join('')}</div><div class="viz" data-m="${k}" aria-hidden="true"></div></div>`).join('')}</div>` +
-  `<div class="fd reveal"><div class="fdp"><div class="fdp-in"><img src="assets/nt-mark.svg" alt=""><span>Photo of Diana</span></div></div><div class="fdr"><p class="nm">Diana V. Novoselska</p><p class="rl">Founder, NovoTime</p>` +
-  `<div class="cvg"><div class="cv" style="grid-column:1/-1"><h3>${icon('cap')}Education</h3><ul>${ABOUT.edu.map(([a, b]) => `<li><b>${E(a)}</b><span>${E(b)}</span></li>`).join('')}</ul></div></div></div></div></div></section>` +
+  `<div class="stg"><div class="chs">${[[0, 3], [3, 5]].map(([a, b], k) => `<div class="ch reveal"><p class="pq">${E(ABOUT.quotes[k])}</p><div class="chb">${ABOUT.story.slice(a, b).map(t => `<p>${E(t)}</p>`).join('')}</div></div>`).join('')}</div><div class="fcol"><div class="dph reveal"><div class="fdp-in"><img src="assets/nt-mark.svg" alt=""><span>Photo of Diana</span></div></div>` +
+  `<div class="fd fd2 reveal"><div class="fdr"><p class="nm">Diana V. Novoselska</p><p class="rl">Founder, NovoTime</p>` +
+  `<div class="cvg"><div class="cv" style="grid-column:1/-1"><h3>${icon('cap')}Education</h3><ul>${ABOUT.edu.map(([a, b]) => `<li><b>${E(a)}</b><span>${E(b)}</span></li>`).join('')}</ul></div></div></div></div></div></div></div></section>` +
   `</div><div class="flow"><section class="sa s-3"><div class="w"><h2 class="reveal">Why We&rsquo;re <em>Different</em></h2><div class="sb reveal">${ABOUT.different.map(t => `<p>${E(t)}</p>`).join('')}</div></div></section>` +
   `<section class="sa a-name"><div class="w"><h2 class="reveal">What Our Name Means</h2><div class="sb reveal"><p>${ABOUT.name}</p></div></div></section>`;
 const vals = VALUES.map((v: any) => `<div class="v reveal"><h3>${v.title}</h3><p>${E(v.lines[0])} ${E(v.lines[1])}</p></div>`).join('');
@@ -154,27 +155,7 @@ const closing = `<section class="sa a-close"><div class="w"><p class="zr reveal"
 const aboutFx = `<script>(function(){const q=document.querySelectorAll('.close .q span');if(matchMedia('(prefers-reduced-motion: reduce)').matches){q.forEach(s=>s.classList.add('on'));return}
 let t=0;function u(){t=0;const vh=innerHeight;if(q.length){const r=q[0].parentNode.getBoundingClientRect(),p=Math.max(0,Math.min(1,(vh*.85-r.top)/(vh*.5)));const n=Math.round(p*q.length);q.forEach((s,i)=>s.classList.toggle('on',i<n))}}
 addEventListener('scroll',()=>{if(!t)t=requestAnimationFrame(u)},{passive:true});u()})()</script>`;
-// story visual: part one shows the advisors scattered and unconnected, part two pulls them into one ring around the family as you scroll
-const ribbon = `<script>(function(){const NS='http://www.w3.org/2000/svg',RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
-const names=['CPA','Attorney','Banker','Insurance Agent','Investment Advisor','Business Advisor'],W=520,H=520,cx=260,cy=240,R=170;
-const apart=[[90,60],[420,90],[470,320],[330,440],[70,380],[100,220]],tangle=[[0,5],[1,2],[3,4],[5,3]];
-const ring=names.map((_,k)=>{const a=-Math.PI/2+k*2*Math.PI/names.length;return[cx+R*Math.cos(a),cy+R*Math.sin(a)]});
-const mk=(t,a,p)=>{const e=document.createElementNS(NS,t);for(const k in a)e.setAttribute(k,a[k]);p.appendChild(e);return e};
-const cl=v=>Math.max(0,Math.min(1,v)),ease=t=>t*t*(3-2*t);
-document.querySelectorAll('.viz').forEach(v=>{const two=v.dataset.m==='1',s=mk('svg',{viewBox:'0 0 '+W+' '+H},v);
-const rg=mk('circle',{cx,cy,r:R,class:'vr'},s),tg=tangle.map(()=>mk('line',{class:'vt'},s)),sp=names.map(()=>mk('line',{class:'vs'},s));
-const core=mk('g',{class:'vc'},s);mk('circle',{cx,cy,r:58,class:'vcc'},core);const ct=mk('text',{x:cx,y:cy+7,class:'vct','text-anchor':'middle'},core);ct.textContent='The Family';
-const tag=mk('text',{x:cx,y:cy+R+70,class:'vtag','text-anchor':'middle'},s);tag.textContent='NovoTime';
-const nd=names.map(n=>{const g=mk('g',{class:'vn'},s);mk('circle',{r:7},g);const t=mk('text',{y:-16,'text-anchor':'middle'},g);t.textContent=n;return g});
-rg.style.strokeDasharray=2*Math.PI*R;
-function draw(now){const r=v.getBoundingClientRect(),vh=innerHeight;let p=two?ease(cl((vh*.85-r.top)/(vh*.6))):0;if(RM&&two)p=1;
-const pos=nd.map((g,k)=>{const a=apart[k],f=RM?0:Math.sin(now/1600+k*1.7)*(1-p)*6,b=ring[k];return[a[0]+(b[0]-a[0])*p+f,a[1]+(b[1]-a[1])*p+Math.cos(now/1900+k)*(1-p)*6]});
-nd.forEach((g,k)=>{g.setAttribute('transform','translate('+pos[k][0].toFixed(1)+','+pos[k][1].toFixed(1)+')');g.lastChild.setAttribute('y',pos[k][1]<cy-10?-17:31);g.classList.toggle('on',p>.95)});
-tg.forEach((l,i)=>{const[a,b]=tangle[i];l.setAttribute('x1',pos[a][0]);l.setAttribute('y1',pos[a][1]);l.setAttribute('x2',pos[b][0]);l.setAttribute('y2',pos[b][1]);l.style.opacity=(1-p)*.9});
-sp.forEach((l,k)=>{const[x,y]=pos[k],dx=cx-x,dy=cy-y,L=Math.hypot(dx,dy)||1,reach=two?ease(cl((p-.45)/.5)):0,ex=x+dx/L*(L-58)*reach,ey=y+dy/L*(L-58)*reach;l.setAttribute('x1',x);l.setAttribute('y1',y);l.setAttribute('x2',ex);l.setAttribute('y2',ey);l.style.opacity=reach});
-rg.style.strokeDashoffset=2*Math.PI*R*(1-ease(cl((p-.6)/.4)));tag.style.opacity=ease(cl((p-.8)/.2));core.style.opacity=two?.35+.65*p:.35}
-let vis=false,raf=0;function loop(n){if(!vis){raf=0;return}draw(n);raf=requestAnimationFrame(loop)}
-new IntersectionObserver(e=>{vis=e[0].isIntersecting;if(vis&&!raf)raf=requestAnimationFrame(loop)}).observe(v);draw(0)})})()</script>`;
+const ribbon = '';
 write('about.html', page('About', 'a', aboutHero + story +
   `<section class="vals"><div class="w"><h2 class="reveal">What We <em>Stand On</em></h2><div class="vlist">${vals}</div></div></section></div>` + closing + cta() + aboutFx + ribbon,
   '', 'NovoTime is an independent team in Omaha that runs the day-to-day of your financial life and brings your advisors together.'));
