@@ -397,3 +397,8 @@ header.top{padding:30px max(64px,calc((100vw - 1640px)/2 + 64px))}
 .rflow .a-who::after{display:none}
 .rflow .a-story{padding-top:24px}
 @media (max-width:1100px){.rflow .rib{opacity:.45}}
+/* values: three on top, the last two centered underneath */
+.vlist{display:flex;flex-wrap:wrap;justify-content:center;column-gap:72px}
+.vlist .v{flex:0 0 calc((100% - 144px)/3)}
+@media (max-width:1000px){.vlist{column-gap:56px}.vlist .v{flex-basis:calc((100% - 56px)/2)}}
+@media (max-width:760px){.vlist .v{flex-basis:100%}}
