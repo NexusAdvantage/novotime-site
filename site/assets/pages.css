@@ -477,3 +477,14 @@ header.top{padding:30px max(64px,calc((100vw - 1640px)/2 + 64px))}
 @media (max-width:1100px){.fcol{margin-top:0;max-width:520px}}
 /* portrait shorter so the founder column ends with the story */
 .fcol .dph{aspect-ratio:5/4}
+/* one type scale on every page: section heading, item title, display line, body, label */
+.sintro h2,.reach h2{font-size:clamp(36px,4.2vw,62px);white-space:normal;text-wrap:balance}
+.sq h3,.pillar h3,.vlist .v h3,.dd h3,.rc h3,.gc h2{font-size:clamp(24px,2.1vw,30px);line-height:1.25;letter-spacing:-.015em}
+.a-story .ch .pq,.feature .big,.fd .nm{font-size:clamp(28px,2.9vw,42px);line-height:1.2}
+.sq p,.pillar p,.cols2 p,.feature p:not(.big),.svcpanel li,.rows li,.rows li p,.ihs li,.ihs p,.a-close .zr,.a-close .close .q,.sb p,.chb p,.lede p,.qa p,.dd p,.v p,.rc p,.gc p{font-size:18px;line-height:1.8}
+.aeb,.eyebrow{font-size:12.5px}
+/* about: values heading centered over the centered rows */
+.vals h2{text-align:center}
+@media (max-width:760px){.sq p,.pillar p,.cols2 p,.feature p:not(.big),.svcpanel li,.rows li,.rows li p,.ihs li,.ihs p,.a-close .zr,.a-close .close .q,.sb p,.chb p,.lede p,.qa p,.dd p,.v p,.rc p,.gc p{font-size:17px}}
+.a-close .close .q{font-weight:400}
+.qa summary{font-size:clamp(22px,2.1vw,30px);line-height:1.25}
