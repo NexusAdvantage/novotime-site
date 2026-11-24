@@ -475,3 +475,5 @@ header.top{padding:30px max(64px,calc((100vw - 1640px)/2 + 64px))}
 .fcol .cvg{margin-top:28px;padding-top:28px}
 .fcol .cv b{font-size:19px}
 @media (max-width:1100px){.fcol{margin-top:0;max-width:520px}}
+/* portrait shorter so the founder column ends with the story */
+.fcol .dph{aspect-ratio:5/4}
