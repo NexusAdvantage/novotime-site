@@ -117,6 +117,16 @@ for (const s of SV) {
 }
 
 // about: team first, built from Diana's working copy
+// small line illustrations for the three roles, drawn in gold over the navy tiles
+const S = 'fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"';
+const F = 'fill="currentColor" fill-opacity=".12"';
+const PZ = 'M0 0H22C22 -10 38 -10 38 0H60V22C70 22 70 38 60 38V60H38C38 50 22 50 22 60H0V38C10 38 10 22 0 22Z';
+const ROLE_ART = [
+  `<svg viewBox="0 0 200 170" aria-hidden="true"><g ${S}><path ${F} d="M18 128Q58 112 100 126Q142 112 182 128V46Q142 30 100 44Q58 30 18 46Z"/><path d="M100 44V126"/><path d="M32 62Q58 55 86 61M32 78Q58 71 86 77M32 94Q58 87 86 93M32 110Q50 105 70 108"/><path d="M114 63l6 6 11 -12M114 85l6 6 11 -12M114 107l6 6 11 -12"/><path d="M140 64Q154 59 168 61M140 86Q154 81 168 83M140 108Q150 104 160 105"/><path ${F} d="M150 156L190 92l8 5 -40 64 -10 3z"/><path d="M186 98l8 5"/></g></svg>`,
+  `<svg viewBox="0 0 200 180" aria-hidden="true"><g ${S}><path transform="translate(34 46)" d="${PZ}"/><path transform="translate(94 46)" d="${PZ}"/><path transform="translate(34 106)" d="${PZ}"/><path ${F.replace('.12', '.3')} transform="translate(112 112) rotate(9)" d="${PZ}"/><path d="M150 100l4 -10M164 104l9 -6M136 98l-2 -10"/></g></svg>`,
+  `<svg viewBox="0 0 200 170" aria-hidden="true"><g ${S}><rect x="88" y="14" width="24" height="20" rx="6"/><rect x="28" y="40" width="22" height="20" rx="6" transform="rotate(-28 39 50)"/><rect x="150" y="40" width="22" height="20" rx="6" transform="rotate(28 161 50)"/><path ${F} d="M100 46C150 46 162 66 162 86C162 108 136 124 100 124C64 124 38 108 38 86C38 66 50 46 100 46Z"/><rect x="18" y="104" width="22" height="20" rx="6" transform="rotate(22 29 114)"/><rect x="160" y="104" width="22" height="20" rx="6" transform="rotate(-22 171 114)"/><rect x="88" y="136" width="24" height="20" rx="6"/><path d="M66 78l22 -6 6 20 -22 6zM106 70l22 4 -4 20 -22 -4z"/><path d="M71 85l12 -3M110 79l12 2"/><circle cx="132" cy="104" r="6"/><circle cx="72" cy="108" r="6"/></g></svg>`,
+];
+const roleCss = `<style>.role{position:relative;overflow:hidden;min-height:310px}.role::before{display:none}.role .ra{position:absolute;top:16px;right:12px;width:min(200px,48%);color:var(--gold-l);opacity:.75}.role .ra svg{display:block;width:100%;height:auto}.role::after{content:"";position:absolute;inset:0;background:linear-gradient(20deg,#001F40 28%,rgba(0,31,64,.6) 52%,rgba(0,31,64,0) 78%);pointer-events:none}.role p{position:relative;z-index:1}@media (max-width:1100px){.role{min-height:240px}.role .ra{width:200px}}</style>`;
 const ABOUT = {
   who: 'NovoTime is a fully independent team that manages your financial life with the care and discipline of a well-run business. We act as your personal controller, your big-picture integrator, and the point of connection between all your advisors, so you have greater clarity and peace of mind. Our only product is the work we do for you every day.',
   story: [
@@ -143,7 +153,7 @@ const mark = (id: string, cls: string) => `<svg class="bm ${cls}" viewBox="60 60
   `<mask id="f${id}" maskUnits="userSpaceOnUse" x="0" y="0" width="900" height="700"><g fill="none" stroke="#fff" stroke-width="52" stroke-linejoin="miter" stroke-miterlimit="10">${MP.map(d => `<path d="${d}"/>`).join('')}</g></mask>` +
   `<clipPath id="c${id}"><rect x="0" y="72" width="900" height="497"/></clipPath></defs><g clip-path="url(#c${id})"><rect x="0" y="0" width="900" height="700" fill="#C9B876" fill-opacity=".07" mask="url(#f${id})"/><rect x="0" y="0" width="900" height="700" fill="url(#g${id})" mask="url(#o${id})"/></g></svg>`;
 const story =
-  `<div class="rflow"><section class="sa a-who"><div class="w"><h2 class="reveal">Who We Are</h2><div class="sb reveal"><p>${E(ABOUT.who)}</p></div><div class="roles">${ABOUT.roles.map((t, k) => `<div class="role reveal" data-d="${k * 120}"><p>${t}</p></div>`).join('')}</div></div></section>` +
+  `<div class="rflow"><section class="sa a-who"><div class="w"><h2 class="reveal">Who We Are</h2><div class="sb reveal"><p>${E(ABOUT.who)}</p></div><div class="roles">${ABOUT.roles.map((t, k) => `<div class="role reveal" data-d="${k * 120}"><div class="ra">${ROLE_ART[k]}</div><p>${t}</p></div>`).join('')}</div></div></section>` +
   `<section class="sa a-story"><div class="w"><h2 class="reveal">How NovoTime Began</h2>` +
   `<div class="stg"><div class="chs">${[[0, 3], [3, 5]].map(([a, b], k) => `<div class="ch reveal"><p class="pq">${E(ABOUT.quotes[k])}</p><div class="chb">${ABOUT.story.slice(a, b).map(t => `<p>${E(t)}</p>`).join('')}</div></div>`).join('')}</div><div class="fcol"><div class="dph reveal"><div class="fdp-in"><img src="assets/nt-mark.svg" alt=""><span>Photo of Diana</span></div></div>` +
   `<div class="fd fd2 reveal"><div class="fdr"><p class="nm">Diana V. Novoselska</p><p class="rl">Founder, NovoTime</p>` +
@@ -157,7 +167,7 @@ let t=0;function u(){t=0;const vh=innerHeight;if(q.length){const r=q[0].parentNo
 addEventListener('scroll',()=>{if(!t)t=requestAnimationFrame(u)},{passive:true});u()})()</script>`;
 const ribbon = '';
 write('about.html', page('About', 'a', aboutHero + story +
-  `<section class="vals"><div class="w"><h2 class="reveal">What We <em>Stand On</em></h2><div class="vlist">${vals}</div></div></section></div>` + closing + cta() + aboutFx + ribbon,
+  `<section class="vals"><div class="w"><h2 class="reveal">What We <em>Stand On</em></h2><div class="vlist">${vals}</div></div></section></div>` + closing + cta() + aboutFx + ribbon + roleCss,
   '', 'NovoTime is an independent team in Omaha that runs the day-to-day of your financial life and brings your advisors together.'));
 write('founder.html', '<!doctype html><html lang="en"><head><meta charset="utf-8"><meta http-equiv="refresh" content="0; url=about.html"><link rel="canonical" href="about.html"><title>About | NovoTime</title></head><body><a href="about.html">About NovoTime</a></body></html>\n');
 
