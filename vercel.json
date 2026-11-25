@@ -1,0 +1,7 @@
+{
+  "framework": null,
+  "installCommand": "",
+  "buildCommand": "node --experimental-strip-types build-site.mts",
+  "outputDirectory": "dist",
+  "cleanUrls": true
+}
