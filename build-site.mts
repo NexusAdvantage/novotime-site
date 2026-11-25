@@ -82,7 +82,7 @@ ${body}
 ${DISC}<div class="bot">&copy; NovoTime LLC</div></div></footer><script src="${p}assets/site.js"></script><script src="${p}assets/ribbon.js"></script></body></html>
 `;
 }
-const cta = (p = '') => `<section class="cta"><div class="w"><p class="eyebrow reveal">A simpler financial life starts here</p><h2 class="reveal">Let&rsquo;s make time<br>for <em>what matters.</em></h2><a class="btn reveal" href="${p}contact.html">Contact us</a></div></section>`;
+const cta = (p = '', btn = 'Contact us') => `<section class="cta"><div class="w"><p class="eyebrow reveal">A simpler financial life starts here</p><h2 class="reveal">Let&rsquo;s make time<br>for <em>what matters.</em></h2><a class="btn reveal" href="${p}contact.html">${btn}</a></div></section>`;
 const phead = (h1: string, lt = false) => `<section class="phead${lt ? ' lt' : ''}"><canvas id="c" data-v="flow"${lt ? ' data-t="light"' : ''} aria-hidden="true"></canvas><div class="w"><h1>${h1}</h1></div></section>`;
 const faq = (items: any[]) => items.map(q => `<details class="qa reveal"><summary>${E(q.q)}</summary><p>${E(q.a)}</p></details>`).join('');
 
@@ -155,7 +155,7 @@ const mark = (id: string, cls: string) => `<svg class="bm ${cls}" viewBox="60 60
   `<clipPath id="c${id}"><rect x="0" y="72" width="900" height="497"/></clipPath></defs><g clip-path="url(#c${id})"><rect x="0" y="0" width="900" height="700" fill="#C9B876" fill-opacity=".07" mask="url(#f${id})"/><rect x="0" y="0" width="900" height="700" fill="url(#g${id})" mask="url(#o${id})"/></g></svg>`;
 const story =
   `<div class="rflow"><section class="sa a-who"><div class="w"><h2 class="reveal">Who We Are</h2><div class="sb reveal"><p>${E(ABOUT.who)}</p></div><div class="roles">${ABOUT.roles.map((t, k) => `<div class="role reveal" data-d="${k * 120}"><div class="ra">${ROLE_SVG[k]}</div><p>${t}</p></div>`).join('')}</div></div></section>` +
-  `<section class="sa a-story"><div class="w"><h2 class="reveal">How NovoTime Began</h2>` +
+  `<section class="sa a-story"><div class="w"><h2 class="reveal">How NovoTime Began: A Note from Our Founder</h2>` +
   `<div class="stg"><div class="chs">${[[0, 3], [3, 5]].map(([a, b], k) => `<div class="ch reveal"><p class="pq">${E(ABOUT.quotes[k])}</p><div class="chb">${ABOUT.story.slice(a, b).map(t => `<p>${E(t)}</p>`).join('')}</div></div>`).join('')}</div><div class="fcol"><div class="dph reveal"><div class="fdp-in"><img src="assets/nt-mark.svg" alt=""><span>Photo of Diana</span></div></div>` +
   `<div class="fd fd2 reveal"><div class="fdr"><p class="nm">Diana V. Novoselska</p><p class="rl">Founder, NovoTime</p>` +
   `<div class="cvg"><div class="cv" style="grid-column:1/-1"><h3>${icon('cap')}Education</h3><ul>${ABOUT.edu.map(([a, b]) => `<li><b>${E(a)}</b><span>${E(b)}</span></li>`).join('')}</ul></div></div></div></div></div></div></div></section>` +
@@ -168,7 +168,7 @@ let t=0;function u(){t=0;const vh=innerHeight;if(q.length){const r=q[0].parentNo
 addEventListener('scroll',()=>{if(!t)t=requestAnimationFrame(u)},{passive:true});u()})()</script>`;
 const ribbon = '';
 write('about.html', page('About', 'a', aboutHero + story +
-  `<section class="vals"><div class="w"><h2 class="reveal">What We <em>Stand On</em></h2><div class="vlist">${vals}</div></div></section></div>` + closing + cta() + aboutFx + ribbon + roleCss,
+  `<section class="vals"><div class="w"><h2 class="reveal">What We <em>Stand On</em></h2><div class="vlist">${vals}</div></div></section></div>` + closing + cta('', 'Start a conversation') + aboutFx + ribbon + roleCss,
   '', 'NovoTime is an independent team in Omaha that runs the day-to-day of your financial life and brings your advisors together.'));
 write('founder.html', '<!doctype html><html lang="en"><head><meta charset="utf-8"><meta http-equiv="refresh" content="0; url=about.html"><link rel="canonical" href="about.html"><title>About | NovoTime</title></head><body><a href="about.html">About NovoTime</a></body></html>\n');
 
